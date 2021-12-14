@@ -21,10 +21,10 @@ if (!Yii::$app->user->isGuest) {
         <div class="slide-cover">
             <div class="slick-carousel">
                 <?php
-                // $sliders = Slider::find()->all();
-                // foreach ($sliders as $item) {
-                //     echo Html::tag('div', Html::a(Html::img($item->getWallpaper()), []), ['class' => 'slider-img-cover']);
-                // }
+                $sliders = Slider::find()->all();
+                foreach ($sliders as $item) {
+                    echo Html::tag('div', Html::a(Html::img($item->getWallpaper()), []), ['class' => 'slider-img-cover']);
+                }
                 ?>
             </div>
         </div>
