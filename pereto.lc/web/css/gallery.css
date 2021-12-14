@@ -1,0 +1,318 @@
+.container_gallery {
+    width: 100%;
+    max-width: 1230px;
+    margin: 0 auto;
+}
+
+.banner-section {
+    height: 400px;
+    overflow: hidden;
+}
+
+.banner-slider img {
+    max-width: 100%;
+    margin: auto;
+}
+
+.banner-slider ul,
+.banner-slider li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+
+/*USE CSS for Slider*/
+
+.vehicle-detail-banner .car-slider-desc {
+    max-width: 180px;
+    margin: 0 auto;
+}
+
+.banner-slider .slider.slider-for {
+    max-width: 600px;
+    padding-right: 0px;
+}
+
+.banner-slider .slider.slider-nav {
+    max-width: 185px;
+}
+
+.banner-slider .slider.slider-for,
+.banner-slider .slider.slider-nav {
+    width: 100%;
+    float: left;
+}
+
+.banner-slider .slider.slider-nav {
+    height: 400px;
+    overflow: hidden;
+}
+
+.slider-banner-image {
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ebebeb;
+    background-color: #ebebeb;
+}
+
+.banner-slider .slider.slider-nav {
+    padding: 0 0;
+    margin-left: 15px;
+}
+
+.thumbnail-image {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slider-nav .thumbImg {
+    width: 190px;
+    height: 125px;
+    margin: 0 auto;
+}
+
+.slider-nav .thumbImg img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.slick-vertical .slick-slide:active,
+.slick-vertical .slick-slide:focus,
+.slick-arrow:hover,
+.slick-arrow:focus {
+    border: 0;
+    outline: 0;
+}
+
+.slick-vertical .slick-slide {
+    border: none!important;
+}
+
+.slider-nav .slick-slide.slick-current.thumbnail-image .thumbImg {
+    border: 2px solid #196DB6;
+}
+
+.slider-nav .slick-slide.slick-current span {
+    color: #196DB6;
+}
+
+.slider-nav .slick-slide {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.slider-nav .slick-slide span {
+    font-size: 14px;
+    display: block;
+    padding: 5px 0 15px;
+}
+
+.slick-arrow {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 99;
+    background-color: #fff;
+    top: 45%;
+    border-radius: 100%;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #b9b9b9;
+}
+
+.slick-prev {
+    left: 10px;
+}
+
+.slick-next {
+    right: 10px;
+    text-align: right;
+}
+
+.slick-prev.slick-arrow {
+    content: "\e257";
+    color: #000;
+}
+
+.slick-next.slick-arrow {}
+
+
+/*End USE CSS for Slider*/
+
+@media screen and (max-width: 991px) {
+    .banner-section {
+        height: auto;
+    }
+    .banner-slider .slider.slider-for,
+    .banner-slider .slider.slider-nav {
+        max-width: 100%;
+        float: none;
+    }
+    .banner-slider .slider.slider-for {
+        padding-right: 0;
+        width: 600px;
+        margin: auto;
+    }
+    .slick-list {
+        height: 460px;
+    }
+    .slick-list-thumbs {
+        height: 140px!important;
+        margin: auto;
+    }
+    .slider-nav .slick-slide {
+        padding: 0 5px;
+    }
+    .banner-slider .slider.slider-nav {
+        height: auto;
+    }
+    .slider-banner-image {
+        height: 500px;
+    }
+    .slider.slider-nav.thumb-image {
+        padding: 10px 30px 0;
+    }
+    .slider-nav .slick-slide span {
+        padding: 5px 0;
+    }
+    .slick-arrow {
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        top: 45%;
+        bottom: 0;
+    }
+    .slick-prev {
+        left: 5px;
+        right: unset;
+    }
+    .slick-next {
+        left: unset;
+        right: 5px;
+    }
+    .vehicle-detail-banner .car-slider-desc {
+        max-width: 340px;
+    }
+    .bid-tag {
+        padding: 10px 0 15px;
+    }
+    .slider.slider-nav.thumb-image {
+        white-space: nowrap;
+    }
+    .thumbnail-image.slick-slide {
+        padding: 0px 5px;
+        min-width: 75px;
+        display: inline-block;
+        float: none;
+    }
+    .banner-slider .slider.slider-nav {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .slider-banner-image {
+        height: 400px;
+    }
+    .slider.slider-nav.thumb-image {
+        padding: 0px 20px 0;
+        margin: 10px 0px 0;
+    }
+    .slider-nav .slick-slide.thumbnail-image .thumbImg {
+        max-width: 140px;
+        height: 80px;
+    }
+    .slick-prev.slick-arrow {
+        background-position: center 10px;
+    }
+    .slick-next.slick-arrow {
+        background-position: center 10px, center;
+    }
+    .slider-nav .slick-slide span {
+        font-size: 12px;
+        white-space: normal;
+    }
+    .banner-slider .slider.slider-nav {
+        margin-left: 0!important;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .slider-banner-image {
+        height: 340px;
+    }
+    /* .slick-list-thumbs {
+        height: auto!important;
+    } */
+    .slide-navbar .slick-list {
+        height: auto;
+    }
+    .slider.slider-nav.thumb-image {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .slider-banner-image {
+        height: 280px;
+    }
+}
+
+.slick-dots li {
+    position: relative;
+    padding: 0;
+    cursor: pointer;
+    list-style-type: none;
+    padding: 0;
+    float: left;
+    margin: auto;
+}
+
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: 0;
+    background: 0 0;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: #000aff;
+    font-size: 25px;
+}
+
+.slick-dots li button:before {
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 20px;
+    font-size: 25px;
+    text-align: center;
+    opacity: .25;
+    color: #000;
+    content: '\220E'
+}
+
+.slick-dots {
+    display: table;
+    margin: auto;
+    text-align: center;
+    padding: 0;
+    width: auto;
+    margin: auto;
+}
