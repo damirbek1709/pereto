@@ -17,8 +17,6 @@ use karpoff\icrop\CropImageUpload;
 
     <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'active')->checkbox();?>
-
     <?= $form->field($model, 'photo')->widget(CropImageUpload::className()) ?>
 
     <div class="form-group">

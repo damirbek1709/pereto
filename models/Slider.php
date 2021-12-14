@@ -13,7 +13,6 @@ use karpoff\icrop\CropImageUploadBehavior;
  * @property string $photo
  * @property string $photo_crop
  * @property string $link
- * @property int $active
  */
 class Slider extends \yii\db\ActiveRecord
 {
@@ -31,8 +30,7 @@ class Slider extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            //[['photo'], 'required'],
-            [['photo', 'photo_crop', 'link', 'active'], 'safe'],
+            [['photo', 'photo_crop', 'link'], 'safe'],
             [['link'], 'string', 'max' => 200],            
             ['photo', 'file', 'extensions' => 'png, jpeg, jpg, gif', 'on' => ['insert', 'update']],
 			[['photo_crop', 'photo_cropped'], 'string', 'max' => 100]
@@ -75,7 +73,6 @@ class Slider extends \yii\db\ActiveRecord
             'photo' => Yii::t('app', 'Photo'),
             'photo_crop' => Yii::t('app', 'Photo Crop'),
             'link' => Yii::t('app', 'Link'),
-            //'active' => Yii::t('app', 'Active'),
         ];
     }
 }
