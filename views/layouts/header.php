@@ -68,11 +68,11 @@ use app\models\Consumer;
                     ],
                     [
                         'label' =>  Yii::t('app', 'Видео'),
-                        'url' => ['/video'],
+                        'url' => '#',
                     ],
                     [
                         'label' =>  Yii::t('app', 'Фотографии'),
-                        'url' => ['/photo'],
+                        'url' => '#',
                     ],
                 ],
                 'url' => ['/site/contact']
