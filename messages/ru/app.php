@@ -42,7 +42,7 @@ return [
     'Contact'=>'Контакты',
     'Other news'=>'Другие новости',
     'Subscribe us'=>'Подписаться на нас',
-    'Pereto project'=>'Проект Перето',
+    'Pereto project'=>'Проект ПЭРЭТО',
     'Galleries'=>'Фото',
     'Create Gallery'=>'Добавить галерею',
 ];

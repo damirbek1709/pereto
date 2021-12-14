@@ -38,8 +38,8 @@ class Gallery extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'title_ky', 'title_en'], 'required'],
-            [['title', 'title_ky', 'title_en'], 'string', 'max' => 255],
+            [['title'], 'required'],
+            [['title', 'title_ky', 'title_en','main_img'], 'string', 'max' => 255],
         ];
     }
 
@@ -54,6 +54,7 @@ class Gallery extends \yii\db\ActiveRecord
             'title_ky' => Yii::t('app', 'Title Ky'),
             'title_en' => Yii::t('app', 'Title En'),
             'files' => Yii::t('app', 'Файлы'),
+            'main_img' => Yii::t('app', 'Основной рисунок'),
         ];
     }
 

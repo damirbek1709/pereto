@@ -12,7 +12,7 @@ use yii\helpers\Url;
                 </div>
                 <div class="footer-list">
                     <p><?= Yii::t('app', 'Pereto project') ?></p>
-                    <p><?= Yii::t('app', 'Адрес: Кыргызская Республика, Бишкек, ул. Аалы Токомбаева,') ?></p>
+                    <p><?= Yii::t('app', 'Адрес: Кыргызская Республика, Бишкек, ул. Аалы Токомбаева 7/6') ?></p>
                     <p>996312915000</p>
                     <p>info@pereto.kg</p>
                 </div>

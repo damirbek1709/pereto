@@ -25,6 +25,26 @@ use kartik\file\FileInput;
     <?= $form->field($model, 'title_en')->textInput(['maxlength' => true]) ?>
 
     <?php
+    $savedImagesCaption = [];
+    if ($model->isNewRecord) {
+        $image_val = null;
+        $savedImages = [];
+    } else {
+        $image_val = $model->id;
+        $savedImages = $model->getThumbImages();
+        $captionArr = $model->getThumbs();
+
+        if (count($captionArr)) {
+            foreach ($captionArr as $image) {
+                $savedImagesCaption[] = [
+                    "caption" => basename($image),
+                    "url" => Yii::$app->urlManager->createUrl('/gallery/remove-image'),
+                    'key' => basename($image),
+                    'extra' => ['id' => $model->id],
+                ];
+            }
+        }
+    }
     echo $form->field($model, 'files[]')->widget(FileInput::classname(), [
         'options' => ['multiple' => true, 'accept' => 'image/*'],
         'pluginOptions' => [

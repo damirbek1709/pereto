@@ -427,6 +427,10 @@ body {
     margin-right: 25px;
 }
 
+.kv-file-content img {
+    width: 100%;
+}
+
 
 /* .footer-links {
     display: flex;
