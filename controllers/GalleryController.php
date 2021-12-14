@@ -47,6 +47,17 @@ class GalleryController extends Controller
         ]);
     }
 
+    public function actionAdmin()
+    {
+        $searchModel = new GallerySearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('admin', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Displays a single Gallery model.
      * @param int $id ID

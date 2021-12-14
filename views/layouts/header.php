@@ -72,7 +72,7 @@ use app\models\Consumer;
                     ],
                     [
                         'label' =>  Yii::t('app', 'Фотографии'),
-                        'url' => '#',
+                        'url' => ['/gallery'],
                     ],
                 ],
                 'url' => ['/site/contact']

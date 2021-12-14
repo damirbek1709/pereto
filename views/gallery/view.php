@@ -45,7 +45,7 @@ echo newerton\fancybox\FancyBox::widget([
 ?>
 <div class="gallery-view">
     <h1 class="main-heading"><?= Html::encode($this->title) ?></h1>
-    <?php $images = $model->geImages();?>
+    <?php $images = $model->getImages();?>
     <div class="gallery-grid">
         <?php foreach ($images as $image) {
             echo Html::beginTag('div', ['class' => 'gallery-block']);

@@ -82,6 +82,19 @@ class Gallery extends \yii\db\ActiveRecord
 
     }
 
+    public function getMainThumb()
+    {
+        if ($this->main_img) {
+            return Html::img(\yii\helpers\Url::base() . "/images/gallery/{$this->id}/thumbs/{$this->main_img}");
+        }
+        if (is_dir(Yii::getAlias("@webroot/images/gallery/{$this->id}/thumbs"))) {
+            $images = FileHelper::findFiles(Yii::getAlias("@webroot/images/gallery/{$this->id}/thumbs"));
+            $img = str_replace([Yii::getAlias('@webroot'), DIRECTORY_SEPARATOR], [Yii::getAlias('@web'), '/'], $images[0]);
+            return Html::img($img);
+        }
+        return Html::img(Url::base() . "/images/category/template.png");
+    }
+
 
     function getThumbs()
     {

@@ -431,6 +431,30 @@ body {
     width: 100%;
 }
 
+.gallery-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    display: grid;
+    grid-gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+}
+
+.gallery-block {
+    height: 165px;
+    overflow: hidden;
+}
+
+.gallery-index-block img {
+    width: 100%;
+}
+
+.gallery-index-block a {
+    text-align: center;
+    color: #000;
+}
+
 
 /* .footer-links {
     display: flex;

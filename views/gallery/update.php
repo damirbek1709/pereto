@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Gallery */
 
-$this->title = Yii::t('app', 'Update Gallery: {name}', [
+$this->title = Yii::t('app', 'Редактировать галерею', [
     'name' => $model->title,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Galleries'), 'url' => ['index']];
