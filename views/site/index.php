@@ -68,22 +68,22 @@ if (!Yii::$app->user->isGuest) {
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/american_u.png'), 'https://www.auca.kg/'); ?>
+                            <?= Html::a(Html::img(Url::base() . '/images/partners/american_u.png'), 'https://www.auca.kg/',['target'=>'_blank']); ?>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/unison_logo.png'), 'https://unisongroup.org/'); ?>
+                            <?= Html::a(Html::img(Url::base() . '/images/partners/unison_logo.png'), 'https://unisongroup.org/',['target'=>'_blank']); ?>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/technopolis.png'), 'https://www.technopolis-group.com/'); ?>
+                            <?= Html::a(Html::img(Url::base() . '/images/partners/technopolis.png'), 'https://www.technopolis-group.com/',['target'=>'_blank']); ?>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/cscp.png'), 'https://www.cscp.org/'); ?>
+                            <?= Html::a(Html::img(Url::base() . '/images/partners/cscp.png'), 'https://www.cscp.org/',['target'=>'_blank']); ?>
                         </div>
                     </div>
                 </div>

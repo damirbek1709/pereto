@@ -17,7 +17,21 @@ use vova07\imperavi\Widget;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'photo')->widget(CropImageUpload::className()) ?>
-    <?= $form->field($model, 'description')->textArea(['maxlength' => true]) ?>
+    <?=
+    $form->field($model, 'description')->widget(Widget::className(), [
+        'settings' => [
+            'lang' => 'ru',
+            'minHeight' => 200,
+            'formatting' => ['p', 'blockquote', 'h2'],
+            'plugins' => [
+                'clips',
+                'fullscreen',
+                'table',
+                'fontsize',
+                'fontcolor',
+            ]
+        ],
+    ]); ?>
     <?=
     $form->field($model, 'text')->widget(Widget::className(), [
         'settings' => [
