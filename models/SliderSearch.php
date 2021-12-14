@@ -59,7 +59,6 @@ class SliderSearch extends Slider
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'active' => $this->active,
         ]);
 
         $query->andFilterWhere(['like', 'photo', $this->photo])
