@@ -39,4 +39,7 @@ return [
     'About project'=>'О проекте',
     'All News'=>'Все новости',
     'Subscribe'=>'Подписаться',
+    'Contact'=>'Контакты',
+    'Other news'=>'Другие новости',
+    'Subscribe us'=>'Подписаться на нас',
 ];
