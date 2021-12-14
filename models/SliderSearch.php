@@ -17,7 +17,7 @@ class SliderSearch extends Slider
     public function rules()
     {
         return [
-            [['id', 'active'], 'integer'],
+            [['id'], 'integer'],
             [['photo', 'photo_crop', 'link'], 'safe'],
         ];
     }

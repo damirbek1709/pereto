@@ -33,7 +33,6 @@ class Slider extends \yii\db\ActiveRecord
         return [
             //[['photo'], 'required'],
             [['photo', 'photo_crop', 'link', 'active'], 'safe'],
-            [['active'], 'integer'],            
             [['link'], 'string', 'max' => 200],            
             ['photo', 'file', 'extensions' => 'png, jpeg, jpg, gif', 'on' => ['insert', 'update']],
 			[['photo_crop', 'photo_cropped'], 'string', 'max' => 100]
@@ -76,7 +75,7 @@ class Slider extends \yii\db\ActiveRecord
             'photo' => Yii::t('app', 'Photo'),
             'photo_crop' => Yii::t('app', 'Photo Crop'),
             'link' => Yii::t('app', 'Link'),
-            'active' => Yii::t('app', 'Active'),
+            //'active' => Yii::t('app', 'Active'),
         ];
     }
 }
