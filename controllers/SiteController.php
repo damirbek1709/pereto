@@ -76,15 +76,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->layout = "main_index";
-        $searchModel = new NewsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-        $dataProvider->pagination->pageSize = 3;
-        $dataProvider->query->orderBy(['date' => SORT_ASC]);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        return $this->render('index');
     }
 
     public function actionPartners()
