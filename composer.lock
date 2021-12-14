@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9feb798c04b0642115011bf91746787",
+    "content-hash": "527a900c9c3d5e83319b8c542b14cc7e",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -919,6 +919,53 @@
             },
             "abandoned": "mohorev/yii2-upload-behavior",
             "time": "2020-05-15T09:59:57+00:00"
+        },
+        {
+            "name": "newerton/yii2-fancybox",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/newerton/yii2-fancybox.git",
+                "reference": "a7230615a74ebdba98ffc7c29820364167d554c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/newerton/yii2-fancybox/zipball/a7230615a74ebdba98ffc7c29820364167d554c5",
+                "reference": "a7230615a74ebdba98ffc7c29820364167d554c5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "~2.0.14"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "newerton\\fancybox\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Newerton Vargas de Araujo",
+                    "email": "newerton.araujo@gmail.com"
+                }
+            ],
+            "description": "fancyBox is a tool that offers a nice and elegant way to add zooming functionality for images, html content and multi-media on your webpages.",
+            "keywords": [
+                "extension",
+                "fancyapps",
+                "fancybox",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/newerton/yii2-fancybox/issues",
+                "source": "https://github.com/newerton/yii2-fancybox/tree/v1.0.0"
+            },
+            "time": "2021-02-15T17:03:36+00:00"
         },
         {
             "name": "npm-asset/bootstrap",

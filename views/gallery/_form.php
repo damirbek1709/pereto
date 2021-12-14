@@ -80,3 +80,14 @@ use kartik\file\FileInput;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<script>
+    var main_img = "<?=$model->main_img?>";
+    $(".kv-file-remove[data-key='" + main_img + "']").css('display','none');
+    $('body').on('click', '.kv-cust-btn', function () {
+        var main_val = $(this).siblings('.kv-file-remove').attr('data-key');
+        $('.set-main').val(main_val);
+        $('.kv-cust-btn').removeClass('main-selected');
+        $(this).addClass('main-selected');
+    });
+</script>

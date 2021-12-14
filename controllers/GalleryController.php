@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Gallery;
 use app\models\GallerySearch;
 use yii\web\Controller;
@@ -113,6 +114,26 @@ class GalleryController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionRemoveImage()
+    {
+        $key = $_POST['key'];
+        $id = $_POST['id'];
+        unlink(Yii::getAlias("@webroot/images/gallery/{$id}/thumbs/{$key}"));
+        unlink(Yii::getAlias("@webroot/images/gallery/{$id}/{$key}"));
+        $model = $this->findModel($id);
+        if ($key == $model->main_img) {
+            $model->main_img = "";
+            $model->save(false);
+        }
+        return '{}';
+    }
+
+    public function actionSetMain()
+    {
+        $name = $_POST['name'];
+        $id = $_POST['id'];
     }
 
     /**

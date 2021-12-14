@@ -59,7 +59,7 @@ if (!Yii::$app->user->isGuest) {
                 </div>
                 <div class="news-btn-group">
                     <?= Html::a(Yii::t('app','All News'), ['/news/index'], ['class' => 'news-btn news-more-btn']); ?>
-                    <?= Html::a(Yii::t('app','Subscribe'), ['/news/subscribe'], ['class' => 'news-btn news-subscribe-btn']); ?>
+                    <?= Html::a(Yii::t('app','Subscribe'), '#', ['class' => 'news-btn news-subscribe-btn']); ?>
                 </div>
             </div>
 

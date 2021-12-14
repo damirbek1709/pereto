@@ -83,15 +83,15 @@ use app\models\Consumer;
                 'items' => [
                     [
                         'label' => Yii::t('app', 'En'),
-                        'url' => ['/reports'],
+                        'url' => '#',
                     ],
                     [
                         'label' =>  Yii::t('app', 'Кыр'),
-                        'url' => ['/video'],
+                        'url' => '#',
                     ],
                 ],
             ],
-            ['label' => 'Войти', 'url' => ['/site/contact']],
+            ['label' => 'Войти', 'url' => ['/site/login']],
         ],
     ]);
     NavBar::end();
