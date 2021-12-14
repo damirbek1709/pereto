@@ -7,7 +7,7 @@ use yii\helpers\Html; ?>
     echo Html::a('Новости', ['/news/admin']);
     echo Html::a('Слайдер', ['/slider/admin']);
     echo Html::a('Партнеры', ['/partner/admin']);
-    echo Html::a('Потребители', ['/consumers-information/admin']);
+    echo Html::a('Потребителям', ['/consumers-information/admin']);
     echo Html::a('Бизнес', ['/businesses-information/admin']);
     echo Html::a('Библиотека', ['/business-information/admin']);
     echo Html::a('Публикации', ['/reports/admin']);
