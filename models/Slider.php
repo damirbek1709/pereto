@@ -33,16 +33,21 @@ class Slider extends \yii\db\ActiveRecord
         return [
             //[['photo'], 'required'],
             [['photo', 'photo_crop', 'link', 'active'], 'safe'],
-            [['active'], 'integer'],
-            [['link'], 'string', 'max' => 200],
+            [['active'], 'integer'],            
+            [['link'], 'string', 'max' => 200],            
             ['photo', 'file', 'extensions' => 'png, jpeg, jpg, gif', 'on' => ['insert', 'update']],
-            [['photo_crop', 'photo_cropped'], 'string', 'max' => 100]
+			[['photo_crop', 'photo_cropped'], 'string', 'max' => 100]
         ];
     }
 
     public function getWallpaper()
     {
-        return Url::base() . "/images/slider/{$this->photo_cropped}";
+        $filename = Yii::getAlias("@webroot/images/slider/").$this->photo;
+        if (file_exists($filename)) {
+            return Url::base() . "/images/slider/{$this->photo_cropped}";
+        } else {
+            return Url::base() . "/images/site/template.png";
+        }
     }
 
     function behaviors()
@@ -54,9 +59,9 @@ class Slider extends \yii\db\ActiveRecord
                 'scenarios' => ['insert', 'update'],
                 'path' => '@webroot/images/slider',
                 'url' => '@web/images/slider',
-                'ratio' => 224 / 77,
-                'crop_field' => 'photo_crop',
-                'cropped_field' => 'photo_cropped',
+				'ratio' => 224/77,
+				'crop_field' => 'photo_crop',
+				'cropped_field' => 'photo_cropped',
             ],
         ];
     }
