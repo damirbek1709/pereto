@@ -35,4 +35,8 @@ return [
     'Create Reports'=>'Добавить публикацию',    
     'Update Reports:'=>'Редактировать публикацию',    
     'link'=>'Ссылка',    
+    'Useful links'=>'Полезные ссылки', 
+    'About project'=>'О проекте',
+    'All News'=>'Все новости',
+    'Subscribe'=>'Подписаться',
 ];
