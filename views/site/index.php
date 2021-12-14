@@ -3,19 +3,21 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use app\models\Slider;
+use app\models\News;
 use yii\widgets\ListView;
+use yii\helpers\StringHelper;
 /* @var $this yii\web\View */
 
 $this->title = 'Pereto.kg';
 $class = "padder-fixed";
-if(!Yii::$app->user->isGuest){
+if (!Yii::$app->user->isGuest) {
     $class = "padder-free";
 }
 ?>
 <link rel='stylesheet' href='<?= Url::base() ?>/css/slick.min.css'>
 <link rel="stylesheet" href="<?= Url::base() ?>/css/gallery.css">
 <div class="site-index">
-    <div class="<?=$class?>">
+    <div class="<?= $class ?>">
         <div class="slide-cover">
             <div class="slick-carousel">
                 <?php
@@ -31,17 +33,30 @@ if(!Yii::$app->user->isGuest){
         <div class="body-content">
             <div class="site-index-news">
                 <h1 class="main-heading"><?= Yii::t('app', 'News') ?></h1>
-                <?php echo ListView::widget([
-                    'options' => [
-                        'class' => 'program-list row',
-                    ],
-                    'dataProvider' => $dataProvider,
-                    'itemView' => '_item',
-                    'summary' => false,
-                    'itemOptions' => [
-                        'class' => 'news-index-block justify-content-center align-items-center col-lg-4',
-                    ],
-                ]); ?>
+                <div class="program-list row">
+
+
+                    <?php
+                    $news = News::find()->orderBy(['id'=>SORT_DESC])->limit(3)->all();
+                    foreach ($news as $new) : ?>
+                        <div class="news-index-block justify-content-center align-items-center col-lg-4">
+                            <div class="site-index-news-block">
+                                <?= Html::beginTag('a', ['href' => Url::to("/news/{$new->id}"), 'class' => '']); ?>
+                                <div class="news-block-img">
+                                    <?= Html::img($new->getWallpaper()); ?>
+                                </div>
+
+                                <div class="site-news-content">
+                                    <?= Html::tag('div', $new->title, ['class' => 'news-index-title']); ?>
+                                    <?= Html::tag('div', StringHelper::truncateWords($new->description, 25, $suffix = '...'), []); ?>
+                                </div>
+                                <?php Html::endTag('a'); ?>
+                            </div>
+                        </div>
+                    <?php
+                    endforeach;
+                    ?>
+                </div>
                 <div class="news-btn-group">
                     <?= Html::a('All News', ['/news/index'], ['class' => 'news-btn news-more-btn']); ?>
                     <?= Html::a('Subscribe', ['/news/subscribe'], ['class' => 'news-btn news-subscribe-btn']); ?>
