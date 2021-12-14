@@ -23,7 +23,7 @@ if (!Yii::$app->user->isGuest) {
                 <?php
                 $sliders = Slider::find()->all();
                 foreach ($sliders as $item) {
-                    echo Html::tag('div', Html::a(Html::img(Url::base()."/images/slider/{$item->photo_cropped}"), []), ['class' => 'slider-img-cover']);
+                    echo Html::tag('div', Html::a(Html::img(Url::base()."/images/slider/{$item->photo_cropped}")), ['class' => 'slider-img-cover']);
                 }
                 ?>
             </div>
