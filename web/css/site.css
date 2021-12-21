@@ -484,6 +484,9 @@ body {
     .slick-list {
         height: auto!important;
     }
+    .video-view iframe {
+        max-width: 100%;
+    }
 }
 
 .navbar-toggler {
