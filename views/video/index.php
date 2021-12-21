@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\VideoSearch */
@@ -11,30 +11,16 @@ $this->title = Yii::t('app', 'Videos');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="video-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Video'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
+    <h1 class="main-heading"><?= Html::encode($this->title) ?></h1>
+    <?php echo ListView::widget([
+        'options' => [
+            'class' => 'gallery-list row',
+        ],
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'title',
-            'source',
-            'title_ky',
-            'title_en',
-
-            ['class' => 'yii\grid\ActionColumn'],
+        'itemView' => '_item',
+        'summary' => false,
+        'itemOptions' => [
+            'class' => 'gallery-index-block col-lg-3',
         ],
     ]); ?>
-
-
 </div>

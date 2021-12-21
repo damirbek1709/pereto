@@ -89,7 +89,7 @@ use app\models\App;
                     ],
                     [
                         'label' =>  Yii::t('app', 'Видео'),
-                        'url' => '#',
+                        'url' => 'video',
                     ],
                     [
                         'label' =>  Yii::t('app', 'Фотографии'),

@@ -46,4 +46,7 @@ return [
     'Galleries'=>'Фото',
     'Create Gallery'=>'Добавить галерею',
     'Contacts'=>'Контакты',
+    'Create Video'=>'Добавить видео',
+    'Videos'=>'Видео',
+    'Embed code'=>'Код вставки',
 ];

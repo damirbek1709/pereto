@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'source')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'source')->textArea([]) ?>
 
     <?= $form->field($model, 'title_ky')->textInput(['maxlength' => true]) ?>
 
