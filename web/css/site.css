@@ -459,6 +459,41 @@ body {
     margin-top: 15px;
 }
 
+@media only screen and (max-width: 429px) {
+    .navbar-custom {
+        padding: 15px;
+    }
+    .navbar-custom .nav-item {
+        margin-left: 0;
+    }
+    .slick-list {
+        height: auto!important;
+    }
+    .slick-arrow {
+        top: 30%!important;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .navbar-custom {
+        padding: 15px;
+    }
+    .navbar-custom .nav-item {
+        margin-left: 0;
+    }
+    .slick-list {
+        height: auto!important;
+    }
+}
+
+.navbar-toggler {
+    background-color: #bbcc49!important;
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSczMCcgaGVpZ2h0PSczMCcgdmlld0JveD0nMCAwIDMwIDMwJz48cGF0aCBzdHJva2U9J3JnYmEoMjU1LCAyNTUsIDI1NSwgMC41KScgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbWl0ZXJsaW1pdD0nMTAnIHN0cm9rZS13aWR0aD0nMicgZD0nTTQgN2gyMk00IDE1aDIyTTQgMjNoMjInLz48L3N2Zz4=);
+}
+
 
 /* .footer-links {
     display: flex;
