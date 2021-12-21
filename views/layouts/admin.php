@@ -9,7 +9,7 @@ use yii\helpers\Html; ?>
     echo Html::a(Yii::t('app','Партнеры'), ['/partner/admin']);
     echo Html::a(Yii::t('app','Потребителям'), ['/consumers-information/admin']);
     echo Html::a(Yii::t('app','Бизнес'), ['/businesses-information/admin']);
-    echo Html::a(Yii::t('app','Библиотека'), ['/business-information/admin']);
+    echo Html::a(Yii::t('app','Библиотека'), ['/libraries/admin']);
     echo Html::a(Yii::t('app','Публикации'), ['/reports/admin']);
     echo Html::a(Yii::t('app','Фото'), ['/gallery/admin']);
     echo Html::a(Yii::t('app','Видео'), ['/video/admin']);

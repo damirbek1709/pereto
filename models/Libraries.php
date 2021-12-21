@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use karpoff\icrop\CropImageUploadBehavior;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "library".
@@ -101,5 +102,17 @@ class Libraries extends \yii\db\ActiveRecord
         } else {
             return Url::base() . "/images/site/template.png";
         }
+    }
+
+    public function getCategoryTags(){
+        return ArrayHelper::map(Bridge::find()->where(['post_id'=>$this->id])->andWhere(['not', ['category_id' => null]])->all(),'category_id','category_id');        
+    }
+
+    public function getTypeTags(){
+        return ArrayHelper::map(Bridge::find()->where(['post_id'=>$this->id])->andWhere(['not', ['type_id' => null]])->all(),'type_id','type_id');        
+    }
+
+    public function getDropTags(){
+        return ArrayHelper::map(Bridge::find()->where(['post_id'=>$this->id])->andWhere(['not', ['tag_id' => null]])->all(),'tag_id','tag_id');        
     }
 }

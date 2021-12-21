@@ -47,6 +47,17 @@ class LibrariesController extends Controller
         ]);
     }
 
+    public function actionAdmin()
+    {
+        $searchModel = new LibrariesSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('admin', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Displays a single Libraries model.
      * @param int $id ID
@@ -69,14 +80,30 @@ class LibrariesController extends Controller
     {
         $model = new Libraries();
         $model->scenario = 'insert';
+
         if ($this->request->isPost) {
-            echo "<pre>";print_r($this->request->post()['Libraries']['category_id']);echo "</pre>";die();
             if ($model->load($this->request->post()) && $model->save()) {
-                echo "<pre>";$model->category_id;echo "</pre>";
-                foreach($model->category_id as $key=>$val){
+                $category_arr = $this->request->post()['Libraries']['category_id'];
+                $type_arr = $this->request->post()['Libraries']['type_id'];
+                $tag_arr = $this->request->post()['Libraries']['tag_id'];
+
+                Bridge::deleteAll(['post_id' => $model->id]);
+                foreach ($category_arr as $key => $val) {
                     $bridge = new Bridge();
                     $bridge->post_id = $model->id;
-                    $bridge->category_id = $model->$val;
+                    $bridge->category_id = $val;
+                    $bridge->save(false);
+                }
+                foreach ($type_arr as $key => $val) {
+                    $bridge = new Bridge();
+                    $bridge->post_id = $model->id;
+                    $bridge->type_id = $val;
+                    $bridge->save(false);
+                }
+                foreach ($tag_arr as $key => $val) {
+                    $bridge = new Bridge();
+                    $bridge->post_id = $model->id;
+                    $bridge->tag_id = $val;
                     $bridge->save(false);
                 }
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -102,6 +129,29 @@ class LibrariesController extends Controller
         $model = $this->findModel($id);
         $model->scenario = 'update';
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            $category_arr = $this->request->post()['Libraries']['category_id'];
+            $type_arr = $this->request->post()['Libraries']['type_id'];
+            $tag_arr = $this->request->post()['Libraries']['tag_id'];
+
+            Bridge::deleteAll(['post_id' => $model->id]);
+            foreach ($category_arr as $key => $val) {
+                $bridge = new Bridge();
+                $bridge->post_id = $model->id;
+                $bridge->category_id = $val;
+                $bridge->save(false);
+            }
+            foreach ($type_arr as $key => $val) {
+                $bridge = new Bridge();
+                $bridge->post_id = $model->id;
+                $bridge->type_id = $val;
+                $bridge->save(false);
+            }
+            foreach ($tag_arr as $key => $val) {
+                $bridge = new Bridge();
+                $bridge->post_id = $model->id;
+                $bridge->tag_id = $val;
+                $bridge->save(false);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -120,7 +170,7 @@ class LibrariesController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        return $this->redirect(['index']);
+        return $this->redirect(['admin']);
     }
 
     /**

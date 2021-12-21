@@ -13,8 +13,8 @@ use app\models\LibraryType;
 use kartik\select2\Select2;
 
 $cats = ArrayHelper::map(LibraryCategory::find()->all(), 'id', 'title');
-$tags = LibraryTag::find()->all();
-$types = LibraryType::find()->all();
+$tags = ArrayHelper::map(LibraryTag::find()->all(), 'id', 'title');
+$types = ArrayHelper::map(LibraryType::find()->all(), 'id', 'title');
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Libraries */
@@ -53,36 +53,52 @@ $types = LibraryType::find()->all();
     ]); ?>
 
     <?php
-    foreach($cats as $d)
-    $row[]=$d;
+    $model->category_id = $model->categoryTags;
+    foreach ($cats as $d)
+        $row[] = $d;
     echo $form->field($model, 'category_id')->widget(Select2::classname(), [
         'name' => 'category_id[]',
+        'data' => $cats,
         'options' => ['placeholder' => 'Категории'],
         'pluginOptions' => [
-            'tags' => $row,
+            //'tags' => $row,
             'allowClear' => true,
             'multiple' => true
         ],
     ]);
     ?>
 
-    <div class="form-group field-libraries-type_id has-success">
-        <label class="control-label" for="libraries-type_id">Тип</label>
-        <select class="js-example-basic-multiple form-control" id="libraries-type_id" name="Libraries[type_id][]" multiple="multiple">
-            <?php foreach ($types as $item) {
-                echo "<option value={$item->id}>{$item->title}</option>";
-            } ?>
-        </select>
-    </div>
+    <?php
+    $model->type_id = $model->typeTags;
+    foreach ($types as $d)
+        $row_types[] = $d;
+    echo $form->field($model, 'type_id')->widget(Select2::classname(), [
+        'name' => 'type_id[]',
+        'data' => $types,
+        'options' => ['placeholder' => 'Типы'],
+        'pluginOptions' => [
+            //'tags' => $row_types,
+            'allowClear' => true,
+            'multiple' => true
+        ],
+    ]);
+    ?>
 
-    <div class="form-group field-libraries-tag_id has-success">
-        <label class="control-label" for="libraries-tag_id">Тэги</label>
-        <select class="js-example-basic-multiple form-control" id="libraries-tag_id" name="Libraries[tag_id][]" multiple="multiple">
-            <?php foreach ($tags as $item) {
-                echo "<option value={$item->id}>{$item->title}</option>";
-            } ?>
-        </select>
-    </div>
+    <?php
+    $model->tag_id = $model->dropTags;
+    foreach ($tags as $d)
+        $row_drop[] = $d;
+    echo $form->field($model, 'tag_id')->widget(Select2::classname(), [
+        'name' => 'type_id[]',
+        'data' => $tags,
+        'options' => ['placeholder' => 'Тэги'],
+        'pluginOptions' => [
+            //'tags' => $row_drop,
+            'allowClear' => true,
+            'multiple' => true
+        ],
+    ]);
+    ?>
 
     <div class="form-group">
         <span class="btn btn-kyrgyz btn-info">
