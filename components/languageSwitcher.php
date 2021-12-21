@@ -61,8 +61,6 @@ class languageSwitcher extends Widget
             array_push($items, $temp);
         }
 
-
-
         echo ButtonDropdown::widget([
             'label' => $current,
             'dropdown' => [

@@ -23,7 +23,7 @@ if (!Yii::$app->user->isGuest) {
                 <?php
                 $sliders = Slider::find()->all();
                 foreach ($sliders as $item) {
-                    echo Html::tag('div', Html::a(Html::img(Url::base()."/images/slider/{$item->photo_cropped}")), ['class' => 'slider-img-cover']);
+                    echo Html::tag('div', Html::a(Html::img(Url::base() . "/images/slider/{$item->photo_cropped}")), ['class' => 'slider-img-cover']);
                 }
                 ?>
             </div>
@@ -34,11 +34,11 @@ if (!Yii::$app->user->isGuest) {
             <div class="site-index-news">
                 <h1 class="main-heading"><?= Yii::t('app', 'News') ?></h1>
                 <div class="program-list row">
-
-
                     <?php
-                    $news = News::find()->orderBy(['id'=>SORT_DESC])->limit(3)->all();
-                    foreach ($news as $new) : ?>
+                    $news = News::find()->orderBy(['date' => SORT_DESC])->limit(3)->all();
+                    foreach ($news as $new) :
+                        $new->translate(Yii::$app->language);
+                    ?>
                         <div class="news-index-block justify-content-center align-items-center col-lg-4">
                             <div class="site-index-news-block">
                                 <?= Html::beginTag('a', ['href' => Url::to("/news/{$new->id}"), 'class' => '']); ?>
@@ -58,8 +58,8 @@ if (!Yii::$app->user->isGuest) {
                     ?>
                 </div>
                 <div class="news-btn-group">
-                    <?= Html::a(Yii::t('app','All News'), ['/news/index'], ['class' => 'news-btn news-more-btn']); ?>
-                    <?= Html::a(Yii::t('app','Subscribe'), '#', ['class' => 'news-btn news-subscribe-btn']); ?>
+                    <?= Html::a(Yii::t('app', 'All News'), ['/news/index'], ['class' => 'news-btn news-more-btn']); ?>
+                    <?= Html::a(Yii::t('app', 'Subscribe'), '#', ['class' => 'news-btn news-subscribe-btn']); ?>
                 </div>
             </div>
 
@@ -68,22 +68,22 @@ if (!Yii::$app->user->isGuest) {
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/american_u.png'), 'https://www.auca.kg/',['target'=>'_blank']); ?>
+                            <?= Html::a(Html::img(Url::base() . '/images/partners/american_u.png'), 'https://www.auca.kg/', ['target' => '_blank']); ?>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/unison_logo.png'), 'https://unisongroup.org/',['target'=>'_blank']); ?>
+                            <?= Html::a(Html::img(Url::base() . '/images/partners/unison_logo.png'), 'https://unisongroup.org/', ['target' => '_blank']); ?>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/technopolis.png'), 'https://www.technopolis-group.com/',['target'=>'_blank']); ?>
+                            <?= Html::a(Html::img(Url::base() . '/images/partners/technopolis.png'), 'https://www.technopolis-group.com/', ['target' => '_blank']); ?>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/cscp.png'), 'https://www.cscp.org/',['target'=>'_blank']); ?>
+                            <?= Html::a(Html::img(Url::base() . '/images/partners/cscp.png'), 'https://www.cscp.org/', ['target' => '_blank']); ?>
                         </div>
                     </div>
                 </div>

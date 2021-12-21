@@ -52,4 +52,31 @@ class Consumer extends \yii\db\ActiveRecord
             'text_en' => Yii::t('app', 'Text En'),
         ];
     }
+
+    function translate($language)
+    {
+        switch ($language) {
+            case "en":
+                if ($this->title_en != null) {
+                    $this->title = $this->{"title_en"};
+                    $this->text = $this->{"text_en"};
+                } else {
+                    $this->title = $this->{"title"};
+                    $this->text = $this->{"text"};
+                }
+                break;
+            case "ky":
+                if ($this->title_ky != null) {
+                    $this->title = $this->{"title_ky"};
+                    $this->text = $this->{"text_ky"};
+                } else {
+                    $this->title = $this->{"title"};
+                    $this->text = $this->{"text"};
+                }
+                break;
+            default:
+                $this->title = $this->{"title"};
+                $this->text = $this->{"text"};
+        }
+    }
 }

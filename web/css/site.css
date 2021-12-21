@@ -455,6 +455,10 @@ body {
     color: #000;
 }
 
+.social_share {
+    margin-top: 15px;
+}
+
 
 /* .footer-links {
     display: flex;

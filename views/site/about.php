@@ -5,11 +5,14 @@
 use app\models\Page;
 use yii\helpers\Html;
 
-$this->title = Yii::t('app','About project');
+$this->title = Yii::t('app', 'About project');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
-    <?php $item = Page::findOne(1)?>
+    <?php
+    $item = Page::findOne(1);
+    $item->translate(Yii::$app->language);
+    ?>
     <h1 class="main-heading"><?= Html::encode($item->title) ?></h1>
     <div class="row">
         <div class="col-lg-5">

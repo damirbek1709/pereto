@@ -7,9 +7,28 @@ use yii\bootstrap4\NavBar;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use app\models\Consumer;
+use app\models\App;
 ?>
 <header>
     <?php
+    $language_label = App::getLanguageLabel();
+    $language_arr = [
+        'en' => [
+            'label' => Yii::t('app', 'En'),
+            'url' => '?language=en',
+        ],
+        'ky' => [
+            'label' => Yii::t('app', 'Кыр'),
+            'url' => '?language=ky',
+        ],
+        'ru' => [
+            'label' => Yii::t('app', 'Рус'),
+            'url' => '?language=ru',
+        ],
+    ];
+
+    unset($language_arr[Yii::$app->language]);   
+
     $class_fixed = "fixed-top";
     if (!Yii::$app->user->isGuest) {
         echo $this->render('admin');
@@ -18,12 +37,14 @@ use app\models\Consumer;
     $consumers = Consumer::find()->all();
     $consumer_items = [];
     foreach ($consumers as $item) {
+        $item->translate(Yii::$app->language);
         $consumer_items[] = ['label' => $item['title'], 'url' => ["/consumers-information?type=$item->id"]];
     }
 
     $business = Business::find()->all();
     $business_items = [];
     foreach ($business as $item) {
+        $item->translate(Yii::$app->language);
         $business_items[] = ['label' => $item['title'], 'url' => ["/businesses-information?type=$item->id"]];
     }
 
@@ -39,7 +60,7 @@ use app\models\Consumer;
         'options' => ['class' => 'navbar-nav navbar-light'],
         'items' => [
             [
-                'label' => 'Главная',
+                'label' => Yii::t('app', 'Главная'),
                 'items' => [
                     [
                         'label' => Yii::t('app', 'Описание проекта'),
@@ -52,7 +73,7 @@ use app\models\Consumer;
                 ],
             ],
             [
-                'label' => 'Потребителям',
+                'label' => Yii::t('app', 'Потребителям'),
                 'items' => $consumer_items
             ],
             [
@@ -79,19 +100,11 @@ use app\models\Consumer;
             ],
             ['label' => Yii::t('app', 'Новости'), 'url' => ['/news']],
             [
-                'label' => $language, 'url' => ['/site/contact'],
-                'items' => [
-                    [
-                        'label' => Yii::t('app', 'En'),
-                        'url' => '#',
-                    ],
-                    [
-                        'label' =>  Yii::t('app', 'Кыр'),
-                        'url' => '#',
-                    ],
-                ],
+                'label' => $language_label, 
+                'url' => '#',
+                'items' => $language_arr
             ],
-            ['label' => 'Войти', 'url' => ['/site/login']],
+            ['label' => Yii::t('app', 'Войти'), 'url' => ['/site/login']],
         ],
     ]);
     NavBar::end();

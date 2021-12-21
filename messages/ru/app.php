@@ -45,4 +45,5 @@ return [
     'Pereto project'=>'Проект ПЭРЭТО',
     'Galleries'=>'Фото',
     'Create Gallery'=>'Добавить галерею',
+    'Contacts'=>'Контакты',
 ];

@@ -8,7 +8,7 @@ use yii\helpers\Url;
         <div class="row">
             <div class="col-lg-5">
                 <div class="footer-heading">
-                    <?= Yii::t('app', 'Contact') ?>
+                    <?= Yii::t('app', 'Contacts') ?>
                 </div>
                 <div class="footer-list">
                     <p><?= Yii::t('app', 'Pereto project') ?></p>

@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\News */
+/* @var $model app\models\Video */
 
-$this->title = Yii::t('app', 'Добавить новость');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'News'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Create Video');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Videos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="news-create">
+<div class="video-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

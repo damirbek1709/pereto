@@ -63,6 +63,38 @@ class Page extends \yii\db\ActiveRecord
         ];
     }
 
+    function translate($language)
+    {
+        switch ($language) {
+            case "en":
+                if ($this->title_en != null) {
+                    $this->title = $this->{"title_en"};
+                    $this->text = $this->{"text_en"};
+                    $this->description = $this->{"description_en"};
+                } else {
+                    $this->title = $this->{"title"};
+                    $this->text = $this->{"text"};
+                    $this->description = $this->{"description"};
+                }
+                break;
+            case "ky":
+                if ($this->title_ky != null) {
+                    $this->title = $this->{"title_ky"};
+                    $this->text = $this->{"text_ky"};
+                    $this->description = $this->{"description_ky"};
+                } else {
+                    $this->title = $this->{"title"};
+                    $this->text = $this->{"text"};
+                    $this->description = $this->{"description"};
+                }
+                break;
+            default:
+                $this->title = $this->{"title"};
+                $this->text = $this->{"text"};
+                $this->description = $this->{"description"};
+        }
+    }
+
     public function getWallpaper()
     {
         $filename = Yii::getAlias("@webroot/images/page/").$this->photo;

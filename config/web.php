@@ -5,14 +5,20 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'language'=>'ru',
+    'language' => 'ru',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        'languageSwitcher',
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'languageSwitcher' => [
+            'class' => 'app\components\languageSwitcher',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'PE6-J15TfmM--4Bh-QVBxrdDLa2sNVKh',
@@ -52,8 +58,8 @@ $config = [
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                'about'=>'site/about',
-                'partners'=>'partner/index',
+                'about' => 'site/about',
+                'partners' => 'partner/index',
 
                 // '<alias:consumers-information><consumers-information:\w+>/<action:\w+>/<type:\d+>' => '<controller>/<action>',
                 // '<consumers-information:\w+>/<action:\w+>' => '<controller>/<action>',

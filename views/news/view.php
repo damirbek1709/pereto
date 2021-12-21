@@ -1,3 +1,4 @@
+<script src="https://yastatic.net/share2/share.js"></script>
 <?php
 
 use yii\helpers\Html;
@@ -22,6 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="news-view-text">
                 <?= $model->text; ?>
+            </div>
+            <div class="social_share">
+                <div class="ya-share2" data-title="<?=$model->title;?>" data-curtain data-services="vkontakte,facebook,odnoklassniki,telegram,twitter,whatsapp"></div>
             </div>
         </div>
 

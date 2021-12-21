@@ -2,18 +2,16 @@
 
 namespace app\controllers;
 
-use Yii;
-use app\models\News;
-use app\models\NewsSearch;
+use app\models\Video;
+use app\models\VideoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\helpers\BaseStringHelper;
 
 /**
- * NewsController implements the CRUD actions for News model.
+ * VideoController implements the CRUD actions for Video model.
  */
-class NewsController extends Controller
+class VideoController extends Controller
 {
     /**
      * @inheritDoc
@@ -34,55 +32,56 @@ class NewsController extends Controller
     }
 
     /**
-     * Lists all News models.
+     * Lists all Video models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new NewsSearch();
+        $searchModel = new VideoSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-        $dataProvider->pagination->pageSize=10;
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
+    public function actionAdmin()
+    {
+        $searchModel = new VideoSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('admin', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
-     * Displays a single News model.
+     * Displays a single Video model.
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
-        $model->translate(Yii::$app->language);
-        \Yii::$app->view->registerMetaTag([
-            'property' => 'og:url',
-            'content' => "https://pereto.kg/news/{$model->id}"
-        ]);
-        \Yii::$app->view->registerMetaTag(['property' => 'og:type', 'content' => "website"]);
-        \Yii::$app->view->registerMetaTag(['property' => 'og:title', 'content' => $model->title]);
-        \Yii::$app->view->registerMetaTag(['property' => 'og:description', 'content' => BaseStringHelper::truncateWords(strip_tags($model->description), 15)]);
-        \Yii::$app->view->registerMetaTag(['property' => 'og:image', 'content' => $model->getWallpaper()]);
         return $this->render('view', [
-            'model' => $model,
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new News model.
+     * Creates a new Video model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
-    {        
-        $model = new News();
-        $model->scenario = 'insert';
+    {
+        $model = new Video();
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['admin', 'id' => $model->id]);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -94,7 +93,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Updates an existing News model.
+     * Updates an existing Video model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return mixed
@@ -103,9 +102,9 @@ class NewsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->scenario = 'update';
+
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['admin', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -113,24 +112,8 @@ class NewsController extends Controller
         ]);
     }
 
-
     /**
-     * Lists all News models.
-     * @return mixed
-     */
-    public function actionAdmin()
-    {
-        $searchModel = new NewsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('admin', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * Deletes an existing News model.
+     * Deletes an existing Video model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return mixed
@@ -139,19 +122,20 @@ class NewsController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        return $this->redirect(['admin']);
+
+        return $this->redirect(['index']);
     }
 
     /**
-     * Finds the News model based on its primary key value.
+     * Finds the Video model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return News the loaded model
+     * @return Video the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = News::findOne($id)) !== null) {
+        if (($model = Video::findOne($id)) !== null) {
             return $model;
         }
 
