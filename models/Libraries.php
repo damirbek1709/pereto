@@ -29,12 +29,31 @@ class Libraries extends \yii\db\ActiveRecord
     public $category_id;
     public $tag_id;
     public $type_id;
+
+    const SEARCH_TYPE_HOTEL = 1;
+    const SEARCH_TYPE_RESTARAUNT = 2;
+    const SEARCH_TYPE_COMBINED = 3;
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return 'library';
+    }
+
+    public static function getTypeParamList()
+    {
+        return ArrayHelper::map(LibraryType::find()->all(),'id','title');
+    }
+
+    public static function getCategoryParamList()
+    {
+        return ArrayHelper::map(LibraryCategory::find()->all(),'id','title');
+    }
+
+    public static function getTagParamList()
+    {
+        return ArrayHelper::map(LibraryTag::find()->all(),'id','title');
     }
 
     /**
@@ -48,7 +67,7 @@ class Libraries extends \yii\db\ActiveRecord
             [['title', 'title_ky', 'title_en'], 'string', 'max' => 255],
             [['description', 'description_ky', 'description_en'], 'string', 'max' => 500],
             ['photo', 'file', 'extensions' => 'png, jpeg, jpg, gif', 'on' => ['insert', 'update']],
-			[['photo_crop', 'photo_cropped'], 'string', 'max' => 100]
+            [['photo_crop', 'photo_cropped'], 'string', 'max' => 100]
             //[['category_id', 'tag_id', 'type_id'], 'string', 'max' => 100],
         ];
     }
@@ -87,16 +106,16 @@ class Libraries extends \yii\db\ActiveRecord
                 'scenarios' => ['insert', 'update'],
                 'path' => '@webroot/images/library',
                 'url' => '@web/images/library',
-				'ratio' => 3/2,
-				'crop_field' => 'photo_crop',
-				'cropped_field' => 'photo_cropped',
+                'ratio' => 3 / 2,
+                'crop_field' => 'photo_crop',
+                'cropped_field' => 'photo_cropped',
             ],
         ];
     }
 
     public function getWallpaper()
     {
-        $filename = Yii::getAlias("@webroot/images/library/").$this->photo;
+        $filename = Yii::getAlias("@webroot/images/library/") . $this->photo;
         if (file_exists($filename)) {
             return Url::base() . "/images/library/{$this->photo_cropped}";
         } else {
@@ -104,15 +123,90 @@ class Libraries extends \yii\db\ActiveRecord
         }
     }
 
-    public function getCategoryTags(){
-        return ArrayHelper::map(Bridge::find()->where(['post_id'=>$this->id])->andWhere(['not', ['category_id' => null]])->all(),'category_id','category_id');        
+    public function getTagList()
+    {
+        $rows = (new \yii\db\Query())
+            ->select(['id', 'title'])
+            ->from('bridge')
+            ->where(['post_id' => $this->id])
+            ->andWhere(['not', ['tag_id' => null]])
+            ->leftJoin('library_tag', 'library_tag.id = bridge.tag_id')
+            ->all();
+        return $rows;
     }
 
-    public function getTypeTags(){
-        return ArrayHelper::map(Bridge::find()->where(['post_id'=>$this->id])->andWhere(['not', ['type_id' => null]])->all(),'type_id','type_id');        
+    public function getCatList()
+    {
+        $rows = (new \yii\db\Query())
+            ->select(['id', 'title'])
+            ->from('bridge')
+            ->where(['post_id' => $this->id])
+            ->andWhere(['not', ['category_id' => null]])
+            ->leftJoin('library_category', 'library_category.id = bridge.category_id')
+            ->all();
+        return $rows;
     }
 
-    public function getDropTags(){
-        return ArrayHelper::map(Bridge::find()->where(['post_id'=>$this->id])->andWhere(['not', ['tag_id' => null]])->all(),'tag_id','tag_id');        
+    public function getTypeList()
+    {
+        $rows = (new \yii\db\Query())
+            ->select(['id', 'title'])
+            ->from('bridge')
+            ->where(['post_id' => $this->id])
+            ->andWhere(['not', ['type_id' => null]])
+            ->leftJoin('library_type', 'library_type.id = bridge.type_id')
+            ->all();
+        return $rows;
+    }    
+
+    public function getBridge(){
+        return $this->hasMany(Bridge::className(),['post_id'=>'id']);
+    }
+
+    public function getCategoryTags()
+    {
+        return ArrayHelper::map(Bridge::find()->where(['post_id' => $this->id])->andWhere(['not', ['category_id' => null]])->all(), 'category_id', 'category_id');
+    }
+
+    public function getTypeTags()
+    {
+        return ArrayHelper::map(Bridge::find()->where(['post_id' => $this->id])->andWhere(['not', ['type_id' => null]])->all(), 'type_id', 'type_id');
+    }
+
+    public function getDropTags()
+    {
+        return ArrayHelper::map(Bridge::find()->where(['post_id' => $this->id])->andWhere(['not', ['tag_id' => null]])->all(), 'tag_id', 'tag_id');
+    }
+
+    function translate($language)
+    {
+        switch ($language) {
+            case "en":
+                if ($this->title_en != null) {
+                    $this->title = $this->{"title_en"};
+                    $this->text = $this->{"text_en"};
+                    $this->description = $this->{"description_en"};
+                } else {
+                    $this->title = $this->{"title"};
+                    $this->text = $this->{"text"};
+                    $this->description = $this->{"description"};
+                }
+                break;
+            case "ky":
+                if ($this->title_ky != null) {
+                    $this->title = $this->{"title_ky"};
+                    $this->text = $this->{"text_ky"};
+                    $this->description = $this->{"description_ky"};
+                } else {
+                    $this->title = $this->{"title"};
+                    $this->text = $this->{"text"};
+                    $this->description = $this->{"description"};
+                }
+                break;
+            default:
+                $this->title = $this->{"title"};
+                $this->text = $this->{"text"};
+                $this->description = $this->{"description"};
+        }
     }
 }

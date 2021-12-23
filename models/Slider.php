@@ -30,6 +30,7 @@ class Slider extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['photo'], 'required'],
             [['photo', 'photo_crop', 'link'], 'safe'],
             [['link'], 'string', 'max' => 200],            
             ['photo', 'file', 'extensions' => 'png, jpeg, jpg, gif', 'on' => ['insert', 'update']],

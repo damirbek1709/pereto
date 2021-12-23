@@ -29,7 +29,7 @@ $types = ArrayHelper::map(LibraryType::find()->all(), 'id', 'title');
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textArea([]) ?>
     <?=
     $form->field($model, 'text')->widget(Widget::className(), [
         'settings' => [
@@ -100,6 +100,8 @@ $types = ArrayHelper::map(LibraryType::find()->all(), 'id', 'title');
     ]);
     ?>
 
+    <?= $form->field($model, 'photo')->widget(CropImageUpload::className()) ?>
+
     <div class="form-group">
         <span class="btn btn-kyrgyz btn-info">
             Кыргызский контент <span class="fas fa-plus"></span>
@@ -163,8 +165,6 @@ $types = ArrayHelper::map(LibraryType::find()->all(), 'id', 'title');
             ],
         ]); ?>
     </div>
-
-    <?= $form->field($model, 'photo')->widget(CropImageUpload::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

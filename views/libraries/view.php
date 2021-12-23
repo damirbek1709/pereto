@@ -1,7 +1,7 @@
 <?php
 
+use app\models\Bridge;
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Libraries */
@@ -11,38 +11,54 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Libraries'), 'url' =
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
+
 <div class="libraries-view">
+    <div class="row">
+        <div class="col-lg-12">
+            <?= Html::img($model->getWallpaper(), ['class' => 'news-view-img']); ?>
+            <div class="news-view-title">
+                <?= $model->title; ?>
+            </div>
+            <div class="news-view-text">
+                <?= $model->text; ?>
+            </div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+            <div class="tags-cover">
+                <div class="tags-block">
+                    <?= Html::tag('span', Yii::t('app', 'Тэг') . ': ', ['class' => 'tag-heading']); ?>
+                    <span class="tag-list">
+                        <?php
+                        $tags = $model->tagList;
+                        foreach ($tags as $key => $val) {
+                            echo " / " . Html::a($val['title'], ['/libraries/index', 'tag' => $val['id']]) . "  ";
+                        }
+                        ?>
+                </div>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+                <div class="tags-block">
+                    <?= Html::tag('span', Yii::t('app', 'Категория') . ': ', ['class' => 'tag-heading']); ?>
+                    <span class="tag-list">
+                        <?php
+                        $cats = $model->catList;
+                        foreach ($cats as $key => $val) {
+                            echo " / " . Html::a($val['title'], ['/libraries/index', 'category' => $val['id']]) . "  ";
+                        }
+                        ?>
+                    </span>
+                </div>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'title',
-            'description',
-            'text:ntext',
-            'title_ky',
-            'description_ky',
-            'text_ky:ntext',
-            'title_en',
-            'text_en:ntext',
-            'description_en',
-            'photo',
-            'photo_crop',
-            'photo_cropped',
-        ],
-    ]) ?>
-
+                <div class="tags-block">
+                    <?= Html::tag('span', Yii::t('app', 'Тип') . ': ', ['class' => 'tag-heading']); ?>
+                    <span class="tag-list">
+                        <?php
+                        $types = $model->typeList;
+                        foreach ($types as $key => $val) {
+                            echo " / " . Html::a($val['title'], ['/libraries/index', 'type' => $val['id']]) . "  ";
+                        }
+                        ?>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -41,6 +41,7 @@ class LibrariesSearch extends Libraries
     public function search($params)
     {
         $query = Libraries::find();
+        //$query->joinWith('bridge');
 
         // add conditions that should always apply here
 
@@ -59,6 +60,7 @@ class LibrariesSearch extends Libraries
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            //'tag.id'=>$this->tag->id
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

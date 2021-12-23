@@ -56,4 +56,10 @@ return [
     'Title En'=>'Title in english',
     'Text Ky'=>'Text in kyrgyz',
     'Text En'=>'Text in english',
+    'Libraries'=>'Library',
+    'Create Libraries'=>'Create Library',
+    'Тэг'=>'Tag',
+    'Тип'=>'Type',
+    'Description En'=>'Description in English',
+    'Description Ky'=>'Description in Kyrgyz',
 ];

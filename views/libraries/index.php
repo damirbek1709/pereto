@@ -1,7 +1,8 @@
 <?php
 
+use app\models\App;
 use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\LibrariesSearch */
@@ -11,38 +12,54 @@ $this->title = Yii::t('app', 'Libraries');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="libraries-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Libraries'), ['create'], ['class' => 'btn btn-success']) ?>
+    <h1 class="main-heading"><?= Html::encode($this->title) ?></h1>
+    <p class="library-desc">
+        <?php echo App::getLibraryString(); ?>
     </p>
+    <?= Html::beginForm(['libraries/index'], 'get') ?>
+    <div class="search-block">
+        <div class="form-group rel">
+            <div class="input-group mb-3">
+                <?= Html::input('text', "", '', [
+                    'class' => 'form-control search_input',
+                    'minlength' => 3,
+                    'placeholder' => Yii::t('app', 'Поиск'),
+                    'aria-label' => '',
+                    'aria-describedby' => 'search-addon',
+                ]);
+                ?>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                <div class="input-group-append">
+                    <span class="input-group-text" id="search-addon">
+                        <?= Html::button("<i class='fas fa-search'></i>", ['class' => 'search-btn', 'type' => 'submit']) ?>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'title',
-            'description',
-            'text:ntext',
-            'title_ky',
-            //'description_ky',
-            //'text_ky:ntext',
-            //'title_en',
-            //'text_en:ntext',
-            //'description_en',
-            //'photo',
-            //'photo_crop',
-            //'photo_cropped',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
+    <div class="row">
+        <div class="col-lg-3">
+            <?= $this->render('filter-collapse', [
+                'type' => $type,
+                'tag' => $tag,
+                'category' => $category
+            ]); ?>
+        </div>
+        <div class="col-lg-9">
+            <?php echo ListView::widget([
+                'options' => [
+                    'class' => 'program-list row',
+                ],
+                'dataProvider' => $dataProvider,
+                'itemView' => '_item',
+                'summary' => false,
+                'itemOptions' => [
+                    'class' => 'news-index-block',
+                ],
+            ]); ?>
+        </div>
+    </div>
+    <?= Html::endForm() ?>
 
 </div>

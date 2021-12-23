@@ -33,6 +33,21 @@ class Bridge extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getType()
+    {
+        return $this->hasOne(LibraryType::className(), ['id' => 'type_id']);
+    }
+
+    public function getTag()
+    {
+        return $this->hasOne(LibraryTag::className(), ['id' => 'tag_id']);
+    }
+
+    public function getCategory()
+    {
+        return $this->hasOne(LibraryCategory::className(), ['id' => 'category_id']);
+    }
+
     /**
      * {@inheritdoc}
      */

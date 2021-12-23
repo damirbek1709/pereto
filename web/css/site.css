@@ -505,6 +505,42 @@ body {
     min-height: 315px;
 }
 
+.tags-cover {
+    font-size: 15px;
+    display: inline-block;
+}
+
+.library-desc {
+    line-height: 30px;
+}
+
+.search-btn {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    width: 100%;
+}
+
+.lib-ch-label {
+    margin-left: 10px;
+}
+
+.lib-ch-label {
+    display: inline-block;
+    width: 100%;
+}
+
+.clear {
+    clear: both;
+    display: block;
+}
+
+.library-index-desc {
+    clear: both;
+    display: block;
+    margin-bottom: 15px;
+}
+
 
 /* .footer-links {
     display: flex;

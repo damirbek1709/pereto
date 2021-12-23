@@ -49,4 +49,10 @@ return [
     'Create Video'=>'Добавить видео',
     'Videos'=>'Видео',
     'Embed code'=>'Код вставки',
+    'Libraries'=>'Библиотека',
+    'Create Libraries'=>'Добавить библиотеку',
+    'Description Ky'=>'Описание на кыргызском',
+    'Description En'=>'Описание на английском',
+    'Text'=>'Текст',
+    'Update Libraries'=>'Редактировать статью',
 ];

@@ -27,7 +27,7 @@ use app\models\App;
         ],
     ];
 
-    unset($language_arr[Yii::$app->language]);   
+    unset($language_arr[Yii::$app->language]);
 
     $class_fixed = "fixed-top";
     if (!Yii::$app->user->isGuest) {
@@ -42,7 +42,9 @@ use app\models\App;
     }
 
     $business = Business::find()->all();
-    $business_items = [];
+    $business_items = [
+        ['label' => Yii::t('app', 'Библиотека'), 'url' => ["/libraries"]]
+    ];
     foreach ($business as $item) {
         $item->translate(Yii::$app->language);
         $business_items[] = ['label' => $item['title'], 'url' => ["/businesses-information?type=$item->id"]];
@@ -100,7 +102,7 @@ use app\models\App;
             ],
             ['label' => Yii::t('app', 'Новости'), 'url' => ['/news']],
             [
-                'label' => $language_label, 
+                'label' => $language_label,
                 'url' => '#',
                 'items' => $language_arr
             ],
