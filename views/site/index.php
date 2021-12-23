@@ -26,7 +26,7 @@ if (!Yii::$app->user->isGuest) {
                     if ($item->embed) {
                         echo Html::tag('div', $item->embed, ['class' => 'slider-img-cover slider-video']);
                     } else {
-                        echo Html::a(Html::tag('div', Html::a(Html::img(Url::base() . "/images/slider/{$item->photo_cropped}")), ['class' => 'slider-img-cover']), $item->link);
+                        echo Html::tag('div', Html::a(Html::img(Url::base() . "/images/slider/{$item->photo_cropped}"),$item->link), ['class' => 'slider-img-cover']);
                     }
                 }
                 ?>
