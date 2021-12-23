@@ -42,6 +42,7 @@ class Slider extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['link'], 'url'],
             [['link'], 'string', 'max' => 200],
             [['embed'], 'string', 'max' => 255],
             [['priority'], 'integer', 'max' => 99],

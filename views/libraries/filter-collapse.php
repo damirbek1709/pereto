@@ -11,7 +11,7 @@ $tag_list = Libraries::getTagParamList();
     <div class="card">
         <div class="card-header" id="headingOne">
             <h5 class="mb-0">
-                <span class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <span class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     <?= Yii::t('app', 'Тип'); ?>
                 </span>
             </h5>

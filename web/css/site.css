@@ -556,6 +556,39 @@ body {
     background-color: #f6f6f6;
 }
 
+.libraries-index .card-header {
+    background-color: #fff;
+    padding: 0px;
+}
+
+.libraries-index .card-body {
+    padding: 10px 5px;
+}
+
+.libraries-index #accordion {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.libraries-index .card {
+    border: none;
+}
+
+.libraries-index .btn-link {
+    width: 100%;
+    text-align: left;
+}
+
+.libraries-index span[aria-expanded="true"]:after {
+    content: ' \276F';
+    float: right;
+    transform: rotate(90deg);
+}
+
+.libraries-index span[aria-expanded="false"]:after {
+    content: ' \276F';
+    float: right;
+}
+
 
 /* .footer-links {
     display: flex;
