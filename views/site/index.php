@@ -22,11 +22,13 @@ if (!Yii::$app->user->isGuest) {
             <div class="slick-carousel">
                 <?php
                 $sliders = Slider::find()->orderBy(['priority' => SORT_ASC])->all();
+                $link = '#';
                 foreach ($sliders as $item) {
+                    $link = $item->link ? $item->link : '#';
                     if ($item->embed) {
                         echo Html::tag('div', $item->embed, ['class' => 'slider-img-cover slider-video']);
                     } else {
-                        echo Html::tag('div', Html::a(Html::img(Url::base() . "/images/slider/{$item->photo_cropped}"),$item->link), ['class' => 'slider-img-cover']);
+                        echo Html::tag('div', Html::a(Html::img(Url::base() . "/images/slider/{$item->photo_cropped}"),$link), ['class' => 'slider-img-cover']);
                     }
                 }
                 ?>
