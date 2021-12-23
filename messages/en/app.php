@@ -6,7 +6,6 @@
  * Time: 12:34
  */
 return [
-    ''=>'News',
     'Одежда'=>'Clothes',
     'Products'=>'Одежда',
     'Расследования'=>'Investigation',
@@ -36,7 +35,6 @@ return [
     'Инструмент самооценки'=>'Self-assessment-tools',
     'Библиотека'=>'Libarary',
     'Публикации'=>'Publications',
-    'News'=>'Новости',
     'Описание проекта'=>'Project Description',
     'Партнеры проекта'=>'Partners',
     'Производство'=>'Production',
@@ -45,7 +43,7 @@ return [
     'Фотографии'=>'Photos',
     'Новости'=>'News',
     'Слайдер'=>'Slider',
-    'О проекте'=>'About description',
+    'О проекте'=>'Project description',
     'Фото'=>'Photo',
     'Видео'=>'Video',
     'Название на кыргызском'=>'Title in kyrgyz',
@@ -62,4 +60,7 @@ return [
     'Тип'=>'Type',
     'Description En'=>'Description in English',
     'Description Ky'=>'Description in Kyrgyz',
+    'Партнеры'=>'Partners',
+    'Новости'=>'News',
+    'Добавить новость'=>'Create news',
 ];

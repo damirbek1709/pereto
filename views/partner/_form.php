@@ -52,12 +52,53 @@ use karpoff\icrop\CropImageUpload;
 
     <div class="kyrgyz-block">
         <?= $form->field($model, 'title_ky')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'text_ky')->textarea(['rows' => 6]) ?>
+        <?=
+        $form->field($model, 'text_ky')->widget(Widget::className(), [
+            'settings' => [
+                'lang' => 'ru',
+                'minHeight' => 200,
+                'formatting' => ['p', 'blockquote', 'h2'],
+                'imageCaption' => true,
+                'imageUpload' => Url::to(['site/image-upload']),
+                'fileUpload' => Url::to(['site/file-upload']),
+                'plugins' => [
+                    'imagemanager',
+                    'filemanager',
+                    'clips',
+                    'fullscreen',
+                    'table',
+                    'fontsize',
+                    'fontcolor',
+                    'video',
+                ]
+            ],
+        ]); ?>
     </div>
 
     <div class="english-block">
         <?= $form->field($model, 'title_en')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'text_en')->textarea(['rows' => 6]) ?>
+        <?=
+        $form->field($model, 'text_en')->widget(Widget::className(), [
+            'settings' => [
+                'lang' => 'ru',
+                'minHeight' => 200,
+                'formatting' => ['p', 'blockquote', 'h2'],
+                'imageCaption' => true,
+                'imageUpload' => Url::to(['site/image-upload']),
+                'fileUpload' => Url::to(['site/file-upload']),
+
+                'plugins' => [
+                    'imagemanager',
+                    'filemanager',
+                    'clips',
+                    'fullscreen',
+                    'table',
+                    'fontsize',
+                    'fontcolor',
+                    'video',
+                ]
+            ],
+        ]); ?>
     </div>
 
     <div class="form-group">

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+$model->translate(Yii::$app->language);
 ?>
 <div class="row">
     <div class="col-lg-9">
