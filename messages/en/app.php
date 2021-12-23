@@ -33,7 +33,7 @@ return [
     'Войти'=>'Sign in',
     'Адрес: Кыргызская Республика, Бишкек, ул. Аалы Токомбаева 7/6'=>'Address: 7/6 Aaly Tokombaev Street, Bishkek, Kyrgyz Republic',
     'Инструмент самооценки'=>'Self-assessment-tools',
-    'Библиотека'=>'Libarary',
+    'Библиотека'=>'Library',
     'Публикации'=>'Publications',
     'Описание проекта'=>'Project Description',
     'Партнеры проекта'=>'Partners',
@@ -63,4 +63,6 @@ return [
     'Партнеры'=>'Partners',
     'Новости'=>'News',
     'Добавить новость'=>'Create news',
+    'Показать все'=>'Show all',
+    'Скрыть'=>'Hide',
 ];
