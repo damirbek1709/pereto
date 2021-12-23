@@ -46,6 +46,7 @@ class SliderSearch extends Slider
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> ['defaultOrder' => ['priority' => SORT_ASC]],
         ]);
 
         $this->load($params);

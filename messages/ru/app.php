@@ -56,4 +56,6 @@ return [
     'Text'=>'Текст',
     'Update Libraries'=>'Редактировать статью',
     'Home'=>'Главная',
+    'Priority'=>'Приоритет',
+    'Video code'=>'Код видео',
 ];

@@ -19,9 +19,21 @@ class Slider extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+    const SLIDER_TYPE_PHOTO = 0;
+    const SLIDER_TYPE_VIDEO = 1;
+
     public static function tableName()
     {
         return 'slider';
+    }
+
+    public function getTypeList()
+    {
+        return [
+            self::SLIDER_TYPE_PHOTO => 'Фото',
+            self::SLIDER_TYPE_VIDEO => 'Видео',
+        ];
     }
 
     /**
@@ -30,17 +42,18 @@ class Slider extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['photo'], 'required'],
-            [['photo', 'photo_crop', 'link'], 'safe'],
-            [['link'], 'string', 'max' => 200],            
+            [['link'], 'string', 'max' => 200],
+            [['embed'], 'string', 'max' => 255],
+            [['priority'], 'integer', 'max' => 99],
+            [['type'], 'integer', 'max' => 1],
             ['photo', 'file', 'extensions' => 'png, jpeg, jpg, gif', 'on' => ['insert', 'update']],
-			[['photo_crop', 'photo_cropped'], 'string', 'max' => 100]
+            [['photo_crop', 'photo_cropped'], 'string', 'max' => 100]
         ];
     }
 
     public function getWallpaper()
     {
-        $filename = Yii::getAlias("@webroot/images/slider/").$this->photo;
+        $filename = Yii::getAlias("@webroot/images/slider/") . $this->photo;
         if (file_exists($filename)) {
             return Url::base() . "/images/slider/{$this->photo_cropped}";
         } else {
@@ -57,9 +70,9 @@ class Slider extends \yii\db\ActiveRecord
                 'scenarios' => ['insert', 'update'],
                 'path' => '@webroot/images/slider',
                 'url' => '@web/images/slider',
-				'ratio' => 224/77,
-				'crop_field' => 'photo_crop',
-				'cropped_field' => 'photo_cropped',
+                'ratio' => 224 / 77,
+                'crop_field' => 'photo_crop',
+                'cropped_field' => 'photo_cropped',
             ],
         ];
     }
@@ -74,6 +87,9 @@ class Slider extends \yii\db\ActiveRecord
             'photo' => Yii::t('app', 'Photo'),
             'photo_crop' => Yii::t('app', 'Photo Crop'),
             'link' => Yii::t('app', 'Link'),
+            'priority' => Yii::t('app', 'Priority'),
+            'embed' => Yii::t('app', 'Video code'),
+            'type' => Yii::t('app', 'Тип'),
         ];
     }
 }

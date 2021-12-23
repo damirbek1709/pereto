@@ -541,6 +541,21 @@ body {
     margin-bottom: 15px;
 }
 
+.field-slider-photo,
+.field-slider-embed {
+    display: none;
+}
+
+.slider-video iframe {
+    height: 465px;
+    width: 738px;
+}
+
+.slider-video {
+    text-align: center;
+    background-color: #f6f6f6;
+}
+
 
 /* .footer-links {
     display: flex;
