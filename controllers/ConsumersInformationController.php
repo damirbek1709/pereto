@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Consumer;
 use app\models\ConsumerSearch;
 use yii\web\Controller;
@@ -37,8 +38,10 @@ class ConsumersInformationController extends Controller
      */
     public function actionIndex($type)
     {
+        $model = $this->findModel($type);
+        $model->translate(Yii::$app->language);
         return $this->render('view', [
-            'model' => $this->findModel($type),
+            'model' => $model,
         ]);
     }
 

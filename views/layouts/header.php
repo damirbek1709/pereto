@@ -11,19 +11,23 @@ use app\models\App;
 ?>
 <header>
     <?php
+    $amp = '?';
+    if ($_GET['type']) {
+        $amp = '&';
+    }
     $language_label = App::getLanguageLabel();
     $language_arr = [
         'en' => [
             'label' => Yii::t('app', 'En'),
-            'url' => '?language=en',
+            'url' => "/". $amp . "language=en",
         ],
         'ky' => [
             'label' => Yii::t('app', 'Кыр'),
-            'url' => '?language=ky',
+            'url' => "/".$amp . "language=ky",
         ],
         'ru' => [
             'label' => Yii::t('app', 'Рус'),
-            'url' => '?language=ru',
+            'url' => "/". $amp . "language=ru",
         ],
     ];
 
