@@ -1,7 +1,7 @@
 <?php
 
 namespace app\controllers;
-
+use Yii;
 use app\models\Business;
 use app\models\BusinessSearch;
 use yii\web\Controller;
@@ -37,8 +37,10 @@ class BusinessesInformationController extends Controller
      */
     public function actionIndex($type)
     {
+        $model = $this->findModel($type);
+        $model->translate(Yii::$app->language);
         return $this->render('view', [
-            'model' => $this->findModel($type),
+            'model' => $model,
         ]);
     }
 
