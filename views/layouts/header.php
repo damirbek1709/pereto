@@ -12,7 +12,7 @@ use app\models\App;
 <header>
     <?php
     $amp = '?';
-    if ($_GET['type']) {
+    if (isset($_GET['type'])) {
         $amp = '&';
     }
     $language_label = App::getLanguageLabel();
