@@ -110,37 +110,32 @@ class LibrariesController extends Controller
                 $category_arr = $this->request->post()['Libraries']['category_id'];
                 $type_arr = $this->request->post()['Libraries']['type_id'];
                 $tag_arr = $this->request->post()['Libraries']['tag_id'];
-                $general_arr = [];
 
                 Bridge::deleteAll(['post_id' => $model->id]);
                 if (!empty($category_arr)) {
-                    $general_arr['category'] = $category_arr;
-
-                    // foreach ($category_arr as $key => $val) {
-                    //     $bridge = new Bridge();
-                    //     $bridge->post_id = $model->id;
-                    //     $bridge->category_id = $val;
-                    //     $bridge->save(false);
-                    // }
+                    foreach ($category_arr as $key => $val) {
+                        $bridge = new Bridge();
+                        $bridge->post_id = $model->id;
+                        $bridge->category_id = $val;
+                        $bridge->save(false);
+                    }
                 }
                 if (!empty($type_arr)) {
-                    $general_arr['type'] = $type_arr;
-                    // foreach ($type_arr as $key => $val) {
-                    //     $bridge = new Bridge();
-                    //     $bridge->post_id = $model->id;
-                    //     $bridge->type_id = $val;
-                    //     $bridge->save(false);
-                    // }
+                    foreach ($type_arr as $key => $val) {
+                        $bridge = new Bridge();
+                        $bridge->post_id = $model->id;
+                        $bridge->type_id = $val;
+                        $bridge->save(false);
+                    }
                 }
 
                 if (!empty($tag_arr)) {
-                    $general_arr['tag'] = $tag_arr;
-                    // foreach ($tag_arr as $key => $val) {
-                    //     $bridge = new Bridge();
-                    //     $bridge->post_id = $model->id;
-                    //     $bridge->tag_id = $val;
-                    //     $bridge->save(false);
-                    // }
+                    foreach ($tag_arr as $key => $val) {
+                        $bridge = new Bridge();
+                        $bridge->post_id = $model->id;
+                        $bridge->tag_id = $val;
+                        $bridge->save(false);
+                    }
                 }
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -165,30 +160,36 @@ class LibrariesController extends Controller
         $model = $this->findModel($id);
         $model->scenario = 'update';
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            $max = 0;
-
             $category_arr = $this->request->post()['Libraries']['category_id'];
             $type_arr = $this->request->post()['Libraries']['type_id'];
             $tag_arr = $this->request->post()['Libraries']['tag_id'];
 
             Bridge::deleteAll(['post_id' => $model->id]);
             if (!empty($category_arr)) {
-                $max = count($category_arr);
-                $general_arr['category'] = $category_arr;
-            }
-            if (!empty($type_arr)) {                                
-                if(count($type_arr) >= $max){
-                    $general_arr = [];
-                    $general_arr['type'] = $type_arr;
+                foreach ($category_arr as $key => $val) {
+                    $bridge = new Bridge();
+                    $bridge->post_id = $model->id;
+                    $bridge->category_id = $val;
+                    $bridge->save(false);
                 }
             }
-            if (!empty($tag_arr)) {
-                if(count($tag_arr) >= $max){
-                    $general_arr = [];
-                    $general_arr['tag'] = $tag_arr;
-                }                
+            if (!empty($type_arr)) {
+                foreach ($type_arr as $key => $val) {
+                    $bridge = new Bridge();
+                    $bridge->post_id = $model->id;
+                    $bridge->type_id = $val;
+                    $bridge->save(false);
+                }
             }
 
+            if (!empty($tag_arr)) {
+                foreach ($tag_arr as $key => $val) {
+                    $bridge = new Bridge();
+                    $bridge->post_id = $model->id;
+                    $bridge->tag_id = $val;
+                    $bridge->save(false);
+                }
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

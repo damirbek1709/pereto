@@ -17,7 +17,7 @@ use vova07\imperavi\Widget;
 
     <?= $form->field($model, 'title')->textInput() ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textArea();?>
 
     <?=
     $form->field($model, 'text')->widget(Widget::className(), [
@@ -28,7 +28,7 @@ use vova07\imperavi\Widget;
             'imageCaption' => true,
             'imageUpload' => Url::to(['site/image-upload']),
             'fileUpload' => Url::to(['site/file-upload']),
-            
+
             'plugins' => [
                 'imagemanager',
                 'filemanager',
@@ -42,7 +42,20 @@ use vova07\imperavi\Widget;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'date')->textInput(['maxlength' => true,'type'=>'date','style'=>'width:200px']) ?>
+    <?php
+    if ($model->isNewRecord) {
+        $date_default = date('Y-m-d');
+    } else {
+        $date_default = $model->date;
+    }
+    ?>
+
+    <?= $form->field($model, 'date')->textInput([
+        'maxlength' => true,
+        'type' => 'date',
+        'value'=>$date_default,
+        'style' => 'width:200px'
+    ]); ?>
 
     <?= $form->field($model, 'photo')->widget(CropImageUpload::className()) ?>
 
