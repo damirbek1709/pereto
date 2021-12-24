@@ -67,7 +67,21 @@ use vova07\imperavi\Widget;
 
     <div class="kyrgyz-block">
         <?= $form->field($model, 'title_ky')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'description_ky')->textInput(['maxlength' => true]) ?>
+        <?=
+        $form->field($model, 'description_ky')->widget(Widget::className(), [
+            'settings' => [
+                'lang' => 'ru',
+                'minHeight' => 200,
+                'formatting' => ['p', 'blockquote', 'h2'],
+                'plugins' => [
+                    'clips',
+                    'fullscreen',
+                    'table',
+                    'fontsize',
+                    'fontcolor',
+                ]
+            ],
+        ]); ?>
         <?=
         $form->field($model, 'text_ky')->widget(Widget::className(), [
             'settings' => [
@@ -94,7 +108,21 @@ use vova07\imperavi\Widget;
 
     <div class="english-block">
         <?= $form->field($model, 'title_en')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'description_en')->textInput(['maxlength' => true]) ?>
+        <?=
+        $form->field($model, 'description_en')->widget(Widget::className(), [
+            'settings' => [
+                'lang' => 'ru',
+                'minHeight' => 200,
+                'formatting' => ['p', 'blockquote', 'h2'],
+                'plugins' => [
+                    'clips',
+                    'fullscreen',
+                    'table',
+                    'fontsize',
+                    'fontcolor',
+                ]
+            ],
+        ]); ?>
         <?=
         $form->field($model, 'text_en')->widget(Widget::className(), [
             'settings' => [

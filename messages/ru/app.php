@@ -58,4 +58,5 @@ return [
     'Home'=>'Главная',
     'Priority'=>'Приоритет',
     'Video code'=>'Код видео',
+    'Text in kyrgyz'=>'Текст на кыргызском',
 ];

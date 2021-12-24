@@ -26,10 +26,6 @@ use yii\helpers\ArrayHelper;
  */
 class Libraries extends \yii\db\ActiveRecord
 {
-    public $category_id;
-    public $tag_id;
-    public $type_id;
-
     const SEARCH_TYPE_HOTEL = 1;
     const SEARCH_TYPE_RESTARAUNT = 2;
     const SEARCH_TYPE_COMBINED = 3;

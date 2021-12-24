@@ -112,16 +112,16 @@ class Page extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Заголовок'),
-            'title_ky' => Yii::t('app', 'Заголовок на кыргызском'),
-            'title_en' => Yii::t('app', 'Заголовок на английском'),
-            'text' => Yii::t('app', 'Текст'),
-            'text_ky' => Yii::t('app', 'Текст на кыргызском'),
-            'text_en' => Yii::t('app', 'Текст на английском'),
-            'photo' => Yii::t('app', 'Изображение'),
-            'description' => Yii::t('app', 'Описание'),
-            'description_ky' => Yii::t('app', 'Описание на кыргызском'),
-            'description_en' => Yii::t('app', 'Описание на английском'),
+            'title' => Yii::t('app', 'Title'),
+            'title_ky' => Yii::t('app', 'Title Ky'),
+            'title_en' => Yii::t('app', 'Title En'),
+            'text' => Yii::t('app', 'Text'),
+            'text_ky' => Yii::t('app', 'Text Ky'),
+            'text_en' => Yii::t('app', 'Text En'),
+            'photo' => Yii::t('app', 'Photo'),
+            'description' => Yii::t('app', 'Description'),
+            'description_ky' => Yii::t('app', 'Description Ky'),
+            'description_en' => Yii::t('app', 'Description En'),
         ];
     }
 }

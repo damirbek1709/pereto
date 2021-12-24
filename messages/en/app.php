@@ -7,7 +7,6 @@
  */
 return [
     'Одежда'=>'Clothes',
-    'Products'=>'Одежда',
     'Расследования'=>'Investigation',
     'О Нас'=>'About',
     'Торговое наименование'=>'Trade name',
@@ -65,4 +64,6 @@ return [
     'Добавить новость'=>'Create news',
     'Показать все'=>'Show all',
     'Скрыть'=>'Hide',
+    'Description Ky'=>'Description in kyrgyz',
+    'Description En'=>'Description in english',
 ];
