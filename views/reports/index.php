@@ -7,7 +7,7 @@ use yii\widgets\ListView;
 /* @var $searchModel app\models\ReportsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Reports');
+$this->title = Yii::t('app', 'Publications');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="reports-index">

@@ -1,7 +1,8 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\helpers\StringHelper;
+
+$model->translate(Yii::$app->language);
 ?>
 <?php echo Html::beginTag('a',['href'=>Url::to("/reports/{$model->id}"),'class'=>'reports-block-cover-link']);?>
 <div class="row">

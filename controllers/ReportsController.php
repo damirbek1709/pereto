@@ -1,7 +1,7 @@
 <?php
 
 namespace app\controllers;
-
+use Yii;
 use app\models\Reports;
 use app\models\ReportsSearch;
 use yii\web\Controller;
@@ -69,8 +69,10 @@ class ReportsController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $model->translate(Yii::$app->language);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -126,8 +128,7 @@ class ReportsController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        return $this->redirect(['admin']);
     }
 
     /**
