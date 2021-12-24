@@ -19,15 +19,15 @@ use app\models\App;
     $language_arr = [
         'en' => [
             'label' => Yii::t('app', 'En'),
-            'url' => "/". $amp . "language=en",
+            'url' => $amp . "language=en",
         ],
         'ky' => [
             'label' => Yii::t('app', 'Кыр'),
-            'url' => "/".$amp . "language=ky",
+            'url' => $amp . "language=ky",
         ],
         'ru' => [
             'label' => Yii::t('app', 'Рус'),
-            'url' => "/". $amp . "language=ru",
+            'url' => $amp . "language=ru",
         ],
     ];
 
