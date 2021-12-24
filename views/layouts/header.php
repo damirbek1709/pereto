@@ -13,7 +13,7 @@ use app\models\App;
     <?php
     $amp = '?';
     if (isset($_GET['type'])) {
-        $amp = '&';
+        $amp = "?type=".$_GET['type']."&";
     }
     $language_label = App::getLanguageLabel();
     $language_arr = [
