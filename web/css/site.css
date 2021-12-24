@@ -313,12 +313,14 @@ body {
 
 .pagination {
     margin: 0 15px;
+    width: 100%;
 }
 
 .pagination li {
     border: 1px solid #42727b;
     padding: 4px 12px;
     margin-right: 5px;
+    display: inline-block;
 }
 
 .pagination li.active {

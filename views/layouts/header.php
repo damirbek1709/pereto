@@ -28,6 +28,15 @@ use app\models\App;
     ];
 
     unset($language_arr[Yii::$app->language]);
+    if (Yii::$app->user->isGuest) {
+        $log_label = ['label' => Yii::t('app', 'Войти'), 'url' => ['/user/login']];
+    } else {
+        $log_label = [
+            'label' => Yii::t('app', 'Выйти'),
+            'url' => ['/user/logout'],
+            'linkOptions' => ['data-method' => 'POST']
+        ];
+    }
 
     $class_fixed = "fixed-top";
     if (!Yii::$app->user->isGuest) {
@@ -106,7 +115,7 @@ use app\models\App;
                 'url' => '#',
                 'items' => $language_arr
             ],
-            ['label' => Yii::t('app', 'Войти'), 'url' => ['/site/login']],
+            $log_label
         ],
     ]);
     NavBar::end();
