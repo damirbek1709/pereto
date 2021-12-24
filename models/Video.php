@@ -50,6 +50,28 @@ class Video extends \yii\db\ActiveRecord
         ];
     }
 
+    function translate($language)
+    {
+        switch ($language) {
+            case "en":
+                if ($this->title_en != null) {
+                    $this->title = $this->{"title_en"};
+                } else {
+                    $this->title = $this->{"title"};
+                }
+                break;
+            case "ky":
+                if ($this->title_ky != null) {
+                    $this->title = $this->{"title_ky"};
+                } else {
+                    $this->title = $this->{"title"};
+                }
+                break;
+            default:
+                $this->title = $this->{"title"};
+        }
+    }
+
     public function getMainThumb()
     {
         preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $this->source, $match);

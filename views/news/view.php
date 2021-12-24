@@ -37,7 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="other-news-list">
                     <?php $news = $model->getOtherNews();
                     foreach ($news as $item) {
-                        echo Html::tag('div', date('d-m-Y', strtotime($model->date)), ['class' => 'news-other-date']);
+                        $item->translate(Yii::$app->language);
+                        echo Html::tag('div', date('d-m-Y', strtotime($item->date)), ['class' => 'news-other-date']);
                         echo Html::a(Html::tag('div', $item->title), ['/news/view', 'id' => $item->id], ['class' => 'other-news-title']);
                     }
                     ?>

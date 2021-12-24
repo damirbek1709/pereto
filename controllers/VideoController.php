@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Video;
 use app\models\VideoSearch;
 use yii\web\Controller;
@@ -65,8 +66,10 @@ class VideoController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $model->translate(Yii::$app->language);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 

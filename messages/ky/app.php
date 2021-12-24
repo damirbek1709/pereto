@@ -46,4 +46,7 @@ return [
     'Video code'=>'Видеонун коду',
     'Publications'=>'Басылмалар',
     'Photo'=>'Сүрөт',
+    'Videos'=>'Видео',
+    'Other news'=>'Башка жаңылыктар',
+    'Businesses'=>'Бизнес-информация'
 ];

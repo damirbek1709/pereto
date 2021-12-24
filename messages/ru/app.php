@@ -59,4 +59,7 @@ return [
     'Priority'=>'Приоритет',
     'Video code'=>'Код видео',
     'Text in kyrgyz'=>'Текст на кыргызском',
+    'Videos'=>'Видео',
+    'Publications'=>'Публикации',
+    'Businesses'=>'Бизнес-информация',    
 ];

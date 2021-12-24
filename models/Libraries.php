@@ -60,7 +60,8 @@ class Libraries extends \yii\db\ActiveRecord
             [['title', 'title_ky', 'title_en'], 'string', 'max' => 255],
             [['description', 'description_ky', 'description_en'], 'string', 'max' => 500],
             ['photo', 'file', 'extensions' => 'png, jpeg, jpg, gif', 'on' => ['insert', 'update']],
-            [['photo_crop', 'photo_cropped'], 'string', 'max' => 100]
+            [['photo_crop', 'photo_cropped'], 'string', 'max' => 100],
+            [['photo'], 'safe'],
             //[['category_id', 'tag_id', 'type_id'], 'string', 'max' => 100],
         ];
     }
@@ -82,8 +83,6 @@ class Libraries extends \yii\db\ActiveRecord
             'text_en' => Yii::t('app', 'Text En'),
             'description_en' => Yii::t('app', 'Description En'),
             'photo' => Yii::t('app', 'Photo'),
-            'photo_crop' => Yii::t('app', 'Photo Crop'),
-            'photo_cropped' => Yii::t('app', 'Photo Cropped'),
             'category_id' => Yii::t('app', 'Категория'),
             'type_id' => Yii::t('app', 'Тип'),
             'tag_id' => Yii::t('app', 'Тэг'),

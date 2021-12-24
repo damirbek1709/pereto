@@ -18,7 +18,7 @@ class LibrariesSearch extends Libraries
     {
         return [
             [['id'], 'integer'],
-            [['title', 'description', 'text', 'title_ky', 'description_ky', 'text_ky', 'title_en', 'text_en', 'description_en', 'photo', 'photo_crop', 'photo_cropped'], 'safe'],
+            [['title', 'description', 'text', 'title_ky', 'description_ky', 'text_ky', 'title_en', 'text_en', 'description_en'], 'safe'],
         ];
     }
 

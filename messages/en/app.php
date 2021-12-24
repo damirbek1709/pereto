@@ -66,4 +66,5 @@ return [
     'Скрыть'=>'Hide',
     'Description Ky'=>'Description in kyrgyz',
     'Description En'=>'Description in english',
+    'Businesses'=>'Businesses-information',
 ];
