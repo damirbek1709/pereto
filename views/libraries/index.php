@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-8">
             <?php echo ListView::widget([
                 'options' => [
-                    'class' => 'program-list row',
+                    'class' => 'program-list flex-custom',
                 ],
                 'dataProvider' => $dataProvider,
                 'itemView' => '_item',
