@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Bridge;
+use app\models\App;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -28,9 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Html::tag('span', Yii::t('app', 'Тэг') . ': ', ['class' => 'tag-heading']); ?>
                     <span class="tag-list">
                         <?php
+                        $title = App::getLibraryTitle();
                         $tags = $model->tagList;
                         foreach ($tags as $key => $val) {
-                            echo " / " . Html::a($val['title'], ['/libraries/index', 'tag' => $val['id']]) . "  ";
+                            echo " / " . Html::a($val[$title], ['/libraries/index', 'tag' => $val['id']]) . "  ";
                         }
                         ?>
                 </div>
@@ -41,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php
                         $cats = $model->catList;
                         foreach ($cats as $key => $val) {
-                            echo " / " . Html::a($val['title'], ['/libraries/index', 'category' => $val['id']]) . "  ";
+                            echo " / " . Html::a($val[$title], ['/libraries/index', 'category' => $val['id']]) . "  ";
                         }
                         ?>
                     </span>
@@ -53,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php
                         $types = $model->typeList;
                         foreach ($types as $key => $val) {
-                            echo " / " . Html::a($val['title'], ['/libraries/index', 'type' => $val['id']]) . "  ";
+                            echo " / " . Html::a($val[$title], ['/libraries/index', 'type' => $val['id']]) . "  ";
                         }
                         ?>
                     </span>
