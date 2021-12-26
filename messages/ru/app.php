@@ -61,6 +61,5 @@ return [
     'Text in kyrgyz'=>'Текст на кыргызском',
     'Videos'=>'Видео',
     'Publications'=>'Публикации',
-    'Businesses'=>'Бизнес',   
-     
+    'Businesses'=>'Бизнес',
 ];

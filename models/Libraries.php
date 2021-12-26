@@ -36,17 +36,50 @@ class Libraries extends \yii\db\ActiveRecord
 
     public static function getTypeParamList()
     {
-        return ArrayHelper::map(LibraryType::find()->all(),'id','title');
+        $title = 'title';
+        switch (Yii::$app->language) {
+            case 'ky':
+                $title = 'title_ky';
+                break;
+            case 'en':
+                $title = 'title_en';
+                break;
+            default:
+                $title = 'title';
+        }
+        return ArrayHelper::map(LibraryType::find()->all(), 'id', $title);
     }
 
     public static function getCategoryParamList()
     {
-        return ArrayHelper::map(LibraryCategory::find()->all(),'id','title');
+        $title = 'title';
+        switch (Yii::$app->language) {
+            case 'ky':
+                $title = 'title_ky';
+                break;
+            case 'en':
+                $title = 'title_en';
+                break;
+            default:
+                $title = 'title';
+        }
+        return ArrayHelper::map(LibraryCategory::find()->all(), 'id', $title);
     }
 
     public static function getTagParamList()
     {
-        return ArrayHelper::map(LibraryTag::find()->all(),'id','title');
+        $title = 'title';
+        switch (Yii::$app->language) {
+            case 'ky':
+                $title = 'title_ky';
+                break;
+            case 'en':
+                $title = 'title_en';
+                break;
+            default:
+                $title = 'title';
+        }
+        return ArrayHelper::map(LibraryTag::find()->all(), 'id', $title);
     }
 
     /**
@@ -149,10 +182,11 @@ class Libraries extends \yii\db\ActiveRecord
             ->leftJoin('library_type', 'library_type.id = bridge.type_id')
             ->all();
         return $rows;
-    }    
+    }
 
-    public function getBridge(){
-        return $this->hasMany(Bridge::className(),['post_id'=>'id']);
+    public function getBridge()
+    {
+        return $this->hasMany(Bridge::className(), ['post_id' => 'id']);
     }
 
     public function getCategoryTags()

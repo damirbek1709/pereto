@@ -47,4 +47,18 @@ class App extends \yii\db\ActiveRecord
             default: return $ru_string;
         }
     }
+
+    public static function getLibraryTitle(){
+        switch (Yii::$app->language) {
+            case 'ky':
+                $title = 'title_ky';
+                break;
+            case 'en':
+                $title = 'title_en';
+                break;
+            default:
+                $title = 'title';
+        }
+        return $title;
+    }
 }
