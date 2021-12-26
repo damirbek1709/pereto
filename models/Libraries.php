@@ -150,8 +150,19 @@ class Libraries extends \yii\db\ActiveRecord
 
     public function getTagList()
     {
+        $title = 'title';
+        switch (Yii::$app->language) {
+            case 'ky':
+                $title = 'title_ky';
+                break;
+            case 'en':
+                $title = 'title_en';
+                break;
+            default:
+                $title = 'title';
+        }
         $rows = (new \yii\db\Query())
-            ->select(['id', 'title'])
+            ->select(['id', $title])
             ->from('bridge')
             ->where(['post_id' => $this->id])
             ->andWhere(['not', ['tag_id' => null]])
@@ -162,8 +173,19 @@ class Libraries extends \yii\db\ActiveRecord
 
     public function getCatList()
     {
+        $title = 'title';
+        switch (Yii::$app->language) {
+            case 'ky':
+                $title = 'title_ky';
+                break;
+            case 'en':
+                $title = 'title_en';
+                break;
+            default:
+                $title = 'title';
+        }
         $rows = (new \yii\db\Query())
-            ->select(['id', 'title'])
+            ->select(['id', $title])
             ->from('bridge')
             ->where(['post_id' => $this->id])
             ->andWhere(['not', ['category_id' => null]])
@@ -174,8 +196,19 @@ class Libraries extends \yii\db\ActiveRecord
 
     public function getTypeList()
     {
+        $title = 'title';
+        switch (Yii::$app->language) {
+            case 'ky':
+                $title = 'title_ky';
+                break;
+            case 'en':
+                $title = 'title_en';
+                break;
+            default:
+                $title = 'title';
+        }
         $rows = (new \yii\db\Query())
-            ->select(['id', 'title'])
+            ->select(['id', $title])
             ->from('bridge')
             ->where(['post_id' => $this->id])
             ->andWhere(['not', ['type_id' => null]])

@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         $title = App::getLibraryTitle();
                         $tags = $model->tagList;
                         foreach ($tags as $key => $val) {
-                            echo " / " . Html::a($val[$title], ['/libraries/index', 'tag' => $val['id']]) . "  ";
+                            echo " / " . Html::a($val['title'], ['/libraries/index', 'tag' => $val['id']]) . "  ";
                         }
                         ?>
                 </div>
@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php
                         $cats = $model->catList;
                         foreach ($cats as $key => $val) {
-                            echo " / " . Html::a($val[$title], ['/libraries/index', 'category' => $val['id']]) . "  ";
+                            echo " / " . Html::a($val['title'], ['/libraries/index', 'category' => $val['id']]) . "  ";
                         }
                         ?>
                     </span>
@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php
                         $types = $model->typeList;
                         foreach ($types as $key => $val) {
-                            echo " / " . Html::a($val[$title], ['/libraries/index', 'type' => $val['id']]) . "  ";
+                            echo " / " . Html::a($val['title'], ['/libraries/index', 'type' => $val['id']]) . "  ";
                         }
                         ?>
                     </span>
