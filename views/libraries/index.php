@@ -9,6 +9,7 @@ use yii\widgets\ListView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Libraries');
+$this->params['breadcrumbs'][] = Yii::t('app', 'Businesses');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="libraries-index">
