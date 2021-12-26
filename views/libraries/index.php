@@ -39,14 +39,14 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <?= $this->render('filter-collapse', [
                 'type' => $type,
                 'tag' => $tag,
                 'category' => $category
             ]); ?>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-8">
             <?php echo ListView::widget([
                 'options' => [
                     'class' => 'program-list row',

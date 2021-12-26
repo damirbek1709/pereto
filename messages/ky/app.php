@@ -48,5 +48,6 @@ return [
     'Photo'=>'Сүрөт',
     'Videos'=>'Видео',
     'Other news'=>'Башка жаңылыктар',
-    'Businesses'=>'Бизнес-информация'
+    'Businesses'=>'Бизнес-информация',
+    'About project'=>'Проект жөнүндө',
 ];
