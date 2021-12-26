@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use app\models\Libraries;
+use app\models\App;
 
 $type_list = Libraries::getTypeParamList();
 $cat_list = Libraries::getCategoryParamList();

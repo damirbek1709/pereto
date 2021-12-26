@@ -3,9 +3,11 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\helpers\StringHelper;
+use app\models\App;
 ?>
 <?php
 $model->translate(Yii::$app->language);
+$title = App::getLibraryTitle();
 ?>
 <div class="row">
     <div class="col-lg-5">
@@ -24,7 +26,7 @@ $model->translate(Yii::$app->language);
                     <?php
                     $tags = $model->tagList;
                     foreach ($tags as $key => $val) {
-                        echo " / " . $val['title'] . "  ";
+                        echo " / " . $val[$title] . "  ";
                     }
                     ?>
             </div>
@@ -35,7 +37,7 @@ $model->translate(Yii::$app->language);
                     <?php
                     $cats = $model->catList;
                     foreach ($cats as $key => $val) {
-                        echo " / " . $val['title'] . "  ";
+                        echo " / " . $val[$title] . "  ";
                     }
                     ?>
                 </span>
@@ -47,7 +49,7 @@ $model->translate(Yii::$app->language);
                     <?php
                     $types = $model->typeList;
                     foreach ($types as $key => $val) {
-                        echo " / " . $val['title'] . "  ";
+                        echo " / " . $val[$title] . "  ";
                     }
                     ?>
                 </span>
