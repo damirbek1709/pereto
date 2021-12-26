@@ -18,7 +18,7 @@ use app\models\App;
     $language_label = App::getLanguageLabel();
     $language_arr = [
         'en' => [
-            'label' => Yii::t('app', 'En'),
+            'label' => Yii::t('app', 'Eng'),
             'url' => $amp . "language=en",
         ],
         'ky' => [
