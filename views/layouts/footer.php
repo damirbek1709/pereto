@@ -22,10 +22,10 @@ use yii\helpers\Url;
                     <?= Yii::t('app', 'Useful links') ?>
                 </div>
                 <div class="footer-list">
-                    <p><?= Html::a(Yii::t('app', 'Инструмент самооценки'), 'https://www.pereto.kg/businesses-information/selfassessment_tools'); ?></p>
-                    <p><?= Html::a(Yii::t('app', 'Библиотека'), 'https://www.pereto.kg/libraries'); ?></p>
-                    <p><?= Html::a(Yii::t('app', 'Публикации'), 'https://www.pereto.kg/reports'); ?></p>
-                    <p><?= Html::a(Yii::t('app', 'Новости'), 'https://www.pereto.kg/news'); ?></p>
+                    <p><?= Html::a(Yii::t('app', 'Инструмент самооценки'), ['/businesses-information','type'=>5]); ?></p>
+                    <p><?= Html::a(Yii::t('app', 'Библиотека'), ['/libraries']); ?></p>
+                    <p><?= Html::a(Yii::t('app', 'Публикации'), ['/reports']); ?></p>
+                    <p><?= Html::a(Yii::t('app', 'Новости'), ['/news']); ?></p>
                 </div>
             </div>
             <div class="col-lg-3">
