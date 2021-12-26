@@ -1,7 +1,6 @@
 <?php
 
 use app\models\Bridge;
-use app\models\App;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -29,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Html::tag('span', Yii::t('app', 'Тэг') . ': ', ['class' => 'tag-heading']); ?>
                     <span class="tag-list">
                         <?php
-                        $title = App::getLibraryTitle();
                         $tags = $model->tagList;
                         foreach ($tags as $key => $val) {
                             echo " / " . Html::a($val['title'], ['/libraries/index', 'tag' => $val['id']]) . "  ";
