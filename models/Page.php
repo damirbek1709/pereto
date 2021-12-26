@@ -40,7 +40,7 @@ class Page extends \yii\db\ActiveRecord
             [['title', 'text'], 'required'],
             [['text_ky', 'text_en'], 'safe'],
             [['title', 'title_ky', 'title_en'], 'string', 'max' => 255],
-            [['description', 'description_ky', 'description_en'], 'string', 'max' => 1000],
+            [['description', 'description_ky', 'description_en'], 'string', 'max' => 1200],
             //[['photo'], 'safe'],
             ['photo', 'file', 'extensions' => 'png, jpeg, jpg, gif', 'on' => ['insert', 'update']],
 			[['photo_crop', 'photo_cropped'], 'string', 'max' => 100]
