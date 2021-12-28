@@ -54,4 +54,5 @@ return [
     'Поиск'=>'Издөө',
     'Organization Name'=>'Организациянын аты',
     'Business Type'=>'Бизнестин түрү',
+    'Begin Test'=>'Тесттен өтүү',
 ];

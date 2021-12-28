@@ -13,7 +13,7 @@ use app\models\App;
     <?php
     $amp = '?';
     if (isset($_GET['type'])) {
-        $amp = "?type=".$_GET['type']."&";
+        $amp = "?type=" . $_GET['type'] . "&";
     }
     $language_label = App::getLanguageLabel();
     $language_arr = [
@@ -30,8 +30,8 @@ use app\models\App;
             'url' => $amp . "language=ru",
         ],
     ];
-
     unset($language_arr[Yii::$app->language]);
+
     if (Yii::$app->user->isGuest) {
         $log_label = ['label' => Yii::t('app', 'Войти'), 'url' => ['/user/login']];
     } else {
@@ -60,7 +60,10 @@ use app\models\App;
     ];
     foreach ($business as $item) {
         $item->translate(Yii::$app->language);
-        $business_items[] = ['label' => $item['title'], 'url' => ["/businesses-information?type=$item->id"]];
+        if ($item->id == 5) {
+        } else {
+            $business_items[] = ['label' => $item['title'], 'url' => ["/businesses-information/selfassessment_tools"]];
+        }
     }
 
     $language = "Рус";

@@ -12,10 +12,10 @@ $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="business-view">
-<h1 class="main-heading"><?= Html::encode($this->title) ?></h1>    
+    <h1 class="main-heading">
+        <?= Html::encode($this->title) ?>
+    </h1>
     <div class="row top-margin-20">
         <div class="col-lg-12"><?= $model->text; ?></div>
     </div>
-    ?>
 </div>
-

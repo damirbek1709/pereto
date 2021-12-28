@@ -65,4 +65,5 @@ return [
     'Organization Name'=>'Имя организации',
     'Business Type'=>'Тип бизнеса',
     'Send'=>'Отправить',
+    'Begin Test'=>'Пройти Тест',
 ];
