@@ -50,4 +50,9 @@ class Question extends \yii\db\ActiveRecord
             'title_en' => Yii::t('app', 'Title En'),
         ];
     }
+
+    public function getCategory()
+    {
+        return $this->hasOne(LibraryCategory::className(), ['id' => 'category_id']);
+    }
 }

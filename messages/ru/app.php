@@ -62,4 +62,7 @@ return [
     'Videos'=>'Видео',
     'Publications'=>'Публикации',
     'Businesses'=>'Бизнес',
+    'Organization Name'=>'Имя организации',
+    'Business Type'=>'Тип бизнеса',
+    'Send'=>'Отправить',
 ];

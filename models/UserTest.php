@@ -29,9 +29,11 @@ class UserTest extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'organization_name', 'buisness_type', 'date'], 'required'],
+            [['email', 'organization_name', 'buisness_type'], 'required'],
             [['buisness_type'], 'integer'],
+            [['email'], 'email'],
             [['date'], 'safe'],
+            [['date'], 'default', 'value'=> date('Y-m-d')],
             [['email', 'organization_name'], 'string', 'max' => 255],
         ];
     }
@@ -43,9 +45,9 @@ class UserTest extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'email' => Yii::t('app', 'Email'),
+            'email' => Yii::t('app', 'E-mail'),
             'organization_name' => Yii::t('app', 'Organization Name'),
-            'buisness_type' => Yii::t('app', 'Buisness Type'),
+            'buisness_type' => Yii::t('app', 'Business Type'),
             'date' => Yii::t('app', 'Date'),
         ];
     }

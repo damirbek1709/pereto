@@ -2,11 +2,16 @@
 
 namespace app\controllers;
 
+use app\models\Answer;
+use app\models\Question;
+use app\models\UserAnswer;
+use Yii;
 use app\models\UserTest;
 use app\models\UserTestSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * UserTestController implements the CRUD actions for UserTest model.
@@ -129,5 +134,57 @@ class UserTestController extends Controller
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
+    public function actionBeginTest()
+    {
+        $name = Yii::$app->request->post('name');
+        $email = Yii::$app->request->post('email');
+        $type = Yii::$app->request->post('type');
+
+        $question = Question::find()->one();
+        $answers = ArrayHelper::map(Answer::find()->where(['question_id' => $question->id])->all(), 'id', 'title');
+
+        $test = new UserTest();
+        $test->email = $email;
+        $test->organization_name = $name;
+        $test->buisness_type = $type;
+
+        if ($test->save()) {
+            $question_arr = [
+                'id' => $question->id,
+                'title' => $question->title,
+                'answers' => $answers,
+                'test_id' => $test->id,
+            ];
+            return json_encode($question_arr, JSON_UNESCAPED_UNICODE);
+        }
+        return false;
+    }
+
+    public function actionNextQuestion()
+    {
+        $id = Yii::$app->request->post('id');
+        $type = Yii::$app->request->post('type');
+        $answer_id = Yii::$app->request->post('answer');
+        $test_id = Yii::$app->request->post('test_id');
+
+        $user_answer = new UserAnswer();
+        $user_answer->answer_id = $answer_id;
+        $user_answer->test_id = $test_id;
+        $user_answer->question_id = $id;
+        $user_answer->save(false);
+
+        $question = Question::find()->where(['>', 'id', $id])->one();
+        if ($question) {
+            $answers = ArrayHelper::map(Answer::find()->where(['question_id' => $question->id])->all(), 'id', 'title');
+            $question_arr = [
+                'id' => $question->id,
+                'title' => $question->title,
+                'answers' => $answers
+            ];
+            return json_encode($question_arr, JSON_UNESCAPED_UNICODE);
+        }
+        return 'finished';
     }
 }

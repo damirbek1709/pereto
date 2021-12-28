@@ -34,10 +34,10 @@ class Answer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['question_id', 'title', 'title_ky', 'title_en', 'assessment_ky', 'assessment_en', 'hint', 'hint_ky', 'hint_en'], 'required'],
+            [['question_id', 'title', 'title_ky', 'title_en', 'assessment_ky', 'assessment_en','assesment', 'hint', 'hint_ky', 'hint_en'], 'required'],
             [['question_id'], 'integer'],
             [['title', 'title_ky', 'title_en'], 'string', 'max' => 500],
-            [['assessment_ky', 'assessment_en', 'hint', 'hint_ky', 'hint_en'], 'string', 'max' => 1000],
+            [['assessment_ky', 'assessment_en','assessment', 'hint', 'hint_ky', 'hint_en'], 'string', 'max' => 1000],
         ];
     }
 
@@ -54,6 +54,7 @@ class Answer extends \yii\db\ActiveRecord
             'title_en' => Yii::t('app', 'Title En'),
             'assessment_ky' => Yii::t('app', 'Assessment Ky'),
             'assessment_en' => Yii::t('app', 'Assessment En'),
+            'assessment' => Yii::t('app', 'Assessment'),
             'hint' => Yii::t('app', 'Hint'),
             'hint_ky' => Yii::t('app', 'Hint Ky'),
             'hint_en' => Yii::t('app', 'Hint En'),

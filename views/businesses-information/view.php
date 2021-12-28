@@ -16,5 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row top-margin-20">
         <div class="col-lg-12"><?= $model->text; ?></div>
     </div>
+    ?>
 </div>
 

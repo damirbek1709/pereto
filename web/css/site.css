@@ -596,6 +596,38 @@ body {
     flex-wrap: wrap;
 }
 
+.has-error .help-block {
+    color: rgb(212, 13, 13);
+}
+
+.has-error .form-control {
+    border: 1px solid rgb(212, 13, 13);
+}
+
+.has-error .control-label {
+    color: rgb(212, 13, 13);
+}
+
+.user-test-form {
+    width: 360px;
+    margin: auto;
+}
+
+.radio-flex {
+    display: flex;
+    align-items: center;
+}
+
+.radio-flex label {
+    margin-left: 10px;
+}
+
+.modal .modal-footer {
+    justify-content: unset;
+}
+
+.next-question {}
+
 
 /* .footer-links {
     display: flex;

@@ -4,6 +4,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Business;
 use app\models\BusinessSearch;
+use app\models\UserTest;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -66,6 +67,12 @@ class BusinessesInformationController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    public function actionSelfassessment_tools()
+    {
+        $user_test = new UserTest();
+        return $this->render('assessment',['test'=>$user_test]);
     }
 
     /**
