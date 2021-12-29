@@ -133,7 +133,7 @@ $item = Business::findOne(5);
                     $.each(obj, function(key, value) {
                         $('.modal-body').append('<i class="fas fa-check"></i>');
                         $('.modal-body').append('<div class="result-question">' + value.question + '</div>');                       
-                        $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + '<p><strong>Оценка:</strong>' + value.assessment + '</p>' + '<p><strong>Подсказки:</strong>' + value.hint + '</p>' + '</div></div>');
+                        $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + '<p><strong>Оценка: </strong>' + value.assessment + '</p>' + '<p><strong>Подсказки: </strong>' + value.hint + '</p>' + '</div></div>');
                         $('.modal-footer').html('');
                     });
                 }
