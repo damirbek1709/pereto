@@ -474,6 +474,9 @@ body {
     .slick-arrow {
         top: 30%!important;
     }
+    .slider-video iframe {
+        height: 130px;
+    }
 }
 
 @media only screen and (max-width: 760px) {
