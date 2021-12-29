@@ -23,8 +23,10 @@ $tag_list = Libraries::getTagParamList();
                 <?php
                 foreach ($type_list as $key => $val) {
                     $type_checked = false;
-                    if ($type && in_array($key, $type)) {
-                        $type_checked = "checked";
+                    if (is_array($type)) {
+                        if ($type && in_array($key, $type)) {
+                            $type_checked = "checked";
+                        }
                     }
                     echo Html::label(Html::checkbox('type[]', $key, ['class' => 'search-class', 'value' => $key, 'checked' => $type_checked, 'onchange' => 'this.form.submit()']) . ' ' . $val, null, ['class' => 'inline checkbox lib-ch-label']);
                 }
@@ -46,8 +48,10 @@ $tag_list = Libraries::getTagParamList();
                 <?php
                 foreach ($cat_list as $key => $val) {
                     $category_checked = false;
-                    if ($category && in_array($key, $category)) {
-                        $category_checked = "checked";
+                    if (is_array($category)) {
+                        if ($category && in_array($key, $category)) {
+                            $category_checked = "checked";
+                        }
                     }
                     echo Html::label(Html::checkbox('category[]', $key, ['class' => 'search-class', 'value' => $key, 'checked' => $category_checked, 'onchange' => 'this.form.submit()']) . ' ' . $val, null, ['class' => 'inline checkbox lib-ch-label']);
                 }
@@ -68,8 +72,10 @@ $tag_list = Libraries::getTagParamList();
                 <?php
                 foreach ($tag_list as $key => $val) {
                     $tag_checked = false;
-                    if ($tag && in_array($key, $tag)) {
-                        $tag_checked = "checked";
+                    if (is_array($tag)) {
+                        if ($tag && in_array($key, $tag)) {
+                            $tag_checked = "checked";
+                        }
                     }
                     echo Html::label(Html::checkbox('tag[]', $key, ['class' => 'search-class', 'value' => $key, 'checked' => $tag_checked, 'onchange' => 'this.form.submit()']) . ' ' . $val, null, ['class' => 'inline checkbox lib-ch-label']);
                 }

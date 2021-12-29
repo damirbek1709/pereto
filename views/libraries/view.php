@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         $title = App::getLibraryTitle();
                         $tags = $model->tagList;
                         foreach ($tags as $key => $val) {
-                            echo " / " . Html::a($val[$title], ['/libraries/index', 'tag' => $val['id']]) . "  ";
+                            echo " / " . Html::a($val[$title], ['/libraries/index', 'type' => $val['id']]) . "  ";
                         }
                         ?>
                 </div>
