@@ -62,7 +62,7 @@ return [
     'Videos'=>'Видео',
     'Publications'=>'Публикации',
     'Businesses'=>'Бизнес',
-    'Organization Name'=>'Имя организации',
+    'Organization Name'=>'Наименование организации',
     'Business Type'=>'Тип бизнеса',
     'Send'=>'Отправить',
     'Begin Test'=>'Пройти Тест',
