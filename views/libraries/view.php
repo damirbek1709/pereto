@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php
                         $types = $model->typeList;
                         foreach ($types as $key => $val) {
-                            echo " / " . Html::a($val[$title], ['/libraries/index', 'type' => $val['id']]) . "  ";
+                            echo " / " . Html::a($val[$title], ['/libraries/index', 'tag' => $val['id']]) . "  ";
                         }
                         ?>
                     </span>
