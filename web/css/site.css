@@ -628,6 +628,59 @@ body {
 
 .next-question {}
 
+.result-question {
+    color: #007bff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.result-question-before:before {
+    content: ' \2714';
+    background: 'FONT AWESOME 5 BRANDS';
+    color: #007bff;
+    color: #fff;
+    padding: 3px 6px;
+    border-radius: 100%;
+    margin-right: 30px;
+    display: inline-block;
+}
+
+.fa-check {
+    color: #fff;
+    background: green;
+    padding: 6px;
+    border-radius: 100%;
+    float: left;
+    margin-right: 10px;
+}
+
+.result-answer,
+.result-comments {
+    color: #0d3c61;
+}
+
+.result-answer {}
+
+.result-info-icon {
+    display: inline-block;
+    padding: 1px 10px;
+    border: 2px solid;
+    border-radius: 100%;
+    font-weight: 700;
+    float: left;
+    margin-right: 10px;
+}
+
+.comments-wrap {
+    background-color: #e8f4fd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.approve-question {
+    float: right;
+}
+
 
 /* .footer-links {
     display: flex;

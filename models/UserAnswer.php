@@ -45,4 +45,14 @@ class UserAnswer extends \yii\db\ActiveRecord
             'answer_id' => Yii::t('app', 'Answer ID'),
         ];
     }
+
+    public function getQuestion()
+    {
+        return $this->hasOne(Question::className(), ['id' => 'question_id']);
+    } 
+
+    public function getAnswer()
+    {
+        return $this->hasOne(Answer::className(), ['id' => 'answer_id']);
+    } 
 }

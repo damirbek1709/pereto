@@ -61,8 +61,9 @@ use app\models\App;
     foreach ($business as $item) {
         $item->translate(Yii::$app->language);
         if ($item->id == 5) {
-        } else {
             $business_items[] = ['label' => $item['title'], 'url' => ["/businesses-information/selfassessment_tools"]];
+        } else {
+            $business_items[] = ['label' => $item['title'], 'url' => ["/businesses-information?type=$item->id"]];
         }
     }
 

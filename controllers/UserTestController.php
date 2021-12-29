@@ -187,4 +187,20 @@ class UserTestController extends Controller
         }
         return 'finished';
     }
+
+    public function actionShowResults()
+    {
+        $result_arr = [];
+        $test_id = Yii::$app->request->post('test_id');
+        $user_answer = UserAnswer::find()->where(['test_id' => $test_id])->orderBy(['id' => SORT_ASC])->all();        
+        foreach ($user_answer as $item) {
+            $result_arr[$item->id] = [
+                'question' => $item->question->title,
+                'answer' => $item->answer->title,
+                'assessment' => $item->answer->assessment,
+                'hint' => $item->answer->hint,
+            ];
+        }
+        return json_encode($result_arr, JSON_UNESCAPED_UNICODE);
+    }
 }

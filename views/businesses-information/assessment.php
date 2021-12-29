@@ -28,7 +28,7 @@ $item = Business::findOne(5);
                 <form></form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary"><?= Yii::t('app', 'Посмотреть результат'); ?></button>
+                <button type="button" class="btn show-results btn-primary"><?= Yii::t('app', 'Посмотреть результат'); ?></button>
                 <button type="button" class="btn approve-question btn-primary pull-right"><?= Yii::t('app', 'Потвердить'); ?></button>
             </div>
         </div>
@@ -114,10 +114,31 @@ $item = Business::findOne(5);
                         $.each(obj.answers, function(key, value) {
                             $('.modal-body form').append('<div class="radio-flex"><input class="radio_option" type="radio" id="answer' + key + '" name="answer" value="' + key + '"><label for="answer' + key + '">' + value + '</label></div>');
                         });
-                        $(".modal").modal('show');
                     }
                 });
             }
+        });
+
+        $('.show-results').click(function() {
+            $.ajax({
+                method: "POST",
+                url: "<?= Yii::$app->urlManager->createUrl('/user-test/show-results'); ?>",
+                data: {
+                    test_id: test_id
+                },
+                success: function(response) {
+                    var obj = JSON.parse(response);
+                    $('.modal-body').html('');
+                    $.each(obj, function(key, value) {
+                        $('.modal-body').append('<i class="fas fa-check"></i>');
+                        $('.modal-body').append('<div class="result-question">' + value.question + '</div>');
+                        $('.modal-body').append('<div class="comments-wrap"></div>');
+                        $('.comments-wrap').append('<div class="result-info-icon">i</div>');
+                        $('.comments-wrap').append('<div class="result-answer">' + value.answer + '</div>');
+                        $('.comments-wrap').append('<div class="result-comments">' + '<p>' + value.assessment + '</p>' + '<p>' + value.hint + '</p>' + '</div>');
+                    });
+                }
+            });
         });
     });
 </script>
