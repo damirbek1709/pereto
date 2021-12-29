@@ -136,6 +136,7 @@ $item = Business::findOne(5);
                         $('.comments-wrap').append('<div class="result-info-icon">i</div>');
                         $('.comments-wrap').append('<div class="result-answer">' + value.answer + '</div>');
                         $('.comments-wrap').append('<div class="result-comments">' + '<p>' + value.assessment + '</p>' + '<p>' + value.hint + '</p>' + '</div>');
+                        $('.modal-footer').html('');
                     });
                 }
             });

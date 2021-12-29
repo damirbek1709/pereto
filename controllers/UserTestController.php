@@ -142,7 +142,7 @@ class UserTestController extends Controller
         $email = Yii::$app->request->post('email');
         $type = Yii::$app->request->post('type');
 
-        $question = Question::find()->one();
+        $question = Question::find()->joinWith('bridge')->orderBy(['business_type_id'=>SORT_ASC,'question.id'=>SORT_ASC])->one();
         $answers = ArrayHelper::map(Answer::find()->where(['question_id' => $question->id])->all(), 'id', 'title');
 
         $test = new UserTest();
