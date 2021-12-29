@@ -128,6 +128,7 @@ $item = Business::findOne(5);
                 },
                 success: function(response) {
                     var obj = JSON.parse(response);
+                    $('.modal-title').text("Результаты теста");
                     $('.modal-body').html('');
                     console.log(obj);
                     $.each(obj, function(key, value) {
