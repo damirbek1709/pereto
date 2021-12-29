@@ -53,6 +53,7 @@ use app\models\App;
         $item->translate(Yii::$app->language);
         $consumer_items[] = ['label' => $item['title'], 'url' => ["/consumers-information?type=$item->id"]];
     }
+    
 
     $business = Business::find()->all();
     $business_items = [
