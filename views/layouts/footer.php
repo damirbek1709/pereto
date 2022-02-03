@@ -14,7 +14,7 @@ use yii\helpers\Url;
                     <p><?= Yii::t('app', 'Pereto project') ?></p>
                     <p><?= Yii::t('app', 'Адрес: Кыргызская Республика, Бишкек, ул. Аалы Токомбаева 7/6') ?></p>
                     <p>+996 (312) 915000</p>
-                    <p>info@pereto.kg</p>
+                    <p>pereto@auca.kg</p>
                 </div>
             </div>
             <div class="col-lg-4 footer-links">

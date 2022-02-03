@@ -55,7 +55,7 @@ class Question extends \yii\db\ActiveRecord
     {
         return $this->hasOne(LibraryCategory::className(), ['id' => 'category_id']);
     }
-
+    
     public function getBridge()
     {
         return $this->hasOne(QuestionBusinessBridge::className(), ['question_id' => 'id']);

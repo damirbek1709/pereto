@@ -33,6 +33,11 @@ class LibraryCategory extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getQuestions()
+    {
+        return $this->hasMany(Question::className(), ['category_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */
