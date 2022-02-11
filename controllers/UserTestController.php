@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Answer;
+use app\models\Libraries;
 use app\models\LibraryCategory;
 use app\models\Question;
 use app\models\UserAnswer;
@@ -172,7 +173,6 @@ class UserTestController extends Controller
         $question = Question::find()->orderBy(['category_id' => SORT_ASC, 'question.id' => SORT_ASC])->one();
         $answers = ArrayHelper::map(Answer::find()->where(['question_id' => $question->id])->all(), 'id', 'title');
 
-
         $test = UserTest::find()->where(['email' => $email])->one();
         if ($test) {
             $answered_already = ArrayHelper::map(
@@ -192,9 +192,31 @@ class UserTestController extends Controller
                     'title' => $question->title,
                     'answers' => $answers,
                     'test_id' => $test->id,
-                    'category_id' => $categories
+                    'category_id' => $categories,
                 ];
-                return json_encode($question_arr, JSON_UNESCAPED_UNICODE);
+                return json_encode([
+                    'status' => 1,
+                    'type' => $type,
+                    'test_id' => $test->id,
+                    'arr' => $question_arr
+                ], JSON_UNESCAPED_UNICODE);
+            } else {
+                $result_arr = [];
+                $test_id = $test->id;
+                $user_answer = UserAnswer::find()->joinWith('question')->where(['test_id' => $test_id, 'category_id' => 1])->orderBy(['id' => SORT_ASC])->all();
+                foreach ($user_answer as $item) {
+                    $result_arr[$item->id] = [
+                        'question' => $item->question->title,
+                        'answer' => $item->answer->title,
+                        'assessment' => $item->answer->assessment,
+                        'hint' => $item->answer->hint,
+                    ];
+                }
+                return json_encode([
+                    'type' => $type,
+                    'status' => 2, 'test_id' => $test->id,
+                    'arr' => $result_arr
+                ], JSON_UNESCAPED_UNICODE);
             }
         } else {
             $test = new UserTest();
@@ -211,16 +233,20 @@ class UserTestController extends Controller
                     'test_id' => $test->id,
                     'category_id' => $categories
                 ];
-                return json_encode($question_arr, JSON_UNESCAPED_UNICODE);
+                return json_encode([
+                    'status' => 1,
+                    'test_id' => $test->id,
+                    'arr' => $question_arr,
+                    'type' => $type
+                ], JSON_UNESCAPED_UNICODE);
             }
         }
-        return false;
+        return 'finished';
     }
 
     public function actionNextQuestion()
     {
         $id = Yii::$app->request->post('id');
-        $type = Yii::$app->request->post('type');
         $answer_id = Yii::$app->request->post('answer');
         $test_id = Yii::$app->request->post('test_id');
 
@@ -237,7 +263,6 @@ class UserTestController extends Controller
             'id',
             'question_id'
         );
-
         $question = Question::find()->where(['not in', 'id', $past_arr])->orderBy(['category_id' => SORT_ASC, 'id' => SORT_ASC])->one();
 
         if ($question) {
@@ -258,12 +283,25 @@ class UserTestController extends Controller
         $result_arr = [];
         $test_id = Yii::$app->request->post('test_id');
         $category_id = Yii::$app->request->post('category_id');
-        $user_answer = UserAnswer::find()->joinWith('question')->where(['test_id' => $test_id, 'category_id' => $category_id])->orderBy(['id' => SORT_ASC])->all();
+        $type = Yii::$app->request->post('type');
+
+        $user_answer = UserAnswer::find()
+            ->joinWith('question')
+            ->where(['test_id' => $test_id, 'category_id' => $category_id])
+            ->orderBy(['id' => SORT_ASC])
+            ->all();
+
 
         foreach ($user_answer as $item) {
+            $articles = ArrayHelper::map(Libraries::find()
+                ->joinWith('most')
+                ->where(['question_id' => $item->question->id])
+                ->andWhere(['business_type' => $type])
+                ->all(), 'id', 'title');
             $result_arr[$item->id] = [
                 'question' => $item->question->title,
                 'answer' => $item->answer->title,
+                'articles' => $articles,
                 'assessment' => $item->answer->assessment,
                 'hint' => $item->answer->hint,
             ];

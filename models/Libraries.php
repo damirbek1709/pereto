@@ -222,6 +222,11 @@ class Libraries extends \yii\db\ActiveRecord
         return $this->hasMany(Bridge::className(), ['post_id' => 'id']);
     }
 
+    public function getMost()
+    {
+        return $this->hasOne(LibraryBridge::className(), ['library_id' => 'id']);
+    }
+
     public function getCategoryTags()
     {
         return ArrayHelper::map(Bridge::find()->where(['post_id' => $this->id])->andWhere(['not', ['category_id' => null]])->all(), 'category_id', 'category_id');

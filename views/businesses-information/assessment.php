@@ -2,6 +2,7 @@
 
 use app\models\Business;
 use app\models\BusinessType;
+use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -49,10 +50,13 @@ $item = Business::findOne(5);
     <div class="row top-margin-20">
         <div class="col-lg-12">
             <div class="business_text"><?= $item->text ?></div>
-
             <div class="col-lg-10 progress-grid">
+
                 <div class="progress-category-name">
                     Менеджмент
+                    <div class="test_icon">
+                        <?= Html::img(Url::base() . '/images/svg/manage.svg'); ?>
+                    </div>
                     <div class="w3-light-grey w3-round">
                         <div class="Management w3-container w3-blue w3-round" data-key="Management" style="width:0"></div>
                     </div>
@@ -60,6 +64,9 @@ $item = Business::findOne(5);
 
                 <div class="progress-category-name">
                     Материалы
+                    <div class="test_icon">
+                        <?= Html::img(Url::base() . '/images/svg/materials.svg'); ?>
+                    </div>
                     <div class="w3-light-grey w3-round">
                         <div class="Materials w3-container w3-blue w3-round" data-key="Materials" style="width:0"></div>
                     </div>
@@ -67,6 +74,9 @@ $item = Business::findOne(5);
 
                 <div class="progress-category-name">
                     Отходы
+                    <div class="test_icon">
+                        <?= Html::img(Url::base() . '/images/svg/recycling.svg'); ?>
+                    </div>
                     <div class="w3-light-grey w3-round">
                         <div class="Water w3-container w3-blue w3-round" data-key="Water" style="width:0"></div>
                     </div>
@@ -74,13 +84,19 @@ $item = Business::findOne(5);
 
                 <div class="progress-category-name">
                     Вода
+                    <div class="test_icon">
+                        <?= Html::img(Url::base() . '/images/svg/drop.svg'); ?>
+                    </div>
                     <div class="w3-light-grey w3-round">
                         <div class="Waste w3-container w3-blue w3-round" data-key="Waste" style="width:0"></div>
                     </div>
-                </div>                
+                </div>
 
                 <div class="progress-category-name">
                     Энергия
+                    <div class="test_icon">
+                        <?= Html::img(Url::base() . '/images/svg/power.svg'); ?>
+                    </div>
                     <div class="w3-light-grey w3-round">
                         <div class="Energy w3-container w3-blue w3-round" data-key="Energy" style="width:0"></div>
                     </div>
@@ -106,17 +122,16 @@ $item = Business::findOne(5);
 <script type="text/javascript">
     var num_quest;
     var test_id;
+    var business_type;
     var past_arr = [];
 
     var name = $('#usertest-organization_name').val();
     var email = $('#usertest-email').val();
-    var business_type = $('#usertest-buisness_type').val();
 
     $('.test-begin').on('click', function(e) {
         var name = $('#usertest-organization_name').val();
         var email = $('#usertest-email').val();
-        var business_type = $('#usertest-buisness_type').val();
-
+        business_type = $('#usertest-buisness_type').val();
         if (name != "" && email != "" && business_type != "") {
             $.ajax({
                 method: "POST",
@@ -127,22 +142,36 @@ $item = Business::findOne(5);
                     type: business_type,
                 },
                 success: function(response) {
-                    var obj = JSON.parse(response);
-                    num_quest = obj.id;
-                    past_arr.push(obj.id);
-                    test_id = obj.test_id;
-
-                    $('.modal-text-header').css('display', 'block').text(obj.title);
-
-                    $.each(obj.category_id, function(key, value) {
-                        $(".show-results[data-cat='" + value + "']").attr('disabled', false);
-                    });
-
-                    $.each(obj.answers, function(key, value) {
-                        $('.modal-body').append('<div class="radio-flex"><input class="radio_option" type="radio" id="answer' + key + '" name="answer" value="' + key + '"><label for="answer' + key + '">' + value + '</label></div>');
-                    });
-                    $('.modal-footer').css('display', 'block');
-                    $(".modal").modal('show');
+                    var long = JSON.parse(response);
+                    var obj = long.arr;
+                    var status = long.status;
+                    if (status == 1) {
+                        num_quest = obj.id;
+                        past_arr.push(obj.id);
+                        test_id = long.test_id;
+                        $('.modal-text-header').css('display', 'block').text(obj.title);
+                        $.each(obj.category_id, function(key, value) {
+                            $(".show-results[data-cat='" + value + "']").attr('disabled', false);
+                        });
+                        $.each(obj.answers, function(key, value) {
+                            $('.modal-body').append('<div class="radio-flex"><input class="radio_option" type="radio" id="answer' + key + '" name="answer" value="' + key + '"><label for="answer' + key + '">' + value + '</label></div>');
+                        });
+                        $('.modal-footer').css('display', 'block');
+                        $(".modal").modal('show');
+                    } else if (status == 2) {
+                        test_id = long.test_id;
+                        $('.modal-text-header').css('display', 'none');
+                        $('.btn-header-group').css('display', 'block');
+                        $('.modal-body').html('');
+                        $.each(obj, function(key, value) {
+                            $('.modal-body').append('<i class="fas fa-check"></i>');
+                            $('.modal-body').append('<div class="result-question">' + value.question + '</div>');
+                            $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + '<p><strong>Оценка: </strong>' + value.assessment + '</p>' + '<p><strong>Подсказки: </strong>' + value.hint + '</p>' + '</div></div>');
+                        });
+                        $('.modal-footer').css('display', 'none');
+                        $(".show-results").attr('disabled', false);
+                        $(".modal").modal('show');
+                    }
                 }
             });
         }
@@ -150,7 +179,6 @@ $item = Business::findOne(5);
 
     $(document).ready(function() {
         $('.approve-question').click(function() {
-            var business_type = $('#usertest-buisness_type').val();
             if ($('.radio_option').is(':checked')) {
                 var answer = $('input[name="answer"]:checked').val();
                 $.ajax({
@@ -216,17 +244,23 @@ $item = Business::findOne(5);
             data: {
                 test_id: test_id,
                 category_id: category_id,
+                type: business_type
             },
             success: function(response) {
                 var obj = JSON.parse(response);
+                console.log(obj);
                 $('.modal-text-header').css('display', 'none');
                 $('.btn-header-group').css('display', 'block');
                 $('.modal-body').html('');
-                console.log(obj);
                 $.each(obj, function(key, value) {
-                    $('.modal-body').append('<i class="fas fa-check"></i>');
-                    $('.modal-body').append('<div class="result-question">' + value.question + '</div>');
-                    $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + '<p><strong>Оценка: </strong>' + value.assessment + '</p>' + '<p><strong>Подсказки: </strong>' + value.hint + '</p>' + '</div></div>');
+                    $('.modal-body').append('<i class="fas fa-check"></i><div class="result-question">' + value.question + '</div>');
+                    $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div></div>');
+                    $('.modal-body').append('<div class="comments-wrap"><div class="result-comments">' + '<p><strong>Оценка: </strong>' + value.assessment + '</p></div>');
+                    $('.modal-body').append('<div class="comments-wrap"><p><strong>Подсказки: </strong>' + value.hint + '</p></div>');
+                    $('.modal-body').append('<div class="comments-wrap"><strong>Статьи: </strong></div>');
+                    $.each(value.articles, function(lib_key, lib_value) {
+                        $('.modal-body').append('<div class="article-wrap"><div class="result-article"><a href = https://www.pereto.kg/libraries/' + lib_key + '>' + lib_value + '</a></div></div>');
+                    });
                 });
                 $('.modal-footer').css('display', 'none');
             }
@@ -245,7 +279,7 @@ $item = Business::findOne(5);
                 var obj = JSON.parse(response);
                 $.each(obj, function(key, value) {
                     var progress = value;
-                    $('.' + key).attr('style','width: ' + progress + '%');
+                    $('.' + key).attr('style', 'width: ' + progress + '%');
                 });
             }
         });

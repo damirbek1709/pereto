@@ -61,4 +61,6 @@ class App extends \yii\db\ActiveRecord
         }
         return $title;
     }
+
+    
 }
