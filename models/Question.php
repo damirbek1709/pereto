@@ -56,8 +56,8 @@ class Question extends \yii\db\ActiveRecord
         return $this->hasOne(LibraryCategory::className(), ['id' => 'category_id']);
     }
 
-    
-    
+
+
     public function getBridge()
     {
         return $this->hasOne(QuestionBusinessBridge::className(), ['question_id' => 'id']);
@@ -66,5 +66,27 @@ class Question extends \yii\db\ActiveRecord
     public function getLibaryBridge()
     {
         return $this->hasOne(LibraryBridge::className(), ['question_id' => 'id']);
+    }
+
+    function translate($language)
+    {
+        switch ($language) {
+            case "en":
+                if ($this->title_en != null) {
+                    $this->title = $this->{"title_en"};
+                } else {
+                    $this->title = $this->{"title"};
+                }
+                break;
+            case "ky":
+                if ($this->title_ky != null) {
+                    $this->title = $this->{"title_ky"};
+                } else {
+                    $this->title = $this->{"title"};
+                }
+                break;
+            default:
+                $this->title = $this->{"title"};
+        }
     }
 }

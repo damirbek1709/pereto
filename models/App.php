@@ -1,6 +1,9 @@
 <?php
+
 namespace app\models;
+
 use Yii;
+use app\models\Seo;
 
 /**
  * This is the model class for table "consumer".
@@ -15,21 +18,30 @@ use Yii;
  */
 class App extends \yii\db\ActiveRecord
 {
-    public static function getLanguageLabel(){
-        switch(Yii::$app->language){
-            case 'ru': return 'Рус';break;
-            case 'en': return 'En';break;
-            case 'ky': return 'Кыр';break;
-            default: return 'Рус';
+    public static function getLanguageLabel()
+    {
+        switch (Yii::$app->language) {
+            case 'ru':
+                return 'Рус';
+                break;
+            case 'en':
+                return 'En';
+                break;
+            case 'ky':
+                return 'Кыр';
+                break;
+            default:
+                return 'Рус';
         }
     }
 
-    public static function getLibraryString(){
+    public static function getLibraryString()
+    {
         $language = Yii::$app->language;
         $ru_string = 'Библиотека ПЭРЭТО — это собрание передовых практик, применяемых малыми и средними предприятиями ХоРеКа в Кыргызстане и в мире. Он демонстрирует разнообразие возможных решений и практик, которые приводят к экономии ресурсов, экономической эффективности и получению зеленого имиджа среди клиентов.
         В библиотеке предоставлены модели мер по экономии энергии и воды, предотвращению отходов в отелях, ресторанах и кафе. Кроме того, некоторые модели могут быть применимы в других коммерческих секторах, кроме ХоРеКа, а также в жилых домах.        
         Библиотека предлагает панель поиска и фильтры по типу, категории и тегам для удобства. Обратите внимание, что в ближайшие годы библиотека будет расширяться, и будут добавляться новые передовые практики. Если вы хотите включить свою зеленую практику в библиотеку ПЭРЭТО или предложить другую, то пожалуйста, свяжитесь с командой ПЭРЭТО по адресу pereto@auca.kg.';
-        
+
         $kg_string = 'ПЭРЭТО китепканасы - бул Кыргызстандагы жана дүйнөдөгү HoReCa чакан жана орто ишканалары колдонгон алдыңкы практикалардын   жыйындысы. Ал ресурстарды үнөмдөөгө, экономикалык натыйжалуулукка жана кардарлар арасында жашыл имиджге алып келүүчү ар кандай мүмкүн болгон чечимдерди жана тажрыйбаларды көрсөтөт. Китепканада электр кубатын  жана сууну үнөмдөө, мейманканаларда, ресторандарда жана кафелерде калдыктардын алдын алуу  боюнча  чаралардын моделдери келтирилген. Мындан тышкары, кээ бир моделдер HoReCaдан башка коммерциялык секторлордо, ошондой эле турак үйлөрдө колдонулушу мүмкүн. 
         Китепкана ыңгайлуулук үчүн түрү, категориясы, тегдери боюнча издөө панелин жана  чыпкаларды сунуш кылат. .  Жакынкы жылдары китепкана кеңейип, жаңы алдыңкы практикалар  кошуларына көңүл буруңуздар.. Эгерде сиз өзүңүздүн жашыл практикаңызды ПЭРЭТО китепканасына киргизүүнү же башка нерсени сунуштоону кааласаңыз, анда pereto@auca.kg дареги боюнча ПЭРЭТО командасына кайрылыңыз.';
 
@@ -37,18 +49,23 @@ class App extends \yii\db\ActiveRecord
         There are examples of measures saving energy and water, avoiding waste at hotels, restaurants and cafes. Additionally, some examples could be applicable in other commercial sectors other than HoReCa and also residential homes.        
         Library offers search bar and filters by type, category and tags for convenience. Please note that library will be expanding over the coming years, and new good practices will be added. If you would like to feature your green practice as HoReCa SME or suggest one, please contact PERETO team at pereto@auca.kg';
 
-        switch($language){
-            case 'ru': return $ru_string;
-            break;
-            case 'ky': return $kg_string;
-            break;
-            case 'en': return $en_string;
-            break;
-            default: return $ru_string;
+        switch ($language) {
+            case 'ru':
+                return $ru_string;
+                break;
+            case 'ky':
+                return $kg_string;
+                break;
+            case 'en':
+                return $en_string;
+                break;
+            default:
+                return $ru_string;
         }
     }
 
-    public static function getLibraryTitle(){
+    public static function getLibraryTitle()
+    {
         switch (Yii::$app->language) {
             case 'ky':
                 $title = 'title_ky';
@@ -62,5 +79,80 @@ class App extends \yii\db\ActiveRecord
         return $title;
     }
 
-    
+    public static function getLibraryAssesment()
+    {
+        switch (Yii::$app->language) {
+            case 'ky':
+                $title = 'assessment_ky';
+                break;
+            case 'en':
+                $title = 'assessment_en';
+                break;
+            default:
+                $title = 'assessment';
+        }
+        return $title;
+    }
+
+    public static function setSeoLang()
+    {
+        $seo_arr = [];
+
+        $meta_title = 'meta_title';
+        $meta_desc = 'meta_desc';
+
+        switch (Yii::$app->language) {
+            case 'ky':
+                $meta_title = 'meta_title_ky';
+                $meta_desc = 'meta_title_ky';
+                break;
+            case 'en':
+                $title = 'hint_en';
+                break;
+            default:
+                $title = 'hint';
+        }
+        return $title;
+    }
+
+    public static function getLibraryHint()
+    {
+        switch (Yii::$app->language) {
+            case 'ky':
+                $title = 'hint_ky';
+                break;
+            case 'en':
+                $title = 'hint_en';
+                break;
+            default:
+                $title = 'hint';
+        }
+        return $title;
+    }
+
+    public static function registerSeoTags()
+    {
+        $url_string = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $result = explode('?language',$url_string);
+        $url_string = $result[0];       
+
+        $seo = Seo::find()->where(['url' => $url_string])->one();
+        if ($seo) {
+            $seo->translate(Yii::$app->language);
+            \Yii::$app->view->registerMetaTag([
+                'name' => 'title',
+                'content' => $seo->meta_title
+            ]);
+
+            \Yii::$app->view->registerMetaTag([
+                'name' => 'description',
+                'content' => $seo->meta_description
+            ]);
+
+            \Yii::$app->view->registerMetaTag([
+                'name' => 'keywords',
+                'content' => $seo->meta_keywords
+            ]);
+        }
+    }
 }

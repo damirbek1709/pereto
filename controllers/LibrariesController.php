@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\App;
 use app\models\Bridge;
 use app\models\Libraries;
 use app\models\LibrariesSearch;
@@ -39,6 +40,7 @@ class LibrariesController extends Controller
      */
     public function actionIndex()
     {
+        App::registerSeoTags();
         $searchModel = new LibrariesSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
         $type = [];
@@ -89,9 +91,47 @@ class LibrariesController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
+        $tags = $model->tagList;
+        $cats = $model->catList;
+        $types = $model->typeList;
         $model->translate(Yii::$app->language);
+        $title = App::getLibraryTitle();
+        $keywordString = "";
+
+        foreach ($tags as $key => $val) {
+            $keywordString .= $val[$title].",";
+        }
+
+        foreach ($cats as $key => $val) {
+            $keywordString .= $val[$title].",";
+        }
+
+        foreach ($types as $key => $val) {
+            $keywordString .= $val[$title].",";
+        }
+
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'title',
+            'content' => $model->title
+        ]);
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => $model->description
+        ]);
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'keywords',
+            'content' => $keywordString
+        ]);
+
         return $this->render('view', [
             'model' => $model,
+            'tags' => $tags,
+            'cats' => $cats,
+            'types' => $types,
+
         ]);
     }
 

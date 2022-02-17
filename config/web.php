@@ -21,11 +21,17 @@ $config = [
             'enableUnconfirmedLogin' => true,
             'confirmWithin' => 21600,
             'cost' => 12,
-            'admins' => ['admin','admin2']
+            'admins' => ['admin', 'admin2']
         ],
     ],
     'components' => [
-        
+        'pdf' => [
+            'class' => kartik\mpdf\Pdf::classname(),
+            'format' => kartik\mpdf\Pdf::FORMAT_A4,
+            'orientation' => kartik\mpdf\Pdf::ORIENT_PORTRAIT,
+            'destination' => kartik\mpdf\Pdf::DEST_BROWSER,
+            // refer settings section for all configuration options
+        ],
         'languageSwitcher' => [
             'class' => 'app\components\languageSwitcher',
         ],

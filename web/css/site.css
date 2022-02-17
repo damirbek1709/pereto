@@ -747,6 +747,10 @@ body {
     padding: 10px;
 }
 
+.generate-report {
+    display: none;
+}
+
 
 /* 
 .modal-text-header {

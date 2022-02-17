@@ -67,5 +67,15 @@ return [
     'Description Ky'=>'Description in kyrgyz',
     'Description En'=>'Description in english',
     'Businesses'=>'Businesses-information',
-    'Поиск'=>'Search',   
+    'Поиск'=>'Search',  
+    'Менеджмент'=>'Management', 
+    'Материалы'=>'Materials', 
+    'Отходы'=>'Waste', 
+    'Вода'=>'Water',
+    'Энергия'=>'Energy',
+    'Посмотреть результат'=>'Show results',
+    'Потвердить'=>'Approve',
+    'Оценка'=>'Assessment',
+    'Подсказки'=>'Hint',
+    'Сохранить в PDF'=>'Save in PDF'
 ];

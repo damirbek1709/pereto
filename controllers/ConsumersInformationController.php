@@ -8,6 +8,7 @@ use app\models\ConsumerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\App;
 
 /**
  * ConsumerInformationController implements the CRUD actions for Consumer model.
@@ -38,6 +39,7 @@ class ConsumersInformationController extends Controller
      */
     public function actionIndex($type)
     {
+        App::registerSeoTags();
         $model = $this->findModel($type);
         $model->translate(Yii::$app->language);
         return $this->render('view', [

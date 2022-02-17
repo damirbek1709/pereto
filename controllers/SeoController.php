@@ -2,19 +2,16 @@
 
 namespace app\controllers;
 
-use Yii;
-use app\models\Partner;
 use app\models\Seo;
-use app\models\PartnerSearch;
+use app\models\SeoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\models\App;
 
 /**
- * PartnerController implements the CRUD actions for Partner model.
+ * SeoController implements the CRUD actions for Seo model.
  */
-class PartnerController extends Controller
+class SeoController extends Controller
 {
     /**
      * @inheritDoc
@@ -35,13 +32,12 @@ class PartnerController extends Controller
     }
 
     /**
-     * Lists all Partner models.
+     * Lists all Seo models.
      * @return mixed
      */
     public function actionIndex()
     {
-        App::registerSeoTags();
-        $searchModel = new PartnerSearch();
+        $searchModel = new SeoSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -50,19 +46,8 @@ class PartnerController extends Controller
         ]);
     }
 
-    public function actionAdmin()
-    {
-        $searchModel = new PartnerSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('admin', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
     /**
-     * Displays a single Partner model.
+     * Displays a single Seo model.
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -75,14 +60,14 @@ class PartnerController extends Controller
     }
 
     /**
-     * Creates a new Partner model.
+     * Creates a new Seo model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Partner();
-        $model->scenario = 'insert';
+        $model = new Seo();
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -96,32 +81,8 @@ class PartnerController extends Controller
         ]);
     }
 
-    private function registerSeoTags()
-    {
-        $url_string = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $seo = Seo::find()->where(['url' => $url_string])->one();
-        if ($seo) {
-            $seo->translate(Yii::$app->language);
-            \Yii::$app->view->registerMetaTag([
-                'name' => 'title',
-                'content' => $seo->meta_title
-            ]);
-
-            \Yii::$app->view->registerMetaTag([
-                'name' => 'description',
-                'content' => $seo->meta_description
-            ]);
-
-            \Yii::$app->view->registerMetaTag([
-                'name' => 'keywords',
-                'content' => $seo->meta_keywords
-            ]);
-        }
-        //return ['seo_text' => $seo_text];
-    }
-
     /**
-     * Updates an existing Partner model.
+     * Updates an existing Seo model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return mixed
@@ -130,7 +91,7 @@ class PartnerController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->scenario = 'update';
+
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -141,7 +102,7 @@ class PartnerController extends Controller
     }
 
     /**
-     * Deletes an existing Partner model.
+     * Deletes an existing Seo model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return mixed
@@ -155,15 +116,15 @@ class PartnerController extends Controller
     }
 
     /**
-     * Finds the Partner model based on its primary key value.
+     * Finds the Seo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Partner the loaded model
+     * @return Seo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Partner::findOne($id)) !== null) {
+        if (($model = Seo::findOne($id)) !== null) {
             return $model;
         }
 

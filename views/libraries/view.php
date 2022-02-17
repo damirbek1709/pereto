@@ -29,8 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Html::tag('span', Yii::t('app', 'Тэг') . ': ', ['class' => 'tag-heading']); ?>
                     <span class="tag-list">
                         <?php
-                        $title = App::getLibraryTitle();
-                        $tags = $model->tagList;
+                        $title = App::getLibraryTitle();                        
                         foreach ($tags as $key => $val) {
                             echo " / " . Html::a($val[$title], ['/libraries/index', 'tag' => $val['id']]) . "  ";
                         }
@@ -40,8 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="tags-block">
                     <?= Html::tag('span', Yii::t('app', 'Категория') . ': ', ['class' => 'tag-heading']); ?>
                     <span class="tag-list">
-                        <?php
-                        $cats = $model->catList;
+                        <?php                        
                         foreach ($cats as $key => $val) {
                             echo " / " . Html::a($val[$title], ['/libraries/index', 'category' => $val['id']]) . "  ";
                         }
@@ -52,8 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="tags-block">
                     <?= Html::tag('span', Yii::t('app', 'Тип') . ': ', ['class' => 'tag-heading']); ?>
                     <span class="tag-list">
-                        <?php
-                        $types = $model->typeList;
+                        <?php                        
                         foreach ($types as $key => $val) {
                             echo " / " . Html::a($val[$title], ['/libraries/index', 'type' => $val['id']]) . "  ";
                         }

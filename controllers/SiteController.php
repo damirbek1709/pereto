@@ -11,6 +11,8 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\NewsSearch;
 use app\models\Page;
+use app\models\Seo;
+use app\models\App;
 
 class SiteController extends Controller
 {
@@ -75,12 +77,43 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        App::registerSeoTags();
+        $canonical_url = "https://pereto.kg";
+        if (Yii::$app->request->get()) {
+            $canonical_url = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+        }
+        \Yii::$app->view->registerLinkTag(['rel' => 'canonical', 'href' => $canonical_url]);
         $this->layout = "main_index";
         return $this->render('index');
     }
 
+    private function registerSeoTags()
+    {
+        $url_string = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $seo = Seo::find()->where(['url' => $url_string])->one();
+        if ($seo) {
+            $seo->translate(Yii::$app->language);
+            \Yii::$app->view->registerMetaTag([
+                'name' => 'title',
+                'content' => $seo->meta_title
+            ]);
+
+            \Yii::$app->view->registerMetaTag([
+                'name' => 'description',
+                'content' => $seo->meta_description
+            ]);
+
+            \Yii::$app->view->registerMetaTag([
+                'name' => 'keywords',
+                'content' => $seo->meta_keywords
+            ]);
+        }
+        //return ['seo_text' => $seo_text];
+    }
+
     public function actionPartners()
     {
+        App::registerSeoTags();
         return $this->render('partners');
     }
 
@@ -143,6 +176,7 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        $this->registerSeoTags();
         return $this->render('about');
     }
 
@@ -155,10 +189,15 @@ class SiteController extends Controller
     public function actionConsumersInformation($type)
     {
         $page_id = 1;
-        switch($type){
-            case 1: $page_id = 2; break;
-            case 2: $page_id = 3; break;
-            default: $page_id = 2;
+        switch ($type) {
+            case 1:
+                $page_id = 2;
+                break;
+            case 2:
+                $page_id = 3;
+                break;
+            default:
+                $page_id = 2;
         }
         $page = Page::findOne($page_id);
         return $this->render('consumer', ['item' => $page]);
@@ -167,12 +206,17 @@ class SiteController extends Controller
     public function actionBusinessInformation($type)
     {
         $page_id = 1;
-        switch($type){
-            case 1: $page_id = 2; break;
-            case 2: $page_id = 3; break;
-            default: $page_id = 2;
+        switch ($type) {
+            case 1:
+                $page_id = 2;
+                break;
+            case 2:
+                $page_id = 3;
+                break;
+            default:
+                $page_id = 2;
         }
         $page = Page::findOne($page_id);
         return $this->render('consumer', ['item' => $page]);
-    }
+    }    
 }

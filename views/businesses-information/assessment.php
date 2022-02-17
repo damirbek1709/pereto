@@ -10,10 +10,19 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Business */
 
-$this->title = Yii::t('app', 'Инструмент Самооценки');
+$this->title = Yii::t('app', 'Self-assessment tool');
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+$type_prefix = 'title';
+if (Yii::$app->language == 'en') {
+    $type_prefix = 'title_en';
+} else if (Yii::$app->language == 'ky') {
+    $type_prefix = 'title_ky';
+}
 $item = Business::findOne(5);
+$item->translate(Yii::$app->language);
+
 ?>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div class="modal" tabindex="-1" role="dialog">
@@ -23,11 +32,11 @@ $item = Business::findOne(5);
                 <div class="modal-title">
                     <h5 class="modal-text-header"></h5>
                     <div class="btn-header-group">
-                        <button type='button' disabled data-cat='1' class='show-results cat-management btn-primary btn'>Менеджмент</button>
-                        <button type='button' disabled data-cat='2' class='show-results cat-materials btn-primary btn'>Материалы</button>
-                        <button type='button' disabled data-cat='3' class='show-results cat-water btn-primary btn'>Вода</button>
-                        <button type='button' disabled data-cat='4' class='show-results cat-waste btn-primary btn'>Отходы</button>
-                        <button type='button' disabled data-cat='5' class='show-results cat-energy btn-primary btn'>Энергия</button>
+                        <button type='button' disabled data-cat='1' class='show-results cat-management btn-primary btn'><?= Yii::t('app', 'Менеджмент'); ?></button>
+                        <button type='button' disabled data-cat='2' class='show-results cat-materials btn-primary btn'><?= Yii::t('app', 'Материалы'); ?></button>
+                        <button type='button' disabled data-cat='3' class='show-results cat-water btn-primary btn'><?= Yii::t('app', 'Вода'); ?></button>
+                        <button type='button' disabled data-cat='4' class='show-results cat-waste btn-primary btn'><?= Yii::t('app', 'Отходы'); ?></button>
+                        <button type='button' disabled data-cat='5' class='show-results cat-energy btn-primary btn'><?= Yii::t('app', 'Энергия'); ?></button>
                     </div>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -39,6 +48,16 @@ $item = Business::findOne(5);
             </div>
             <div class="modal-footer">
                 <button type="button" data-cat="1" class="btn show-results btn-primary"><?= Yii::t('app', 'Посмотреть результат'); ?></button>
+                <?php
+                echo Html::a(
+                    Yii::t('app', 'Сохранить в PDF'),['/user-test/report'],
+                    [
+                        'class' => 'btn btn-primary generate-report',
+                        'target' => '_blank',
+                        'data-toggle' => 'tooltip',
+                        'title' => 'Will open the generated PDF file in a new window'
+                    ]
+                ); ?>
                 <button type="button" class="btn approve-question btn-primary pull-right"><?= Yii::t('app', 'Потвердить'); ?></button>
             </div>
         </div>
@@ -53,7 +72,7 @@ $item = Business::findOne(5);
             <div class="col-lg-10 progress-grid">
 
                 <div class="progress-category-name">
-                    Менеджмент
+                    <?= Yii::t('app', 'Менеджмент'); ?>
                     <div class="test_icon">
                         <?= Html::img(Url::base() . '/images/svg/manage.svg'); ?>
                     </div>
@@ -63,7 +82,7 @@ $item = Business::findOne(5);
                 </div>
 
                 <div class="progress-category-name">
-                    Материалы
+                    <?= Yii::t('app', 'Материалы'); ?>
                     <div class="test_icon">
                         <?= Html::img(Url::base() . '/images/svg/materials.svg'); ?>
                     </div>
@@ -73,7 +92,7 @@ $item = Business::findOne(5);
                 </div>
 
                 <div class="progress-category-name">
-                    Отходы
+                    <?= Yii::t('app', 'Отходы'); ?>
                     <div class="test_icon">
                         <?= Html::img(Url::base() . '/images/svg/recycling.svg'); ?>
                     </div>
@@ -83,7 +102,7 @@ $item = Business::findOne(5);
                 </div>
 
                 <div class="progress-category-name">
-                    Вода
+                    <?= Yii::t('app', 'Вода'); ?>
                     <div class="test_icon">
                         <?= Html::img(Url::base() . '/images/svg/drop.svg'); ?>
                     </div>
@@ -93,7 +112,7 @@ $item = Business::findOne(5);
                 </div>
 
                 <div class="progress-category-name">
-                    Энергия
+                    <?= Yii::t('app', 'Энергия'); ?>
                     <div class="test_icon">
                         <?= Html::img(Url::base() . '/images/svg/power.svg'); ?>
                     </div>
@@ -107,7 +126,8 @@ $item = Business::findOne(5);
                     <?php $form = ActiveForm::begin(); ?>
                     <?= $form->field($test, 'email')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($test, 'organization_name')->textInput(['maxlength' => true]) ?>
-                    <?= $form->field($test, 'buisness_type')->dropDownList(ArrayHelper::map(BusinessType::find()->all(), 'id', 'title')); ?>
+                    <?php echo $form->field($test, 'buisness_type')
+                        ->dropDownList(ArrayHelper::map(BusinessType::find()->all(), 'id', $type_prefix)); ?>
                     <div class="form-group">
                         <?= Html::button(Yii::t('app', 'Begin Test'), ['class' => 'test-begin btn-primary btn']) ?>
                     </div>
@@ -116,7 +136,6 @@ $item = Business::findOne(5);
             </div>
         </div>
     </div>
-
 </div>
 </div>
 <script type="text/javascript">
@@ -166,7 +185,7 @@ $item = Business::findOne(5);
                         $.each(obj, function(key, value) {
                             $('.modal-body').append('<i class="fas fa-check"></i>');
                             $('.modal-body').append('<div class="result-question">' + value.question + '</div>');
-                            $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + '<p><strong>Оценка: </strong>' + value.assessment + '</p>' + '<p><strong>Подсказки: </strong>' + value.hint + '</p>' + '</div></div>');
+                            $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + '<p><strong><?=Yii::t('app', 'Оценка');?>: </strong>' + value.assessment + '</p>' + '<p><strong><?=Yii::t('app', 'Подсказки');?>: </strong>' + value.hint + '</p>' + '</div></div>');
                         });
                         $('.modal-footer').css('display', 'none');
                         $(".show-results").attr('disabled', false);
@@ -212,7 +231,7 @@ $item = Business::findOne(5);
                                     $.each(obj, function(key, value) {
                                         $('.modal-body').append('<i class="fas fa-check"></i>');
                                         $('.modal-body').append('<div class="result-question">' + value.question + '</div>');
-                                        $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + '<p><strong>Оценка: </strong>' + value.assessment + '</p>' + '<p><strong>Подсказки: </strong>' + value.hint + '</p>' + '</div></div>');
+                                        $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + "<p><strong><?=Yii::t('app', 'Оценка');?>: </strong>" + value.assessment + '</p>' + "<p><strong><?=Yii::t('app', 'Подсказки');?>:</strong>" + value.hint + '</p>' + '</div></div>');
                                     });
                                     $('.modal-footer').css('display', 'none');
                                 }
@@ -255,14 +274,18 @@ $item = Business::findOne(5);
                 $.each(obj, function(key, value) {
                     $('.modal-body').append('<i class="fas fa-check"></i><div class="result-question">' + value.question + '</div>');
                     $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div></div>');
-                    $('.modal-body').append('<div class="comments-wrap"><div class="result-comments">' + '<p><strong>Оценка: </strong>' + value.assessment + '</p></div>');
-                    $('.modal-body').append('<div class="comments-wrap"><p><strong>Подсказки: </strong>' + value.hint + '</p></div>');
-                    $('.modal-body').append('<div class="comments-wrap"><strong>Статьи: </strong></div>');
+                    $('.modal-body').append('<div class="comments-wrap"><div class="result-comments">' + '<p><strong><?=Yii::t('app', 'Оценка');?>: </strong>' + value.assessment + '</p></div>');
+                    $('.modal-body').append('<div class="comments-wrap"><p><strong><?=Yii::t('app', 'Подсказки');?>: </strong>' + value.hint + '</p></div>');
+                    $('.modal-body').append('<div class="comments-wrap"><strong><?=Yii::t('app', 'Статьи');?>: </strong></div>');
                     $.each(value.articles, function(lib_key, lib_value) {
                         $('.modal-body').append('<div class="article-wrap"><div class="result-article"><a href = https://www.pereto.kg/libraries/' + lib_key + '>' + lib_value + '</a></div></div>');
                     });
                 });
-                $('.modal-footer').css('display', 'none');
+                //$('.modal-footer').html();
+                $('.generate-report').css('display', 'block');
+
+                $('.modal-footer .show-results').css('display', 'none');
+                $('.approve-question').css('display', 'none');
             }
         });
     });

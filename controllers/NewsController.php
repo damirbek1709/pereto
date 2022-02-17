@@ -4,11 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use app\models\News;
+use app\models\App;
 use app\models\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\BaseStringHelper;
+use yii\helpers\StringHelper;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -39,9 +41,10 @@ class NewsController extends Controller
      */
     public function actionIndex()
     {
+        App::registerSeoTags();
         $searchModel = new NewsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-        $dataProvider->pagination->pageSize=10;
+        $dataProvider->pagination->pageSize = 10;
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -58,6 +61,25 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
         $model->translate(Yii::$app->language);
+
+        $description = StringHelper::truncateWords($model->text, 40, $suffix = '');        
+        $keywords = "lipsum,dolor,sit,amet";
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'title',
+            'content' => $model->title
+        ]);
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => $description
+        ]);
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'keywords',
+            'content' => $keywords
+        ]);
+
         \Yii::$app->view->registerMetaTag([
             'property' => 'og:url',
             'content' => "https://pereto.kg/news/{$model->id}"
@@ -77,7 +99,7 @@ class NewsController extends Controller
      * @return mixed
      */
     public function actionCreate()
-    {        
+    {
         $model = new News();
         $model->scenario = 'insert';
         if ($this->request->isPost) {

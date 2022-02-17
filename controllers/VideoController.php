@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Video;
+use app\models\App;
 use app\models\VideoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -38,6 +39,7 @@ class VideoController extends Controller
      */
     public function actionIndex()
     {
+        App::registerSeoTags();
         $searchModel = new VideoSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
@@ -68,6 +70,24 @@ class VideoController extends Controller
     {
         $model = $this->findModel($id);
         $model->translate(Yii::$app->language);
+        $description = Yii::t('app',"Video description");
+        $keywords = "lipsum,dolor,sit,amet";
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'title',
+            'content' => $model->title
+        ]);
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => $description
+        ]);
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'keywords',
+            'content' => $keywords
+        ]);
+
         return $this->render('view', [
             'model' => $model,
         ]);

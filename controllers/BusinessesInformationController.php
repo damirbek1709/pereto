@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 use Yii;
+use app\models\App;
 use app\models\Business;
 use app\models\BusinessSearch;
 use app\models\UserTest;
@@ -38,6 +39,7 @@ class BusinessesInformationController extends Controller
      */
     public function actionIndex($type)
     {
+        App::registerSeoTags();
         $model = $this->findModel($type);
         $model->translate(Yii::$app->language);
         return $this->render('view', [
@@ -71,6 +73,7 @@ class BusinessesInformationController extends Controller
 
     public function actionSelfassessment_tools()
     {
+        App::registerSeoTags();
         $user_test = new UserTest();
         return $this->render('assessment',['test'=>$user_test]);
     }

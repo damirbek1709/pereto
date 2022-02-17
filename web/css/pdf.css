@@ -1,0 +1,28 @@
+.fa-check:before {
+    content: "\f00c";
+}
+
+.modal-body .fas {
+    margin-top: 10px;
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+}
+
+.result-question {
+    color: #007bff;
+    font-size: 21px;
+    margin: 15px 0 10px;
+}
+
+.comments-wrap {
+    background-color: #e8f4fd;
+    padding: 0 10px;
+    margin-top: 15px;
+}
+
+body {
+    font-family: 'Roboto', 'sans-serif';
+}
+
+.result-answer,
+.result-comments {}

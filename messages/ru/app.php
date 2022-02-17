@@ -66,4 +66,5 @@ return [
     'Business Type'=>'Тип бизнеса',
     'Send'=>'Отправить',
     'Begin Test'=>'Пройти Тест',
+    'Self-assessment tool'=>'Инструмент самооценки',
 ];
