@@ -50,7 +50,8 @@ $item->translate(Yii::$app->language);
                 <button type="button" data-cat="1" class="btn show-results btn-primary"><?= Yii::t('app', 'Посмотреть результат'); ?></button>
                 <?php
                 echo Html::a(
-                    Yii::t('app', 'Сохранить в PDF'),['/user-test/report'],
+                    Yii::t('app', 'Сохранить в PDF'),
+                    ['/user-test/report'],
                     [
                         'class' => 'btn btn-primary generate-report',
                         'target' => '_blank',
@@ -185,7 +186,7 @@ $item->translate(Yii::$app->language);
                         $.each(obj, function(key, value) {
                             $('.modal-body').append('<i class="fas fa-check"></i>');
                             $('.modal-body').append('<div class="result-question">' + value.question + '</div>');
-                            $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + '<p><strong><?=Yii::t('app', 'Оценка');?>: </strong>' + value.assessment + '</p>' + '<p><strong><?=Yii::t('app', 'Подсказки');?>: </strong>' + value.hint + '</p>' + '</div></div>');
+                            $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + '<p><strong><?= Yii::t('app', 'Оценка'); ?>: </strong>' + value.assessment + '</p>' + '<p><strong><?= Yii::t('app', 'Подсказки'); ?>: </strong>' + value.hint + '</p>' + '</div></div>');
                         });
                         $('.modal-footer').css('display', 'none');
                         $(".show-results").attr('disabled', false);
@@ -231,7 +232,7 @@ $item->translate(Yii::$app->language);
                                     $.each(obj, function(key, value) {
                                         $('.modal-body').append('<i class="fas fa-check"></i>');
                                         $('.modal-body').append('<div class="result-question">' + value.question + '</div>');
-                                        $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + "<p><strong><?=Yii::t('app', 'Оценка');?>: </strong>" + value.assessment + '</p>' + "<p><strong><?=Yii::t('app', 'Подсказки');?>:</strong>" + value.hint + '</p>' + '</div></div>');
+                                        $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div><br><div class="result-comments">' + "<p><strong><?= Yii::t('app', 'Оценка'); ?>: </strong>" + value.assessment + '</p>' + "<p><strong><?= Yii::t('app', 'Подсказки'); ?>:</strong>" + value.hint + '</p>' + '</div></div>');
                                     });
                                     $('.modal-footer').css('display', 'none');
                                 }
@@ -274,9 +275,9 @@ $item->translate(Yii::$app->language);
                 $.each(obj, function(key, value) {
                     $('.modal-body').append('<i class="fas fa-check"></i><div class="result-question">' + value.question + '</div>');
                     $('.modal-body').append('<div class="comments-wrap"><div class="result-info-icon">i</div><div class="result-answer">' + value.answer + '</div></div>');
-                    $('.modal-body').append('<div class="comments-wrap"><div class="result-comments">' + '<p><strong><?=Yii::t('app', 'Оценка');?>: </strong>' + value.assessment + '</p></div>');
-                    $('.modal-body').append('<div class="comments-wrap"><p><strong><?=Yii::t('app', 'Подсказки');?>: </strong>' + value.hint + '</p></div>');
-                    $('.modal-body').append('<div class="comments-wrap"><strong><?=Yii::t('app', 'Статьи');?>: </strong></div>');
+                    $('.modal-body').append('<div class="comments-wrap"><div class="result-comments">' + '<p><strong><?= Yii::t('app', 'Оценка'); ?>: </strong>' + value.assessment + '</p></div>');
+                    $('.modal-body').append('<div class="comments-wrap"><p><strong><?= Yii::t('app', 'Подсказки'); ?>: </strong>' + value.hint + '</p></div>');
+                    $('.modal-body').append('<div class="comments-wrap"><strong><?= Yii::t('app', 'Статьи'); ?>: </strong></div>');
                     $.each(value.articles, function(lib_key, lib_value) {
                         $('.modal-body').append('<div class="article-wrap"><div class="result-article"><a href = https://www.pereto.kg/libraries/' + lib_key + '>' + lib_value + '</a></div></div>');
                     });
@@ -308,3 +309,9 @@ $item->translate(Yii::$app->language);
         });
     });
 </script>
+
+<style>
+    .test_icon img {
+        height: 50px!important;
+    }
+</style>
