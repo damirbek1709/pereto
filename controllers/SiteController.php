@@ -176,7 +176,7 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        $this->registerSeoTags();
+        App::registerSeoTags();
         return $this->render('about');
     }
 
