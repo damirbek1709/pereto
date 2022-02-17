@@ -132,7 +132,7 @@ class App extends \yii\db\ActiveRecord
 
     public static function registerSeoTags()
     {
-        $url_string = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $url_string = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $result = explode('?language',$url_string);
         $url_string = $result[0];       
 
