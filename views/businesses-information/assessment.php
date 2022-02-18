@@ -192,6 +192,9 @@ $item->translate(Yii::$app->language);
                         $(".show-results").attr('disabled', false);
                         $(".modal").modal('show');
                     }
+                    $('.generate-report').css('display', 'none');
+                    $('.modal-footer .show-results').css('display', 'inline-block');
+                    $('.approve-question').css('display', 'inline-block');
                 }
             });
         }
@@ -284,7 +287,6 @@ $item->translate(Yii::$app->language);
                 });
                 //$('.modal-footer').html();
                 $('.generate-report').css('display', 'block');
-
                 $('.modal-footer .show-results').css('display', 'none');
                 $('.approve-question').css('display', 'none');
             }
@@ -312,6 +314,6 @@ $item->translate(Yii::$app->language);
 
 <style>
     .test_icon img {
-        height: 50px!important;
+        height: 50px !important;
     }
 </style>
