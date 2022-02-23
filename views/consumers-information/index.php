@@ -7,11 +7,13 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ConsumerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = $title;
+$this->title = Yii::t('app', 'Потребители');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="consumer-index">
+
     <h1><?= Html::encode($this->title) ?></h1>
+
     <p>
         <?= Html::a(Yii::t('app', 'Добавить потребителя'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
