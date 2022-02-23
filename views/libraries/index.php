@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $h1_title;
                     'aria-describedby' => 'search-addon',
                 ]);
                 ?>
-
                 <div class="input-group-append">
                     <span class="input-group-text" id="search-addon">
                         <?= Html::button("<i class='fas fa-search'></i>", ['class' => 'search-btn', 'type' => 'submit']) ?>

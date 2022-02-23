@@ -109,13 +109,7 @@ class LibrariesController extends Controller
 
         foreach ($types as $key => $val) {
             $keywordString .= $val[$title].",";
-        }
-
-
-        \Yii::$app->view->registerMetaTag([
-            'name' => 'title',
-            'content' => $model->title
-        ]);
+        }        
 
         \Yii::$app->view->registerMetaTag([
             'name' => 'description',
