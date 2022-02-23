@@ -74,9 +74,9 @@ class BusinessesInformationController extends Controller
 
     public function actionSelfassessment_tools()
     {
-        App::registerSeoTags();
+        $title = App::registerSeoStatic();
         $user_test = new UserTest();
-        return $this->render('assessment',['test'=>$user_test]);
+        return $this->render('assessment',['test'=>$user_test,'title'=>$title]);
     }
 
     /**

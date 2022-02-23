@@ -10,8 +10,9 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Business */
 
-$this->title = Yii::t('app', 'Self-assessment tool');
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = $title;
+$h1_title = Yii::t('app', 'Self-assessment tool');
+$this->params['breadcrumbs'][] = $h1_title;
 \yii\web\YiiAsset::register($this);
 
 $type_prefix = 'title';
@@ -66,7 +67,7 @@ $item->translate(Yii::$app->language);
 </div>
 
 <div class="business-view">
-    <h1 class="main-heading"><?= Html::encode($this->title) ?></h1>
+    <h1 class="main-heading"><?= Html::encode($h1_title) ?></h1>
     <div class="row top-margin-20">
         <div class="col-lg-12">
             <div class="business_text"><?= $item->text ?></div>
