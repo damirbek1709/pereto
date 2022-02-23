@@ -178,10 +178,8 @@ class SiteController extends Controller
     {
         $item = Page::findOne(1);
         $item->translate(Yii::$app->language);
-        $title = $item->title;
-        $title = Yii::t('app', 'About project');
-        App::registerSeoTags($title);
-        return $this->render('about', ['item' => $item]);
+        $page_title = App::registerSeoStatic();
+        return $this->render('about', ['item' => $item,'title'=>$page_title]);
     }
 
     public function actionAdmin()

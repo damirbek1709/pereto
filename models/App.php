@@ -130,20 +130,19 @@ class App extends \yii\db\ActiveRecord
         return $title;
     }
 
-    public static function registerSeoTags($title="")
+    public static function registerSeoTags()
     {
         $url_string = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $result = explode('?language',$url_string);
-        $url_string = $result[0];       
+        $result = explode('?language', $url_string);
+        $url_string = $result[0];
 
         $seo = Seo::find()->where(['url' => $url_string])->one();
         if ($seo) {
-            Yii::$app->view->title = $title;
             $seo->translate(Yii::$app->language);
-            \Yii::$app->view->registerMetaTag([
-                'name' => 'title',
-                'content' => $seo->meta_title
-            ]);
+            // \Yii::$app->view->registerMetaTag([
+            //     'name' => 'title',
+            //     'content' => $seo->meta_title
+            // ]);
 
             \Yii::$app->view->registerMetaTag([
                 'name' => 'description',
@@ -155,5 +154,36 @@ class App extends \yii\db\ActiveRecord
                 'content' => $seo->meta_keywords
             ]);
         }
+    }
+
+
+    public static function registerSeoStatic()
+    {
+        $url_string = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $result = explode('?language', $url_string);
+        $url_string = $result[0];
+        $title = "";
+
+        $seo = Seo::find()->where(['url' => $url_string])->one();
+        if ($seo) {
+            $seo->translate(Yii::$app->language);
+            //Yii::$app->view->title = $seo->meta_title;
+            // \Yii::$app->view->registerMetaTag([
+            //     'name' => 'title',
+            //     'content' => $seo->meta_title
+            // ]);
+
+            \Yii::$app->view->registerMetaTag([
+                'name' => 'description',
+                'content' => $seo->meta_description
+            ]);
+
+            \Yii::$app->view->registerMetaTag([
+                'name' => 'keywords',
+                'content' => $seo->meta_keywords
+            ]);
+            $title = $seo->meta_title;
+        }
+        return $title;
     }
 }
