@@ -5,7 +5,7 @@
 use app\models\Page;
 use yii\helpers\Html;
 
-$this->title = Yii::t('app','About project');
+$this->title = $title;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">

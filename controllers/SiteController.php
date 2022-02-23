@@ -113,8 +113,9 @@ class SiteController extends Controller
 
     public function actionPartners()
     {
+        $page_title = App::registerSeoStatic();
         App::registerSeoTags();
-        return $this->render('partners');
+        return $this->render('partners',['title'=>$page_title]);
     }
 
     /**
