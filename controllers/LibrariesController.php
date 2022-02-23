@@ -40,7 +40,7 @@ class LibrariesController extends Controller
      */
     public function actionIndex()
     {
-        App::registerSeoTags();
+        $title = App::registerSeoStatic();
         $searchModel = new LibrariesSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
         $type = [];
@@ -67,7 +67,8 @@ class LibrariesController extends Controller
             'dataProvider' => $dataProvider,
             'type' => $type,
             'tag' => $tag,
-            'category' => $category
+            'category' => $category,
+            'title'=>$title,
         ]);
     }
 

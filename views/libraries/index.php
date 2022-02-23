@@ -8,12 +8,13 @@ use yii\widgets\ListView;
 /* @var $searchModel app\models\LibrariesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Libraries');
+$this->title = $title;
+$h1_title = Yii::t('app', 'Libraries');
 $this->params['breadcrumbs'][] = Yii::t('app', 'Businesses');
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $h1_title;
 ?>
 <div class="libraries-index">
-    <h1 class="main-heading"><?= Html::encode($this->title) ?></h1>
+    <h1 class="main-heading"><?= Html::encode($h1_title) ?></h1>
     <p class="library-desc">
         <?php echo App::getLibraryString(); ?>
     </p>
