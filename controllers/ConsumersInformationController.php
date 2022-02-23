@@ -39,11 +39,12 @@ class ConsumersInformationController extends Controller
      */
     public function actionIndex($type)
     {
-        App::registerSeoTags();
+        $title = App::registerSeoStatic();
         $model = $this->findModel($type);
         $model->translate(Yii::$app->language);
         return $this->render('view', [
             'model' => $model,
+            'title'=>$title,
         ]);
     }
 
