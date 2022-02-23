@@ -71,7 +71,6 @@ $item->translate(Yii::$app->language);
         <div class="col-lg-12">
             <div class="business_text"><?= $item->text ?></div>
             <div class="col-lg-10 progress-grid">
-
                 <div class="progress-category-name">
                     <?= Yii::t('app', 'Менеджмент'); ?>
                     <div class="test_icon">

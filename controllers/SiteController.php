@@ -176,8 +176,12 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        App::registerSeoTags();
-        return $this->render('about');
+        $item = Page::findOne(1);
+        $item->translate(Yii::$app->language);
+        $title = $item->title;
+        $title = Yii::t('app', 'About project');
+        App::registerSeoTags($title);
+        return $this->render('about', ['item' => $item]);
     }
 
     public function actionAdmin()
@@ -218,5 +222,5 @@ class SiteController extends Controller
         }
         $page = Page::findOne($page_id);
         return $this->render('consumer', ['item' => $page]);
-    }    
+    }
 }

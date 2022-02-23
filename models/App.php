@@ -130,7 +130,7 @@ class App extends \yii\db\ActiveRecord
         return $title;
     }
 
-    public static function registerSeoTags()
+    public static function registerSeoTags($title="")
     {
         $url_string = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $result = explode('?language',$url_string);
@@ -138,6 +138,7 @@ class App extends \yii\db\ActiveRecord
 
         $seo = Seo::find()->where(['url' => $url_string])->one();
         if ($seo) {
+            Yii::$app->view->title = $title;
             $seo->translate(Yii::$app->language);
             \Yii::$app->view->registerMetaTag([
                 'name' => 'title',

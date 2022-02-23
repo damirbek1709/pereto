@@ -278,6 +278,7 @@ class UserTestController extends Controller
                 ->where(['test_id' => $test->id])
                 ->orderBy(['id' => SORT_ASC])
                 ->all();
+                
             $data_arr = [];
             foreach ($ans_query as $ans) {
                 $question = Question::findOne($ans->question_id);
