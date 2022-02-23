@@ -39,13 +39,14 @@ class ReportsController extends Controller
      */
     public function actionIndex()
     {
-        App::registerSeoTags();
+        $title = App::registerSeoStatic();
         $searchModel = new ReportsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'title'=>$title,
         ]);
     }
 

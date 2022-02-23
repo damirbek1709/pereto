@@ -7,11 +7,12 @@ use yii\widgets\ListView;
 /* @var $searchModel app\models\ReportsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Publications');
+$this->title = $title;
+$h1_title = Yii::t('app', 'Publications');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="reports-index">
-    <h1 class="main-heading"><?= Html::encode($this->title) ?></h1>
+    <h1 class="main-heading"><?= Html::encode($h1_title) ?></h1>
     <?php echo ListView::widget([
         'options' => [
             'class' => 'report-list row',
