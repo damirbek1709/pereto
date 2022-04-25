@@ -23,4 +23,7 @@ $this->params['breadcrumbs'][] = $model->title;
         border: 1px solid #ccc;
         padding: 10px 15px;
     }
+    .business-view table {
+        width: 100%;
+    }
 </style>
