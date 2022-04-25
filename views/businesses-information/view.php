@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Business */
 
-$this->title = $title;
+$this->title = $model->title;
 $this->params['breadcrumbs'][] = Yii::t('app', 'Businesses');
 $this->params['breadcrumbs'][] = $model->title;
 \yii\web\YiiAsset::register($this);
