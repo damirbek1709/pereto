@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Business */
@@ -19,3 +18,8 @@ $this->params['breadcrumbs'][] = $model->title;
         <div class="col-lg-12"><?= $model->text; ?></div>
     </div>
 </div>
+<style>
+    .business-view table td {
+        border: 1px solid #ccc;
+    }
+</style>
