@@ -42,7 +42,7 @@ $title = App::getLibraryTitle();
                 echo Html::beginTag('div', ['class' => 'lib-index-cats']);
                 $cats = $library->catList;
                 foreach ($cats as $key => $val) {
-                    echo "<span>" . $val[$title] . $concat_string . "</span>";
+                    echo "<span>" . $val[$title]. "</span>";
                 }
                 echo Html::endTag('div');
                 echo Html::a(Yii::t('app','Подробнее'),['/libraries/view','id'=>$library->id],['class'=>'lib-readmore']);
