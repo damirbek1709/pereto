@@ -77,5 +77,9 @@ return [
     'Потвердить'=>'Approve',
     'Оценка'=>'Assessment',
     'Подсказки'=>'Hint',
-    'Сохранить в PDF'=>'Save in PDF'
+    'Сохранить в PDF'=>'Save in PDF',
+    'Подробнее'=>'Read more',
+    'Описание проекта(скачать)'=>'Download file',
+    'Деятельность проекта'=>'Project activity',    
+    'Пройти тест'=>'Go to test',    
 ];

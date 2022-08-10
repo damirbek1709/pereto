@@ -76,6 +76,7 @@ $config = [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 'about' => 'site/about',
                 'partners' => 'partner/index',
+                'activity' => 'site/activity',
 
                 // '<alias:consumers-information><consumers-information:\w+>/<action:\w+>/<type:\d+>' => '<controller>/<action>',
                 // '<consumers-information:\w+>/<action:\w+>' => '<controller>/<action>',

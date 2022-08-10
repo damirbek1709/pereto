@@ -14,33 +14,34 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Businesses');
 $this->params['breadcrumbs'][] = $h1_title;
 ?>
 <div class="libraries-index">
-    <h1 class="main-heading"><?= Html::encode($h1_title) ?></h1>
-    <p class="library-desc">
+    <h1 class="new-heading"><?= Html::encode($h1_title) ?></h1>
+    <p class="library-description">
         <?php echo App::getLibraryString(); ?>
     </p>
     <?= Html::beginForm(['libraries/index'], 'get') ?>
-    <div class="search-block">
-        <div class="form-group rel">
-            <div class="input-group mb-3">
-                <?= Html::input('text', "", '', [
-                    'class' => 'form-control search_input',
-                    'minlength' => 3,
-                    'placeholder' => Yii::t('app', 'Поиск'),
-                    'aria-label' => '',
-                    'aria-describedby' => 'search-addon',
-                ]);
-                ?>
-                <div class="input-group-append">
-                    <span class="input-group-text" id="search-addon">
-                        <?= Html::button("<i class='fas fa-search'></i>", ['class' => 'search-btn', 'type' => 'submit']) ?>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <div class="row">
         <div class="col-lg-4">
+            <div class="search-block">
+                <div class="form-group rel">
+                    <div class="input-group mb-3">
+                        <?= Html::input('text', "", '', [
+                            'class' => 'form-control search_input',
+                            'minlength' => 3,
+                            'placeholder' => Yii::t('app', 'Поиск'),
+                            'aria-label' => '',
+                            'aria-describedby' => 'search-addon',
+                        ]);
+                        ?>
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="search-addon">
+                                <?= Html::button("<i class='fas fa-search'></i>", ['class' => 'search-btn', 'type' => 'submit']) ?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <?= $this->render('filter-collapse', [
                 'type' => $type,
                 'tag' => $tag,

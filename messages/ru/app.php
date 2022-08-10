@@ -67,4 +67,5 @@ return [
     'Send'=>'Отправить',
     'Begin Test'=>'Пройти Тест',
     'Self-assessment tool'=>'Инструмент самооценки',
+    'Green tips'=>'Зеленые рекомендации',
 ];

@@ -44,7 +44,7 @@ class Slider extends \yii\db\ActiveRecord
         return [
             [['link'], 'url'],
             [['link'], 'string', 'max' => 200],
-            [['embed'], 'string', 'max' => 255],
+            [['embed','title','title_en','title_ky'], 'string', 'max' => 255],
             [['priority'], 'integer', 'max' => 99],
             [['type'], 'integer', 'max' => 1],
             ['photo', 'file', 'extensions' => 'png, jpeg, jpg, gif', 'on' => ['insert', 'update']],
@@ -71,7 +71,7 @@ class Slider extends \yii\db\ActiveRecord
                 'scenarios' => ['insert', 'update'],
                 'path' => '@webroot/images/slider',
                 'url' => '@web/images/slider',
-                'ratio' => 224 / 77,
+                'ratio' => 39 / 47,
                 'crop_field' => 'photo_crop',
                 'cropped_field' => 'photo_cropped',
             ],
@@ -91,6 +91,31 @@ class Slider extends \yii\db\ActiveRecord
             'priority' => Yii::t('app', 'Priority'),
             'embed' => Yii::t('app', 'Video code'),
             'type' => Yii::t('app', 'Тип'),
+            'title' => Yii::t('app', 'Title'),
+            'title_en' => Yii::t('app', 'Title En'),
+            'title_ky' => Yii::t('app', 'Title Ky'),
         ];
+    }
+
+    function translate($language)
+    {
+        switch ($language) {
+            case "en":
+                if ($this->title_en != null) {
+                    $this->title = $this->{"title_en"};
+                } else {
+                    $this->title = $this->{"title"};
+                }
+                break;
+            case "ky":
+                if ($this->title_ky != null) {
+                    $this->title = $this->{"title_ky"};
+                } else {
+                    $this->title = $this->{"title"};
+                }
+                break;
+            default:
+                $this->title = $this->{"title"};
+        }
     }
 }

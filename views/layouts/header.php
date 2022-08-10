@@ -53,7 +53,7 @@ use app\models\App;
         $item->translate(Yii::$app->language);
         $consumer_items[] = ['label' => $item['title'], 'url' => ["/consumers-information?type=$item->id"]];
     }
-    
+
 
     $business = Business::find()->all();
     $business_items = [
@@ -70,10 +70,10 @@ use app\models\App;
 
     $language = "Рус";
     NavBar::begin([
-        'brandLabel' => Html::img(Url::base() . "/images/logo.png"),
+        'brandLabel' => Html::img(Url::base() . "/images/logo_white.svg"),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => "navbar navbar-expand-md {$class_fixed} navbar-custom",
+            'class' => "navbar navbar-expand-md navbar-custom",
         ],
     ]);
     echo Nav::widget([
@@ -90,6 +90,10 @@ use app\models\App;
                         'label' =>  Yii::t('app', 'Партнеры проекта'),
                         'url' => ['/partners'],
                     ],
+                    [
+                        'label' =>  Yii::t('app', 'Деятельность проекта'),
+                        'url' => ['/activity'],
+                    ],
                 ],
             ],
             [
@@ -100,31 +104,38 @@ use app\models\App;
                 'label' => Yii::t('app', 'Бизнес'),
                 'items' => $business_items
             ],
-            [
-                'label' => Yii::t('app', 'Медиа'),
-                'items' => [
-                    [
-                        'label' => Yii::t('app', 'Публикации'),
-                        'url' => ['/reports'],
-                    ],
-                    [
-                        'label' =>  Yii::t('app', 'Видео'),
-                        'url' => ['/video'],
-                    ],
-                    [
-                        'label' =>  Yii::t('app', 'Фотографии'),
-                        'url' => ['/gallery'],
-                    ],
-                ],
-                'url' => ['/site/contact']
-            ],
+            // [
+            //     'label' => Yii::t('app', 'Медиа'),
+            //     'items' => [
+            //         [
+            //             'label' => Yii::t('app', 'Публикации'),
+            //             'url' => ['/reports'],
+            //         ],
+            //         [
+            //             'label' =>  Yii::t('app', 'Видео'),
+            //             'url' => ['/video'],
+            //         ],
+            //         [
+            //             'label' =>  Yii::t('app', 'Фотографии'),
+            //             'url' => ['/gallery'],
+            //         ],
+            //     ],
+            //     'url' => ['/site/contact']
+            // ],            
             ['label' => Yii::t('app', 'Новости'), 'url' => ['/news']],
+            ['label' => Yii::t('app', 'Green tips'), 'url' => ['/gallery']],
+            //$log_label
+        ],
+    ]);
+
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-light'],
+        'items' => [
             [
                 'label' => $language_label,
                 'url' => '#',
                 'items' => $language_arr
             ],
-            $log_label
         ],
     ]);
     NavBar::end();

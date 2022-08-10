@@ -1,26 +1,36 @@
 <?php
 
-/* @var $this yii\web\View */
-
-use app\models\Page;
 use yii\helpers\Html;
-
-$this->title = $title;
-$this->params['breadcrumbs'][] = $this->title;
+use yii\helpers\Url;
 ?>
-<div class="site-about">
-    <?php $item = Page::findOne(1)?>
-    <h1 class="main-heading"><?= Html::encode($item->title) ?></h1>
-    <div class="row">
-        <div class="col-lg-5">
-            <?= Html::img($item->getWallpaper(), ['class' => 'page-view-img']); ?>
-        </div>
-        <div class="col-lg-7">
-            <?= $item->description; ?>
-        </div>
+<div class="site-partners">
+    <div class="container">
+        <h1 class="new-heading"><?= Yii::t('app', 'Партнеры') ?></h1>
     </div>
-
-    <div class="row top-margin-20">
-        <div class="col-lg-12"><?= $item->text; ?></div>
+    <div class="site-partners-list">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="site-partner-block">
+                        <?= Html::a(Html::img(Url::base() . '/images/partners/american_u.png'), 'https://www.auca.kg/', ['target' => '_blank']); ?>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="site-partner-block">
+                        <?= Html::a(Html::img(Url::base() . '/images/partners/unison_logo.png'), 'https://unisongroup.org/', ['target' => '_blank']); ?>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="site-partner-block">
+                        <?= Html::a(Html::img(Url::base() . '/images/partners/technopolis.png'), 'https://www.technopolis-group.com/', ['target' => '_blank']); ?>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="site-partner-block">
+                        <?= Html::a(Html::img(Url::base() . '/images/partners/cscp.png'), 'https://www.cscp.org/', ['target' => '_blank']); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

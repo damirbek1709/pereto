@@ -2,6 +2,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
@@ -11,21 +12,27 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'News'), 'url' => ['i
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
+
+
+
 <div class="news-view">
     <div class="row">
         <div class="col-lg-9">
-            <?= Html::img($model->getWallpaper(), ['class' => 'news-view-img']); ?>
-            <div class="news-view-title">
+            <div class="main-heading">
                 <?= $model->title; ?>
             </div>
+            <?//= Html::img($model->getWallpaper(), ['class' => 'news-view-img']); ?>
+            
             <div class="news-view-date">
                 <?= date('d-m-Y', strtotime($model->date)); ?>
             </div>
             <div class="news-view-text">
                 <?= $model->text; ?>
             </div>
+            <?=$this->render('gallery',['model'=>$model])?>
+            
             <div class="social_share">
-                <div class="ya-share2" data-title="<?=$model->title;?>" data-curtain data-services="vkontakte,facebook,odnoklassniki,telegram,twitter,whatsapp"></div>
+                <div class="ya-share2" data-title="<?= $model->title; ?>" data-curtain data-services="vkontakte,facebook,odnoklassniki,telegram,twitter,whatsapp"></div>
             </div>
         </div>
 
@@ -47,3 +54,4 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+

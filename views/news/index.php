@@ -11,7 +11,7 @@ $this->title = Yii::t('app', 'Новости');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-index">
-    <h1 class="main-heading"><?= Html::encode($this->title) ?></h1>
+    <h1 class="new-heading"><?= Html::encode($this->title) ?></h1>
     <?php echo ListView::widget([
         'options' => [
             'class' => 'program-list row',
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'itemView' => '_item',
         'summary' => false,
         'itemOptions' => [
-            'class' => 'news-index-block justify-content-center align-items-center col-lg-6',
+            'class' => 'news-index-block justify-content-center align-items-center col-lg-4',
         ],
     ]); ?>
 </div>

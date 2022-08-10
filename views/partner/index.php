@@ -11,7 +11,7 @@ $this->title = Yii::t('app', 'Partners');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="partner-index" data-show="<?=Yii::t('app','Показать все')?>" data-hide="<?=Yii::t('app','Скрыть')?>">
-<h1 class="main-heading"><?= Html::encode($this->title) ?></h1>
+<h1 class="new-heading about-heading"><?= Html::encode($this->title) ?></h1>
     <?php echo ListView::widget([
         'options' => [
             'class' => 'partner-list',

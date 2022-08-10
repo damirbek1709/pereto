@@ -179,4 +179,13 @@ class NewsController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
+    public function actionRemoveImage()
+    {
+        $key = $_POST['key'];
+        $id = $_POST['id'];
+        unlink(Yii::getAlias("@webroot/images/news/{$id}/thumbs/{$key}"));
+        unlink(Yii::getAlias("@webroot/images/news/{$id}/{$key}"));
+        return '{}';
+    }
 }

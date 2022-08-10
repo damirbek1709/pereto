@@ -3,12 +3,13 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
+
 <footer class="footer">
-    <div class="footer-top col-lg-12">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-6">
                 <div class="footer-heading">
-                    <?= Yii::t('app', 'Contacts') ?>
+                    <?= Html::img(Url::base() . "/images/logo_white.svg") ?>
                 </div>
                 <div class="footer-list">
                     <p><?= Yii::t('app', 'Pereto project') ?></p>
@@ -17,45 +18,30 @@ use yii\helpers\Url;
                     <p>pereto@auca.kg</p>
                 </div>
             </div>
-            <div class="col-lg-4 footer-links">
-                <div class="footer-heading">
-                    <?= Yii::t('app', 'Useful links') ?>
-                </div>
-                <div class="footer-list">
-                    <p><?= Html::a(Yii::t('app', 'Инструмент самооценки'), ['/businesses-information','type'=>5]); ?></p>
-                    <p><?= Html::a(Yii::t('app', 'Библиотека'), ['/libraries']); ?></p>
-                    <p><?= Html::a(Yii::t('app', 'Публикации'), ['/reports']); ?></p>
+
+            <div class="col-lg-3 footer-links">
+
+                <div class="footer-list-2" style="font-size: 14px">
+                    <p><?= Html::a(Yii::t('app', 'О Проекте'), ['/about']); ?></p>
+                    <p><?= Html::a(Yii::t('app', 'Потребителям'), ['/libraries']); ?></p>
+                    <p><?= Html::a(Yii::t('app', 'Бизнес'), ['/reports']); ?></p>
                     <p><?= Html::a(Yii::t('app', 'Новости'), ['/news']); ?></p>
+                    <p><?= Html::a(Yii::t('app', 'Green Tips'), ['/gallery']); ?></p>
                 </div>
             </div>
+
             <div class="col-lg-3">
-                <div class="footer-heading">
-                    <?= Yii::t('app', 'Subscribe us') ?>
-                </div>
                 <div class="social_icons">
-                    <?= Html::a('<i class="fab fa-instagram"></i>', 'https://www.instagram.com/pereto_project_kg/'); ?>
-                    <?= Html::a('<i class="fab fa-youtube"></i>', 'https://www.youtube.com/channel/UClI1c5zMkJAahJD9xzOti9Q/featured'); ?>
-                    <?= Html::a('<i class="fab fa-twitter"></i>', 'https://twitter.com/PeretoKg?fbclid=IwAR1Wn7G9ilnpmZNW7F23Ts93ZjylfYRBQ7N0anEbU_6uOZr8VyQUkthC1uE'); ?>
-                    <?= Html::a('<i class="fab fa-facebook-f"></i>', 'https://www.facebook.com/PERETO.project.kg'); ?>
-                    <?= Html::a('<i class="fab fa-telegram-plane"></i>', 'https://t.me/peretokg'); ?>
+                    <?= Html::a('<i class="fab fa-instagram"></i>', 'https://www.instagram.com/pereto_project_kg/',['target'=>'_blank']); ?>
+                    <?= Html::a('<i class="fab fa-youtube"></i>', 'https://www.youtube.com/channel/UClI1c5zMkJAahJD9xzOti9Q/featured',['target'=>'_blank']); ?>
+                    <?= Html::a('<i class="fab fa-facebook-f"></i>', 'https://www.facebook.com/PERETO.project.kg',['target'=>'_blank']); ?>
 
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="col-lg-2 switch-asia">
-                    <?=Html::img(Url::base().'/images/euro_big.jpg');?>
-                </div>
-                <div class="col-lg-10">
-                    <?php
-                    $string = ' This website was created and maintained with the financial support of the European Union. Its contents are the sole responsibility of PERETO and do not necessarily reflect the views of the European Union.';
-                    echo Yii::t('app',$string);
-                    ?>
+                <div class="footer_copyright">
+                    Copyright 2022 Pereto KG, Terms & Privacy
                 </div>
             </div>
         </div>
+
     </div>
 </footer>

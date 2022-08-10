@@ -13,6 +13,9 @@ use karpoff\icrop\CropImageUpload;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title_en')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title_ky')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'priority')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'type')->dropDownList($model->getTypeList()); ?>
     <?= $form->field($model, 'photo')->widget(CropImageUpload::className()) ?>

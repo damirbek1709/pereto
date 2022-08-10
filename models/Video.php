@@ -86,4 +86,13 @@ class Video extends \yii\db\ActiveRecord
         preg_match('/embed/(.{11})', $this->source, $matches);
         return $matches[1];
     }
+
+    public function getThumbUrl()
+    {
+        preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $this->source, $match);
+        $url =  $match[0][0];
+        preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user|shorts)\/))([^\?&\"'>]+)/", $url, $matches);
+        $video_id = $matches[1];
+        return "https://i.ytimg.com/vi/{$video_id}/hqdefault.jpg";
+    }
 }

@@ -67,7 +67,7 @@ $item->translate(Yii::$app->language);
 </div>
 
 <div class="business-view">
-    <h1 class="main-heading"><?= Html::encode($h1_title) ?></h1>
+    <h1 class="new-heading about-heading"><?= Html::encode($h1_title) ?></h1>
     <div class="row top-margin-20">
         <div class="col-lg-12">
             <div class="business_text"><?= $item->text ?></div>

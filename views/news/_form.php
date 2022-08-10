@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use karpoff\icrop\CropImageUpload;
 use vova07\imperavi\Widget;
+use kartik\file\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
@@ -17,7 +18,7 @@ use vova07\imperavi\Widget;
 
     <?= $form->field($model, 'title')->textInput() ?>
 
-    <?= $form->field($model, 'description')->textArea();?>
+    <?= $form->field($model, 'description')->textArea(); ?>
 
     <?=
     $form->field($model, 'text')->widget(Widget::className(), [
@@ -53,7 +54,7 @@ use vova07\imperavi\Widget;
     <?= $form->field($model, 'date')->textInput([
         'maxlength' => true,
         'type' => 'date',
-        'value'=>$date_default,
+        'value' => $date_default,
         'style' => 'width:200px'
     ]); ?>
 
@@ -121,6 +122,47 @@ use vova07\imperavi\Widget;
                 ]
             ],
         ]); ?>
+    </div>
+
+    <div class="img-drop" style="font-family: Arial,sans-serif">
+        <?php
+        $savedImagesCaption = [];
+        if ($model->isNewRecord) {
+            $savedImages = [];
+        } else {
+            $savedImages = $model->getThumbImages();
+            $captionArr = $model->getThumbs();
+            if (count($model->getThumbs())) {
+                foreach ($captionArr as $image) {
+                    $savedImagesCaption[] = [
+                        "caption" => basename($image),
+                        "url" => Yii::$app->urlManager->createUrl('/news/remove-image'),
+                        'key' => basename($image),
+                        'extra' => ['id' => $model->id],
+                    ];
+                }
+            }
+        }
+        echo $form->field($model, 'file[]')->widget(FileInput::classname(), [
+            'options' => ['multiple' => true, 'accept' => 'image/*'],
+            'pluginOptions' => [
+                'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
+                'initialPreview' => $savedImages,
+                'initialCaption' => '',
+                'uploadAsync' => false,
+                'initialPreviewConfig' => $savedImagesCaption,                
+                'showCaption' => false,
+                'showRemove' => false,
+                'showUpload' => false,
+                'overwriteInitial' => false,
+                'fileActionSettings' => [
+                    'showZoom' => false,
+                    'indicatorNew' => '&nbsp;',
+                    'removeIcon' => '<span class="glyphicon glyphicon-trash" title="Удалить">Удалить</span> ',
+                ],
+            ]
+        ]);
+        ?>
     </div>
 
     <div class="form-group">

@@ -4,100 +4,137 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use app\models\Slider;
 use app\models\News;
+use app\models\Page;
 use yii\widgets\ListView;
 use yii\helpers\StringHelper;
 /* @var $this yii\web\View */
 
-$this->title = 'Pereto.kg';
+$this->title = 'ПЭРЭТО (PERETO)';
 $class = "padder-fixed";
+
 if (!Yii::$app->user->isGuest) {
     $class = "padder-free";
 }
+if (!Yii::$app->user->isGuest) {
+    $class = "padder-free";
+}
+
+$this->registerMetaTag(['name' => 'description', 'content' => 'Проект по продвижению энерго- и ресурсоэффективности в туристической отрасли Кыргызстана']);
+$this->registerMetaTag(['name' => 'keywords', 'content' => 'Кыргызстан, Кыргызстане Зелёный туризм, Устойчивое потребление, Устойчивое производство, Энергоэффективность, Ресурсоэффективность, Туристическая отрасль, Туристический сектор, Туристические МСП, УПП, ЭРЭ, HoReCa, ХоРеКа, Потребители, Экономия ресурсов, Зеленое финансирование, Энергоаудит, Ресурсоаудит, Консультации, Американский Университет в Центральной Азии, Воздействие на окружающую среду']);
 ?>
-<link rel='stylesheet' href='<?= Url::base() ?>/css/slick.min.css'>
-<link rel="stylesheet" href="<?= Url::base() ?>/css/gallery.css">
+
+<link rel='stylesheet' href='<?= Url::base() ?>/js/slick/slick.css'>
+<link rel='stylesheet' href='<?= Url::base() ?>/js/slick/slick-theme.css'>
+
 <div class="site-index">
-    <div class="<?= $class ?>">
-        <div class="slide-cover">
-            <div class="slick-carousel">
-                <?php
-                $sliders = Slider::find()->orderBy(['priority' => SORT_ASC])->all();
-                $link = '#';
-                foreach ($sliders as $item) {
-                    $link = $item->link ? $item->link : '#';
-                    if ($item->embed) {
-                        echo Html::tag('div', $item->embed, ['class' => 'slider-img-cover slider-video']);
-                    } else {
-                        echo Html::tag('div', Html::a(Html::img(Url::base() . "/images/slider/{$item->photo_cropped}"),$link), ['class' => 'slider-img-cover']);
-                    }
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="body-content">
-            <div class="site-index-news">
-                <h1 class="main-heading"><?= Yii::t('app', 'News') ?></h1>
-                <div class="program-list row">
-                    <?php
-                    $news = News::find()->orderBy(['date' => SORT_DESC])->limit(3)->all();
-                    foreach ($news as $new) :
-                        $new->translate(Yii::$app->language);
-                    ?>
-                        <div class="news-index-block justify-content-center align-items-center col-lg-4">
-                            <div class="site-index-news-block">
-                                <?= Html::beginTag('a', ['href' => Url::to("/news/{$new->id}"), 'class' => '']); ?>
-                                <div class="news-block-img">
-                                    <?= Html::img($new->getWallpaper()); ?>
-                                </div>
+    <?= $this->render('slider',['language'=>Yii::$app->language]); ?>
+</div>
 
-                                <div class="site-news-content">
-                                    <?= Html::tag('div', $new->title, ['class' => 'news-index-title']); ?>
-                                    <?= Html::tag('div', StringHelper::truncateWords($new->description, 25, $suffix = '...'), []); ?>
-                                </div>
-                                <?php Html::endTag('a'); ?>
-                            </div>
-                        </div>
-                    <?php
-                    endforeach;
-                    ?>
-                </div>
-                <div class="news-btn-group">
-                    <?= Html::a(Yii::t('app', 'All News'), ['/news/index'], ['class' => 'news-btn news-more-btn']); ?>
-                    <?= Html::a(Yii::t('app', 'Subscribe'), '#', ['class' => 'news-btn news-subscribe-btn']); ?>
-                </div>
-            </div>
-
-            <div class="site-partners top-margin-30">
-                <h1 class="main-heading"><?= Yii::t('app', 'Partners') ?></h1>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/american_u.png'), 'https://www.auca.kg/', ['target' => '_blank']); ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/unison_logo.png'), 'https://unisongroup.org/', ['target' => '_blank']); ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/technopolis.png'), 'https://www.technopolis-group.com/', ['target' => '_blank']); ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="site-partner-block">
-                            <?= Html::a(Html::img(Url::base() . '/images/partners/cscp.png'), 'https://www.cscp.org/', ['target' => '_blank']); ?>
-                        </div>
+<?php
+$about = Page::findOne(1);
+$about->translate(Yii::$app->language);
+?>
+<div class="container">
+    <div class="body-content">
+        <div class="site-index-news">
+            <div class="site-about-project"></div>
+            <h1 class="new-heading about-heading"><?= Yii::t('app', 'About project') ?></h1>
+            <div class="index-project-desc">
+                <div class="index-project-text">
+                    <?php echo $about->description; ?>
+                    <div class="about-links">
+                        <?= Html::a(Yii::t('app', 'Описание проекта(скачать)'), 'https://pereto.kg/images/site/redactor/61c1b091a2702.pdf', ['class' => 'download-link','target'=>'_blank']); ?>
+                        <?= Html::a(Yii::t('app', 'Подробнее'), ['/site/about'], ['style' => 'float:right', 'class' => 'readmore-link',]); ?>
                     </div>
                 </div>
+                <div class="index-project-img"><?php echo Html::img($about->getWallpaper(), ['class' => 'site-about-img']); ?></div>
             </div>
-
         </div>
     </div>
 </div>
 
-<script src="<?= Url::base() ?>/js/slick.min.js"></script>
+<?//= $this->render('news_2'); ?>
+<?= $this->render('news',['language'=>Yii::$app->language]); ?>
+<?= $this->render('self-esteem'); ?>
+<?= $this->render('library'); ?>
+<?= $this->render('partners'); ?>
+<?= $this->render('video_2'); ?>
+
+
+<script src="<?= Url::base() ?>/js/slick/slick.min.js"></script>
 <script src="<?= Url::base() ?>/js/gallery.js"></script>
+
+<script>
+    var Slider = (function() {
+        var initSlider = function() {
+            var dir = $("html").attr("dir");
+            var swipeHandler = new Hammer(document.getElementById("slider"));
+            swipeHandler.on('swipeleft', function(e) {
+                if (dir == "rtl")
+                    $(".arrow-left").trigger("click");
+                else
+                    $(".arrow-right").trigger("click");
+            });
+
+            swipeHandler.on('swiperight', function(e) {
+                if (dir == "rtl")
+                    $(".arrow-right").trigger("click");
+                else
+                    $(".arrow-left").trigger("click");
+            });
+
+            $(".arrow-right , .arrow-left").click(function(event) {
+                var nextActiveSlide = $(".slide.active").next();
+
+                if ($(this).hasClass("arrow-left"))
+                    nextActiveSlide = $(".slide.active").prev();
+
+                if (nextActiveSlide.length > 0) {
+                    var nextActiveIndex = nextActiveSlide.index();
+                    $(".dots span").removeClass("active");
+                    $($(".dots").children()[nextActiveIndex]).addClass("active");
+                    updateSlides(nextActiveSlide);
+                }
+            });
+
+            $(".dots span").click(function(event) {
+                var slideIndex = $(this).index();
+                var nextActiveSlide = $($(".slider").children()[slideIndex]);
+                $(".dots span").removeClass("active");
+                $(this).addClass("active");
+
+                updateSlides(nextActiveSlide);
+            });
+
+            var updateSlides = function(nextActiveSlide) {
+                var nextActiveSlideIndex = $(nextActiveSlide).index();
+
+                $(".slide").removeClass("prev-1");
+                $(".slide").removeClass("next-1");
+                $(".slide").removeClass("active");
+                $(".slide").removeClass("prev-2");
+                $(".slide").removeClass("next-2");
+
+                nextActiveSlide.addClass("active");
+
+                nextActiveSlide.prev().addClass("prev-1");
+                nextActiveSlide.prev().prev().addClass("prev-2");
+                nextActiveSlide.addClass("active");
+                nextActiveSlide.next().addClass("next-1");
+                nextActiveSlide.next().next().addClass("next-2");
+            }
+            var updateToNextSlide = function(nextActiveSlide) {
+
+            }
+        }
+        return {
+            init: function() {
+                initSlider();
+            }
+        }
+    })();
+
+    $(function() {
+        Slider.init();
+    });
+</script>

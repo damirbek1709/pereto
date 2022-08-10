@@ -77,6 +77,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $title = App::registerSeoStatic();
         App::registerSeoTags();
         $canonical_url = "https://pereto.kg";
         if (Yii::$app->request->get()) {
@@ -84,7 +85,7 @@ class SiteController extends Controller
         }
         \Yii::$app->view->registerLinkTag(['rel' => 'canonical', 'href' => $canonical_url]);
         $this->layout = "main_index";
-        return $this->render('index');
+        return $this->render('index',['title'=>$title]);
     }
 
     private function registerSeoTags()
@@ -116,6 +117,14 @@ class SiteController extends Controller
         $page_title = App::registerSeoStatic();
         App::registerSeoTags();
         return $this->render('partners',['title'=>$page_title]);
+    }
+
+    public function actionActivity()
+    {
+        $item = Page::findOne(2);
+        $item->translate(Yii::$app->language);
+        $page_title = App::registerSeoStatic();
+        return $this->render('about', ['item' => $item,'title'=>$page_title]);
     }
 
     /**

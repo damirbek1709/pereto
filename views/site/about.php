@@ -4,10 +4,7 @@
 
 use app\models\Page;
 use yii\helpers\Html;
-
-
-$this->title = $title;
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $item->title;
 ?>
 <div class="site-about">    
     <h1 class="main-heading"><?= Html::encode($item->title) ?></h1>
