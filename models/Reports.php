@@ -56,7 +56,7 @@ class Reports extends \yii\db\ActiveRecord
                 'scenarios' => ['insert', 'update'],
                 'path' => '@webroot/images/reports',
                 'url' => '@web/images/reports',
-				'ratio' => 5/2,
+				'ratio' => 3/2,
 				'crop_field' => 'photo_crop',
 				'cropped_field' => 'photo_cropped',
             ],

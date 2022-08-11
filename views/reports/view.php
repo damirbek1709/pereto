@@ -11,12 +11,17 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Reports'), 'url' => 
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="reports-view">
-    <h1 class="main-heading"><?= Html::encode($this->title) ?></h1>
-    <div class="report-view-img">
-        <?=Html::img($model->getWallpaper());?>
-    </div>
-    <div class="row top-margin-20">
-        <div class="col-lg-12"><?= $model->text; ?></div>
+
+<div class="libraries-view">
+    <div class="row">
+        <div class="col-lg-12">
+            <?= Html::img($model->getWallpaper(), ['class' => 'news-view-img']); ?>
+            <div class="news-view-title">
+                <?= $model->title; ?>
+            </div>
+            <div class="news-view-text">
+                <?= $model->text; ?>
+            </div>            
+        </div>
     </div>
 </div>

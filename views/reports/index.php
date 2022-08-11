@@ -12,7 +12,7 @@ $h1_title = Yii::t('app', 'Publications');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="reports-index">
-    <h1 class="main-heading"><?= Html::encode($h1_title) ?></h1>
+    <h1 class="new-heading about-heading"><?= Html::encode($h1_title) ?></h1>
     <?php echo ListView::widget([
         'options' => [
             'class' => 'report-list row',
@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'itemView' => '_item',
         'summary' => false,
         'itemOptions' => [
-            'class' => 'report-index-block col-lg-6',
+            'class' => 'report-index-block col-lg-4 col-md-4',
         ],
     ]); ?>
 </div>

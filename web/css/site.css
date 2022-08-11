@@ -509,7 +509,23 @@ body {
 }
 
 .report-index-block {
-    height: 240px;
+    height: 150px;
+}
+
+.rep-index-block {
+    display: grid;
+    grid-template-columns: 150px auto;
+    height: 150px;
+    background-color: #e8f4f8;
+}
+
+.rep-index-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
 }
 
 .report-block-img {
@@ -1677,6 +1693,21 @@ body {
 .demo_gallery {
     margin: 0 auto;
     width: 100%;
+}
+
+.report-list {
+    /* margin-top: 30px; */
+}
+
+.report-index-block {
+    display: grid;
+    height: 150px;
+    margin: 15px 0;
+}
+
+.rep-index-right {
+    background-color: #e8f4f8;
+    padding: 10px 8px;
 }
 
 
