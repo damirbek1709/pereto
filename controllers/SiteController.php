@@ -127,6 +127,12 @@ class SiteController extends Controller
         return $this->render('about', ['item' => $item,'title'=>$page_title]);
     }
 
+    public function actionTest()
+    { 
+        $this->layout = "main_index";       
+        return $this->render('test');
+    }
+
     /**
      * Login action.
      *
