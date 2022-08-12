@@ -15,6 +15,9 @@ main>.container {
     .video-container .index-video-img {
         height: 230px;
     }
+    .video-container .youtube-container {
+        height: 230px!important;
+    }
     .video-container .slick-next {
         right: 10px;
     }
@@ -641,6 +644,9 @@ body {
     }
     .video-container .index-video-img {
         height: 201px;
+    }
+    .video-container .youtube-container {
+        height: 201px!important;
     }
     .video-container .slick-prev {
         left: -5px;
@@ -1618,6 +1624,7 @@ body {
 .video-b {
     margin: 0 25px 0 25px;
     color: #414042;
+    position: relative;
 }
 
 .video-index-title {
@@ -1736,6 +1743,24 @@ body {
 .rep-index-right {
     background-color: #e8f4f8;
     padding: 10px 8px;
+}
+
+.youtube-video iframe {
+    width: 100%!important;
+    height: 100%!important;
+}
+
+.youtube-container {
+    width: 100%;
+    height: 330px;
+    position: relative;
+    cursor: pointer;
+}
+
+.youtube-video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
 

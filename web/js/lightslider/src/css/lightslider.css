@@ -561,7 +561,7 @@
 .news-img-cover {
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0;
+    background-position: center;
     position: relative;
     height: 100%;
 }

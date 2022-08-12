@@ -104,26 +104,26 @@ use app\models\App;
                 'label' => Yii::t('app', 'Бизнес'),
                 'items' => $business_items
             ],
-            // [
-            //     'label' => Yii::t('app', 'Медиа'),
-            //     'items' => [
-            //         [
-            //             'label' => Yii::t('app', 'Публикации'),
-            //             'url' => ['/reports'],
-            //         ],
-            //         [
-            //             'label' =>  Yii::t('app', 'Видео'),
-            //             'url' => ['/video'],
-            //         ],
-            //         [
-            //             'label' =>  Yii::t('app', 'Фотографии'),
-            //             'url' => ['/gallery'],
-            //         ],
-            //     ],
-            //     'url' => ['/site/contact']
-            // ],            
+            [
+                'label' => Yii::t('app', 'Медиа'),
+                'items' => [
+                    [
+                        'label' => Yii::t('app', 'Публикации'),
+                        'url' => ['/reports'],
+                    ],
+                    [
+                        'label' =>  Yii::t('app', 'Видео'),
+                        'url' => ['/video'],
+                    ],
+                    [
+                        'label' =>  Yii::t('app', 'Green tips'),
+                        'url' => ['/gallery'],
+                    ],
+                ],
+                'url' => ['/site/contact']
+            ],            
             ['label' => Yii::t('app', 'Новости'), 'url' => ['/news']],
-            ['label' => Yii::t('app', 'Green tips'), 'url' => ['/gallery']],
+            //['label' => Yii::t('app', 'Green tips'), 'url' => ['/gallery']],
             //$log_label
         ],
     ]);

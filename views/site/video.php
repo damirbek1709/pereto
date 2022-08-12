@@ -15,6 +15,7 @@ $videos = Video::find()->orderBy(['id' => SORT_DESC])->limit(2)->all();
             foreach ($videos as $model) {
                 echo $model->translate(Yii::$app->language);
                 echo Html::beginTag('a', ['href' => Url::to("/video/{$model->id}"), 'class' => 'video-b']);
+                echo $model->source;
                 $video_img =  $model->getThumbUrl();
                 echo Html::beginTag('div', ['class' => 'index-video-img', 'style' => "background-image:url({$video_img})"]);
                 echo Html::img(Url::base() . '/images/site/video_play.svg');
