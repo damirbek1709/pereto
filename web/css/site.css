@@ -1408,6 +1408,10 @@ body {
     max-width: 1370px;
 }
 
+.user-test-view {
+    font-family: 'Open Sans';
+}
+
 .left-esteem {
     float: left;
 }
@@ -1761,6 +1765,16 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
+}
+
+.ans-quest-block {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.user-ans {
+    font-weight: 700;
 }
 
 

@@ -33,7 +33,7 @@ class UserTest extends \yii\db\ActiveRecord
             [['buisness_type'], 'integer'],
             [['email'], 'email'],
             [['date'], 'safe'],
-            [['date'], 'default', 'value'=> date('Y-m-d')],
+            [['date'], 'default', 'value' => date('Y-m-d')],
             [['email', 'organization_name'], 'string', 'max' => 255],
         ];
     }
@@ -50,5 +50,15 @@ class UserTest extends \yii\db\ActiveRecord
             'buisness_type' => Yii::t('app', 'Business Type'),
             'date' => Yii::t('app', 'Date'),
         ];
+    }
+
+    public function getAnswers()
+    {
+        return $this->hasMany(UserAnswer::className(), ['test_id' => 'id']);
+    }
+
+    public function getBusinessType()
+    {
+        return $this->hasOne(BusinessType::className(), ['id' => 'buisness_type']);
     }
 }

@@ -55,4 +55,9 @@ class UserAnswer extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Answer::className(), ['id' => 'answer_id']);
     } 
+
+    public function getAns()
+    {
+        return $this->hasOne(Answer::className(), ['id' => 'answer_id']);
+    } 
 }

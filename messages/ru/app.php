@@ -68,4 +68,5 @@ return [
     'Begin Test'=>'Пройти Тест',
     'Self-assessment tool'=>'Инструмент самооценки',
     'Green tips'=>'Зеленые рекомендации',
+    'Tests'=>'Тесты'
 ];

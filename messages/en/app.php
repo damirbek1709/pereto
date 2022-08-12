@@ -82,4 +82,5 @@ return [
     'Описание проекта(скачать)'=>'Download file',
     'Деятельность проекта'=>'Project activity',    
     'Пройти тест'=>'Go to test',    
+    
 ];
