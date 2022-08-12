@@ -1030,7 +1030,7 @@ body {
 }
 
 .slider_bg {
-    background-image: url(../images/site/slider_bg.png);
+    background-image: url(../images/site/slider_bg.webp);
     height: 710px;
     background-position: 0 bottom;
     align-items: center;
@@ -1400,7 +1400,7 @@ body {
     height: 175px;
     width: 100%;
     margin: 30px auto;
-    background-image: url(../images/site/self-esteem.png);
+    background-image: url(../images/site/self-esteem.webp);
     background-repeat: no-repeat;
     font-family: 'Montserrat';
     display: flex;
